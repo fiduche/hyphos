@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <form
         id="waitlist-form"
         class="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-        onsubmit="event.preventDefault(); const e=document.getElementById('wl-email').value; if(!e) return; window.location.href = 'mailto:hello@hyphos.io?subject=Hyphos%20pilot%20interest%20—%20' + encodeURIComponent(e) + '&body=' + encodeURIComponent('Hi — please add me (' + e + ') to the Hyphos pilot list.\\n\\nA bit about us (organization, the engagement you have in mind, what you\\'re hoping Hyphos solves):\\n\\n');"
+        onsubmit="event.preventDefault(); const e=document.getElementById('wl-email').value; if(!e) return; window.location.href = 'mailto:info@hyphos.io?subject=Hyphos%20pilot%20interest%20—%20' + encodeURIComponent(e) + '&body=' + encodeURIComponent('Hi — please add me (' + e + ') to the Hyphos pilot list.\\n\\nA bit about us (organization, the engagement you have in mind, what you\\'re hoping Hyphos solves):\\n\\n');"
       >
         <input
           id="wl-email"
@@ -429,7 +429,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Want to pilot Hyphos on a real engagement?
       </h2>
       <p class="mt-4 text-slate-400">
-        We're shaping a small cohort of design partners — teams running complex work where the cost of forgetting is high. Write directly: <a href="mailto:hello@hyphos.io" class="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/40 underline-offset-4">hello@hyphos.io</a>.
+        We're shaping a small cohort of design partners — teams running complex work where the cost of forgetting is high. Write directly: <a href="mailto:info@hyphos.io" class="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/40 underline-offset-4">info@hyphos.io</a>.
       </p>
     </div>
   </section>

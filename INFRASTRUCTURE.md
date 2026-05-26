@@ -69,32 +69,48 @@ Or via Cloudflare dashboard: Workers & Pages → hyphos-website → Deployments 
 
 ## Email
 
-**Status as of 2026-05-25:** `hello@hyphos.io` is NOT yet receiving mail. The site's hero form and contact CTAs reference this address; until email routing is configured those mailto links go nowhere.
+**Primary contact address:** `info@hyphos.io` — live, receiving and sending natively. Used as the public contact email across both hyphos.io and hyphosconsulting.com marketing sites.
 
 ### The hyphos.io Workspace situation
 
-`hyphos.io` is the primary domain of a **separate Google Workspace account** from `hyphosconsulting.com`. The only user in the hyphos.io Workspace is `meeting@hyphos.io` (the Hyphos Notetaker bot — used for meeting transcription, not a real human inbox).
+`hyphos.io` is the primary domain of a **separate Google Workspace account** from `hyphosconsulting.com`. Two users exist in the hyphos.io Workspace:
 
-This means: the Google Workspace MX records on `hyphos.io` ARE live (they route real mail to the notetaker's Workspace inbox) — do NOT delete them under any circumstance.
+| User | Role | Notes |
+|---|---|---|
+| `meeting@hyphos.io` | Hyphos Notetaker bot | Receives calendar invites; the Hyphos product joins meetings as this identity. Real user (Google/Zoom block bot accounts that don't have a real Workspace identity). Last active sign-in: low — used by automation. |
+| `info@hyphos.io` | Public contact mailbox | Receives all pilot inquiries, sends replies natively (no SMTP wall). Real user, real Gmail inbox. |
 
-### Plan for `hello@hyphos.io`
+Total seats in this Workspace: 2. Combined with Workspace #1 (`dnewton@hyphosconsulting.com`), total Google Workspace cost: 3 seats.
 
-**Option chosen: Google Group** inside the hyphos.io Workspace.
+### Why a real user instead of an alias or forwarder
 
-Setup:
-1. In hyphos.io Workspace admin → **Apps → Google Workspace → Groups for Business** → ensure ON
-2. **Directory → Groups** → **+ Create group**
-3. Name: `Hyphos hello`; Group email: `hello@hyphos.io`; Access type: **Public** or **Restricted**
-4. Add member: `dnewton@hyphosconsulting.com` (the user's primary inbox, in Workspace #1)
-5. Settings → "Who can post" → **Anyone on the web**
+Earlier attempts at this used (a) a Google Group `hello@hyphos.io` forwarding to `dnewton@hyphosconsulting.com`, and (b) Gmail's "Send mail as" to reply from `hello@hyphos.io`. Both broke:
 
-Result: mail to `hello@hyphos.io` → group → forwarded to `dnewton@hyphosconsulting.com`.
+- The Group forwarding hit external-member subscription quirks and intermittent non-delivery
+- "Send mail as" was blocked by Google's cross-Workspace SMTP restriction (cannot send AS an address in another Workspace's domain without that Workspace's SMTP credentials)
 
-To reply *from* `hello@hyphos.io`, set up Gmail's "Send mail as" feature in the Workspace #1 inbox (Settings → Accounts → Send mail as → Add another email address → `hello@hyphos.io`).
+A real user in Workspace #2 sidesteps both problems entirely — same-Workspace send-as works native, no Group routing, normal Gmail deliverability.
 
-### Why NOT Cloudflare Email Routing for this domain
+### Day-to-day use
 
-Cloudflare Email Routing would require deleting the existing Google Workspace MX records, which would break the `meeting@hyphos.io` notetaker bot. Workspace handles it cleanly via Groups; no need to involve Cloudflare's email layer.
+Two reasonable patterns:
+
+- **Pattern A — Direct check.** Keep `info@hyphos.io` open as its own Gmail tab or in the Gmail account switcher. Check it daily.
+- **Pattern B — Auto-forward + native account-switching reply.** In `info@hyphos.io` Gmail, set up Settings → Forwarding → forward a copy to `dnewton@hyphosconsulting.com`. Reads land in your main inbox. To reply, swap accounts in Gmail's top-right switcher and compose from `info@hyphos.io` natively.
+
+### Do NOT delete the Google Workspace MX records
+
+The MX records on `hyphos.io` route real mail to Workspace #2. Cloudflare's Email Routing setup screen will offer to "clean up incompatible records" — that would delete the Google MX and break both users. Always cancel out of that screen.
+
+### Future: consolidating the two Workspaces
+
+The two-Workspace setup costs the same as it would consolidated (~$21/mo for 3 seats either way) but adds friction (two admin consoles, plus the cross-Workspace SMTP wall for any future `@hyphos.io` from `@hyphosconsulting.com` setup). When there's a quiet weekend with no active notetaker use, consider:
+
+1. Move `hyphos.io` to Workspace #1 as a *secondary domain* (involves canceling Workspace #2 to release the domain — ~24h downtime for the notetaker during the release window)
+2. Recreate both `meeting@hyphos.io` and `info@hyphos.io` as users in Workspace #1
+3. Result: one admin console, one billing, same cost
+
+Not urgent. Defer until something forces the decision (hiring, branding push, or genuine consolidation appetite).
 
 ---
 

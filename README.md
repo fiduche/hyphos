@@ -44,7 +44,7 @@ npx wrangler deploy
 
 ## Email
 
-`hello@hyphos.io` is handled by Cloudflare Email Routing — forwarding only, not a real mailbox. See dashboard: `hyphos.io` → Email → Email Routing.
+Public contact address: `info@hyphos.io` — a real Google Workspace mailbox in the hyphos.io Workspace. See `INFRASTRUCTURE.md` for the full email setup.
 
 ## Pages
 
