@@ -205,8 +205,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           {/* Top layer: where the work happens */}
           <div class="rounded-lg border border-cyan-500/30 bg-cyan-500/[0.06] px-4 py-3">
             <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-cyan-300/80 mb-1">Where the work happens</p>
-            <p class="text-sm font-semibold text-white">Meetings · Email · Chat · Documents</p>
-            <p class="text-xs text-cyan-200/60 mt-1">Channel-native — no portal to learn, no new place to log in</p>
+            <p class="text-sm font-semibold text-white">Meetings · Email · Chat · Documents · Your AI tools</p>
+            <p class="text-xs text-cyan-200/60 mt-1">Channel-native — including Cursor, Claude, ChatGPT, and any MCP-compatible client</p>
           </div>
 
           {/* Down + up arrows — capture + deliver */}
@@ -282,6 +282,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>
+    </div>
+  </section>
+
+  {/* ─── Bring your own AI / MCP ─── */}
+  <section class="py-24 border-t border-white/5 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">Bring your own AI</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          Use the AI tools you already use.
+        </h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          Hyphos exposes itself as an <strong class="text-white">MCP server</strong> — Model Context Protocol, the open standard for connecting AI clients to data sources. Query your organizational knowledge graph from inside whichever client your team prefers. Same access rules apply; same provenance on every answer.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
+        {[
+          { name: 'Cursor', desc: 'Ask Hyphos questions while you code' },
+          { name: 'Claude Desktop / Code', desc: 'Anthropic\'s native MCP clients' },
+          { name: 'ChatGPT', desc: 'When OpenAI ships MCP support' },
+          { name: 'Custom clients', desc: 'Anything that speaks MCP' },
+        ].map((client) => (
+          <div class="rounded-xl border border-white/8 bg-white/[0.02] p-5 hover:border-white/15 transition-colors">
+            <p class="text-sm font-semibold text-white">{client.name}</p>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">{client.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-10 text-center text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Your seniors already work in their preferred AI tools. Hyphos doesn't ask them to switch — it makes the knowledge graph queryable from inside the surface they're already using. Every query respects role and attribute-based access; every answer carries full provenance back to its source.
+      </p>
     </div>
   </section>
 

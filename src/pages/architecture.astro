@@ -320,11 +320,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  {/* ─── 5. Provenance & trust ─── */}
+  {/* ─── 5. Open by design / MCP ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">5 · Open by design</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Bring your own AI client.</h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          Hyphos isn't another walled garden with its own chat UI you have to learn. It speaks the open standard your team's AI tools already speak — so the people who already work in Cursor, Claude, ChatGPT, or a custom internal client can query the knowledge graph from inside their existing surface.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+
+        {/* Left: What MCP is */}
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <p class="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-4">What MCP is</p>
+          <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+            <p><strong class="text-white">Model Context Protocol</strong> is an open standard (originated by Anthropic, now adopted broadly) for connecting AI clients to data sources. Think of it as USB for AI tools — one protocol, many clients, many sources.</p>
+            <p>Hyphos publishes an MCP server. Any compliant client can connect to it and query your organization's knowledge graph, retrieve documents, ask about decisions, surface provenance, or trigger deliverable generation — without leaving the tool the user is already in.</p>
+          </div>
+        </div>
+
+        {/* Right: What you get */}
+        <div class="rounded-2xl border border-indigo-500/30 bg-indigo-950/20 p-7">
+          <p class="text-xs font-semibold tracking-widest uppercase text-indigo-300 mb-4">What this means for your team</p>
+          <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">·</span><span><strong class="text-white">No tool switching.</strong> Seniors who live in Cursor stay in Cursor. Partners who prefer Claude Desktop stay there.</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">·</span><span><strong class="text-white">Same access rules.</strong> Role and attribute-based access apply at the MCP layer. A junior asking a question gets what they're allowed to see; a partner gets more.</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">·</span><span><strong class="text-white">Full provenance.</strong> Every answer the MCP server returns carries pointers back to source — speaker, document, timestamp.</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">·</span><span><strong class="text-white">Audit trail.</strong> Every query is logged. Who asked what, when, what came back.</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">·</span><span><strong class="text-white">No lock-in.</strong> MCP is open. If a new client comes out tomorrow, it just works.</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="mt-10 text-center text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        We also publish a web assistant that runs against the same MCP server — for users who don't have an MCP client of their own, or want a browser-native experience without any setup.
+      </p>
+    </div>
+  </section>
+
+  {/* ─── 6. Provenance & trust ─── */}
   <section class="py-20 border-t border-white/5">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center mb-14">
-        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">5 · Provenance & trust</p>
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">6 · Provenance & trust</p>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Every claim, traceable. Every layer, transparent.</h2>
       </div>
 
