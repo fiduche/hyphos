@@ -1,0 +1,54 @@
+---
+/**
+ * Slim header. Full product nav stays minimal while Hyphos is in design-
+ * partner stage — the deep pages still resolve by URL but aren't featured.
+ * The CTA points at the pilot / contact path, not a self-serve signup.
+ */
+import Mark from './Mark.astro';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5 group" aria-label="Hyphos — home">
+        <Mark size={28} color="#ffffff" accent="#22d3ee" />
+        <span class="text-lg font-bold tracking-tight text-white">Hyphos</span>
+        <span class="hidden sm:inline-block text-xs uppercase tracking-widest text-slate-500 ml-1.5 border-l border-white/10 pl-3">Design partners</span>
+      </a>
+
+      <div class="flex items-center gap-5">
+        <a
+          href="/about"
+          class="hidden sm:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+        >
+          About
+        </a>
+        <a
+          href="/architecture"
+          class="hidden sm:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+        >
+          Architecture
+        </a>
+        <a
+          href="/pricing"
+          class="hidden sm:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+        >
+          Pilots
+        </a>
+        <a
+          href="https://hyphosconsulting.com"
+          class="hidden md:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+        >
+          Hyphos Consulting →
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
+        >
+          Talk about a pilot
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

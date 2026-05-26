@@ -1,0 +1,382 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Architecture"
+  description="How Hyphos works — the loop, the depth stack, the knowledge packages, the shared ontology, and the provenance layer. The shape, without the parts we can't show you."
+>
+
+  {/* ─── Hero ─── */}
+  <section class="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-30" />
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-indigo-500/10 rounded-full blur-[140px]" />
+
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-5">Architecture</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight mb-6">
+        The shape of how Hyphos works.
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Enough to evaluate. Not enough to copy. We show you the architecture — the loop, the depths, the packages, the ontology, the provenance — without the internals that took us years to build.
+      </p>
+    </div>
+  </section>
+
+  {/* ─── 1. The loop, expanded ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">1 · The loop</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Four planes, running together.</h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          Hyphos isn't a pipeline that runs once a day. It's four planes operating continuously, each feeding the next, closing back on itself. Below is what flows through each plane.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        {[
+          {
+            n: '1',
+            label: 'Capture',
+            title: 'Inputs flow in from where the work already happens.',
+            inputs: [
+              'Meetings — audio, transcripts, speaker turns, decisions named in conversation',
+              'Documents — PDF, DOCX, XLSX, slide decks, structured forms, contracts',
+              'Email & chat — threads, attachments, commitments made in passing',
+              'Existing systems — CRM, ERP, scheduling, document repositories',
+              'Prior deliverables — the work your team has already shipped',
+            ],
+          },
+          {
+            n: '2',
+            label: 'Structure',
+            title: 'Inputs become a coherent knowledge object.',
+            inputs: [
+              'One engagement object — the spine that everything else hangs off',
+              'Shared ontology — what counts as a decision, a commitment, a risk, a deliverable, a stakeholder',
+              'Knowledge graph — typed relationships between every entity in every source',
+              'Provenance on every claim — back to the speaker, the section, the timestamp',
+              'Versioned revisions — every artifact, every change, fully audited',
+            ],
+          },
+          {
+            n: '3',
+            label: 'Teach',
+            title: 'Knowledge becomes scaffolded delivery to the team.',
+            inputs: [
+              'Interactive HTML deliverables — explored, not read; the reader controls depth',
+              'Developmental companions — facilitator guides, reasoning trails, watch-for-next-time',
+              'Channel-native delivery — into email, meetings, chat, where the team already is',
+              'Modeling, scaffolding, fading, articulation — the four moves of cognitive apprenticeship',
+              'Mention · Ask · Articulate — every revision is named, chosen, and explained',
+            ],
+          },
+          {
+            n: '4',
+            label: 'Retain',
+            title: 'Edits and corrections become captured craft.',
+            inputs: [
+              'Living templates — mature with use; the next deliverable inherits the last one\'s learning',
+              'Craft patterns — captured from your firm\'s actual edits, structurally',
+              'Organizational memory — decisions, commitments, the say-do record',
+              'Read-before-Edit discipline — every mutation re-grounded in the source',
+              'Open export — your knowledge stays yours; nothing locked in',
+            ],
+          },
+        ].map((plane) => (
+          <div class="rounded-2xl border border-indigo-500/20 bg-indigo-950/20 p-7">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="inline-flex w-7 h-7 rounded-full bg-indigo-500/20 border border-indigo-400/40 items-center justify-center text-xs font-bold text-indigo-300">{plane.n}</span>
+              <p class="text-xs font-bold tracking-widest uppercase text-indigo-300">{plane.label}</p>
+            </div>
+            <h3 class="text-base font-bold text-white mb-4 leading-snug">{plane.title}</h3>
+            <ul class="space-y-2">
+              {plane.inputs.map((item) => (
+                <li class="flex gap-2.5 items-start text-sm text-slate-300 leading-relaxed">
+                  <span class="text-indigo-400 mt-1.5 flex-shrink-0">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ─── 2. The depth stack ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">2 · The depth stack</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Five depths of knowledge.</h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          Knowledge isn't one thing. The wisdom of a master practitioner, the conventions of your industry, the house style of your firm, and what's happening on this engagement right now are all different depths. Hyphos captures and uses each, distinctly.
+        </p>
+      </div>
+
+      <div class="space-y-3 max-w-4xl mx-auto">
+        {[
+          {
+            n: '5',
+            depth: 'Live signal',
+            scope: 'This week · this meeting · this hour',
+            color: 'cyan',
+            examples: 'What was just decided · who said what · the commitment made in passing · the risk surfaced and not yet captured · the change in client mood',
+          },
+          {
+            n: '4',
+            depth: 'Engagement',
+            scope: 'This project · this matter · this case · this deal',
+            color: 'indigo',
+            examples: 'Scope, schedule, cost, quality, resources for this specific work · the stakeholders · the deliverables produced · the decisions made · the commitments outstanding',
+          },
+          {
+            n: '3',
+            depth: 'Organization',
+            scope: 'Your firm · across engagements · over years',
+            color: 'violet',
+            examples: 'Your house style · your conventions · your seniors\' craft · your firm\'s decision patterns · the way you produce a proposal, a plan, a report, a brief',
+          },
+          {
+            n: '2',
+            depth: 'Industry',
+            scope: 'Your sector · regulatory · conventional',
+            color: 'purple',
+            examples: 'Industry-specific ontology · standard document types · regulatory references · sector-conventional deliverable structures · the patterns that work in your vertical',
+          },
+          {
+            n: '1',
+            depth: 'Universal',
+            scope: 'How knowledge work works · across all organizations',
+            color: 'fuchsia',
+            examples: 'Cognitive apprenticeship patterns · mature deliverable structures · decision frameworks · the craft of how complex work compounds · what all good firms quietly do',
+          },
+        ].map((layer) => {
+          const colorMap = {
+            cyan: 'border-cyan-500/30 bg-cyan-950/20 text-cyan-300',
+            indigo: 'border-indigo-500/30 bg-indigo-950/20 text-indigo-300',
+            violet: 'border-violet-500/30 bg-violet-950/20 text-violet-300',
+            purple: 'border-purple-500/30 bg-purple-950/20 text-purple-300',
+            fuchsia: 'border-fuchsia-500/30 bg-fuchsia-950/20 text-fuchsia-300',
+          };
+          const accent = colorMap[layer.color];
+          return (
+            <div class={`rounded-xl border ${accent.split(' ').slice(0, 2).join(' ')} p-6`}>
+              <div class="grid md:grid-cols-[auto_180px_1fr] gap-5 items-start">
+                <div class="flex items-center gap-3">
+                  <span class={`inline-flex w-8 h-8 rounded-full border ${accent.split(' ')[0]} bg-white/5 items-center justify-center text-sm font-bold ${accent.split(' ')[2]}`}>{layer.n}</span>
+                </div>
+                <div>
+                  <p class={`text-sm font-bold ${accent.split(' ')[2]} tracking-wide`}>{layer.depth}</p>
+                  <p class="text-xs text-slate-500 mt-0.5">{layer.scope}</p>
+                </div>
+                <p class="text-sm text-slate-300 leading-relaxed">{layer.examples}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <p class="mt-10 text-center text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        When Hyphos produces a deliverable or answers a question, it pulls from each depth as appropriate — and tells you which depth informed which part of the output.
+      </p>
+    </div>
+  </section>
+
+  {/* ─── 3. Knowledge packages ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">3 · Knowledge packages</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Industry packs that ship pre-shaped.</h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          You don't start from scratch. Hyphos ships with industry-specific knowledge packages — pre-shaped ontology, starter templates, regulatory references, and stakeholder models for the verticals we know deeply. New packs are built one industry at a time, in partnership with the firms in that vertical.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          {
+            pack: 'Construction & Capital Projects',
+            status: 'live',
+            scope: 'Owners, contractors, engineering firms, capital program teams',
+            includes: ['Project lifecycle ontology', 'RFI, change order, submittal flows', 'PMIS integration patterns', 'Document-control governance'],
+          },
+          {
+            pack: 'Professional Services',
+            status: 'next',
+            scope: 'Consulting firms, advisory practices, engineering services',
+            includes: ['Engagement lifecycle ontology', 'Proposal · deliverable · report patterns', 'Time-and-billing integration', 'Practice-area shaping'],
+          },
+          {
+            pack: 'Legal & Compliance',
+            status: 'planned',
+            scope: 'Law firms, in-house counsel, compliance teams',
+            includes: ['Matter lifecycle ontology', 'Privilege and confidentiality model', 'Regulatory references', 'Document precedent libraries'],
+          },
+          {
+            pack: 'Financial Advisory',
+            status: 'planned',
+            scope: 'Wealth, planning, family office, fiduciary practices',
+            includes: ['Client relationship ontology', 'Plan · review · recommendation patterns', 'Regulatory references', 'Stewardship documentation'],
+          },
+          {
+            pack: 'Healthcare Operations',
+            status: 'planned',
+            scope: 'Clinical operations, practice management, care coordination',
+            includes: ['Case lifecycle ontology', 'Privacy-first capture', 'Regulatory references (HIPAA, etc.)', 'Multi-disciplinary stakeholder model'],
+          },
+          {
+            pack: 'Yours',
+            status: 'custom',
+            scope: 'Specialty trades, family law, estate planning, property management, manufacturing operations — and more',
+            includes: ['Custom ontology shaped to your work', 'Templates seeded from your existing deliverables', 'Integrations with your systems', 'Built with you in the pilot'],
+          },
+        ].map((pack) => {
+          const statusMap = {
+            live: { label: 'Live', color: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300' },
+            next: { label: 'Next', color: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300' },
+            planned: { label: 'Planned', color: 'bg-slate-500/15 border-slate-500/30 text-slate-400' },
+            custom: { label: 'Custom', color: 'bg-indigo-500/15 border-indigo-500/30 text-indigo-300' },
+          };
+          const s = statusMap[pack.status];
+          return (
+            <div class={`rounded-2xl border ${pack.status === 'live' ? 'border-emerald-500/30 bg-emerald-950/10' : pack.status === 'custom' ? 'border-indigo-500/30 bg-indigo-950/10' : 'border-white/8 bg-white/[0.02]'} p-6 flex flex-col`}>
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <h3 class="text-base font-bold text-white leading-snug">{pack.pack}</h3>
+                <span class={`inline-flex items-center px-2 py-0.5 rounded-full border text-[10px] font-bold tracking-widest uppercase ${s.color} flex-shrink-0`}>{s.label}</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4 leading-relaxed">{pack.scope}</p>
+              <ul class="space-y-1.5 mt-auto pt-4 border-t border-white/5">
+                {pack.includes.map((item) => (
+                  <li class="flex gap-2 items-start text-xs text-slate-400 leading-relaxed">
+                    <span class="text-indigo-400 mt-0.5">·</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
+      <p class="mt-8 text-center text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Don't see your vertical? We build packs as engagements demand them. <a href="/contact" class="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/40 underline-offset-4">Tell us what you do.</a>
+      </p>
+    </div>
+  </section>
+
+  {/* ─── 4. The shared ontology ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">4 · The shared ontology</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">One vocabulary across every source.</h2>
+        <p class="mt-5 text-base text-slate-400 leading-relaxed">
+          A commitment named in a meeting and a deliverable due date in a contract are the same underlying object. Hyphos has a shared vocabulary — an ontology — that recognizes that, so the knowledge graph isn't a heap of unconnected mentions. It's a coherent picture of your work.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+
+        {/* What the ontology recognizes */}
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <p class="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-4">What the ontology recognizes</p>
+          <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">People</strong> — role, authority, expertise; never personality or behavior</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Decisions</strong> — who decided what, when, on what basis</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Commitments</strong> — what was promised, by whom, by when</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Risks</strong> — what could go wrong, who raised it, what's being done</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Deliverables</strong> — what's being produced, for whom, due when, in what state</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Changes</strong> — what changed, why, who authorized, what's affected downstream</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">References</strong> — contracts, regulations, prior deliverables, standards</span></li>
+            <li class="flex gap-3 items-start"><span class="text-indigo-400 font-bold flex-shrink-0">↦</span><span><strong class="text-white">Engagements</strong> — the unit that ties scope, schedule, cost, quality, resources</span></li>
+          </ul>
+        </div>
+
+        {/* The reconciliation */}
+        <div class="space-y-5">
+          <div class="rounded-2xl border border-indigo-500/30 bg-indigo-950/20 p-7">
+            <p class="text-xs font-semibold tracking-widest uppercase text-indigo-300 mb-3">Why it matters</p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-3">
+              Without a shared ontology, every source is its own island. A meeting transcript says "Sarah will get back to us by Friday" — that's one mention. A contract clause says "Vendor shall deliver by EOW" — that's another. A task in your project tool says "Sarah · Friday · vendor response" — a third.
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              The ontology recognizes these as one object — one <em>commitment</em>, with three independent signals confirming it. When Sarah doesn't deliver, Hyphos knows immediately. When the contract changes, Hyphos knows what else is affected. The knowledge graph stays coherent because the vocabulary is shared.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+            <p class="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-3">Industry-shaped, organization-tuned</p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              The base ontology is universal — these concepts exist in every organization. Industry packs add domain-specific objects (an RFI in construction, a matter in legal, a clinical case in healthcare). Your organization tunes both — adding your firm's specific document types, role conventions, and decision frameworks during the pilot.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* ─── 5. Provenance & trust ─── */}
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3">5 · Provenance & trust</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Every claim, traceable. Every layer, transparent.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <h3 class="text-base font-bold text-white mb-3">Full provenance on every claim</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            When Hyphos says something, it shows you the source — the speaker, the section, the timestamp, the document, the decision. No black boxes. Every answer can be drilled down to its origin in seconds.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <h3 class="text-base font-bold text-white mb-3">Customer-specific knowledge stays in your partition</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Your deliverables, meetings, decisions, edits — all stay in your organization's partition. Role and attribute-based access control inside. No cross-customer leakage of the work itself.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <h3 class="text-base font-bold text-white mb-3">Cross-customer learning is anonymized and named</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            The platform improves over time by learning structural patterns at the craft layer — and we tell you exactly what's learned. Anonymized only: names, companies, projects, locations stripped before any cross-customer use. Enterprise can opt out entirely.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-7">
+          <h3 class="text-base font-bold text-white mb-3">Open export, no lock-in</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Your knowledge graph, your captured craft, your deliverables — exportable in open formats. If you ever leave, you take everything that's yours with you. The platform is the loop; the knowledge is yours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ─── CTA ─── */}
+  <section class="py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-indigo-500/8 rounded-full blur-[120px]" />
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-5">
+        Architecture is one thing.<br />
+        <span class="text-gradient">Seeing it on your work is another.</span>
+      </h2>
+      <p class="text-base sm:text-lg text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
+        The fastest way to understand whether Hyphos is the right shape for your organization is to put it next to a real engagement of yours and see what comes out. Pilots are scoped one at a time.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-colors glow-indigo">
+          Talk about a pilot
+        </a>
+        <a href="/pricing" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-white/10 text-slate-300 font-semibold hover:text-white hover:border-white/20 transition-colors">
+          See pilot shapes
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

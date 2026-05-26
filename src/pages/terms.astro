@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = 'April 2026';
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="Hyphos Terms of Use — your rights, our obligations, and how we handle data."
+>
+  <section class="pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-12">
+        <h1 class="text-4xl font-extrabold text-white mb-3">Terms of Use</h1>
+        <p class="text-sm text-slate-500">Last updated: {updated}</p>
+      </div>
+
+      <div class="prose-hyphos space-y-10">
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">1. Acceptance</h2>
+          <p class="text-slate-400 leading-relaxed">
+            By creating a Hyphos account or using the Hyphos platform, you agree to these Terms of Use. If you are using Hyphos on behalf of an organization, you represent that you have authority to bind that organization to these terms.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">2. Your data</h2>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            You retain all rights to content you upload to Hyphos — meeting recordings, documents, and any other materials. Hyphos does not claim ownership of your data. We process your content solely to provide the service described at the time of signup.
+          </p>
+          <p class="text-slate-400 leading-relaxed">
+            You may request deletion of your account and associated data at any time by contacting <a href="mailto:privacy@hyphos.io" class="text-indigo-400 hover:text-indigo-300 transition-colors">privacy@hyphos.io</a>. Deletion is completed within 30 days.
+          </p>
+        </div>
+
+        <div>
+          <h2 id="ai-model-improvement" class="text-xl font-bold text-white mb-3">3. AI model improvement — Free, Starter, and Professional plans</h2>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            To continuously improve extraction accuracy and organizational intelligence for all users, accounts on the <strong class="text-white font-medium">Free, Starter, and Professional plans</strong> contribute anonymized usage data to train Hyphos AI models.
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            Before any data enters the training pipeline, it goes through a full anonymization process:
+          </p>
+          <ul class="space-y-2 mb-4">
+            {[
+              'All person names, company names, project names, and locations are replaced with generic placeholders',
+              'Specific dates and dollar amounts are generalized',
+              'Contact details (email addresses, phone numbers) are removed entirely',
+              'Only structural patterns — how commitments form, how risks surface, how decisions propagate — are retained',
+              'No pattern from fewer than 50 distinct organizations is ever used for training',
+              'Raw audio and raw transcripts are never stored for training purposes',
+            ].map(item => (
+              <li class="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                <svg class="w-4 h-4 text-indigo-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            <strong class="text-white font-medium">Upgrading to Business or higher immediately stops all data contribution.</strong> No new data from your account is collected from the moment your plan changes. Historical data already in the anonymized training pipeline is not retroactively removed — anonymization is irreversible by design, and the data contains no identifying information.
+          </p>
+          <p class="text-slate-400 leading-relaxed">
+            If you wish to opt out of data contribution while remaining on a Free or Starter plan, contact <a href="mailto:privacy@hyphos.io" class="text-indigo-400 hover:text-indigo-300 transition-colors">privacy@hyphos.io</a>. We will mark your account as non-contributing within 5 business days.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">4. Business and Enterprise plans</h2>
+          <p class="text-slate-400 leading-relaxed">
+            Accounts on Business and Enterprise plans are fully private. Your data is never used for model training, pattern analysis, or any purpose beyond operating your account. Enterprise accounts include a contractual prohibition on any secondary data use, and maintain a full audit log of all data access.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">5. Acceptable use</h2>
+          <p class="text-slate-400 leading-relaxed mb-3">You agree not to use Hyphos to:</p>
+          <ul class="space-y-2">
+            {[
+              'Process recordings of individuals who have not consented to being recorded, where required by applicable law',
+              'Circumvent access controls or attempt to access data belonging to other tenants',
+              'Reverse engineer, decompile, or attempt to extract Hyphos\'s proprietary models or training data',
+              'Use the platform to process data in violation of applicable privacy laws, including PIPEDA and GDPR',
+              'Resell or sublicense access to the Hyphos platform without a written agreement',
+            ].map(item => (
+              <li class="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                <svg class="w-4 h-4 text-slate-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">6. Recording consent</h2>
+          <p class="text-slate-400 leading-relaxed">
+            You are responsible for obtaining all necessary consents before recording meetings or uploading recordings to Hyphos. Recording consent requirements vary by jurisdiction. In Canada, generally at least one party to a conversation must consent to recording. In some US states, all parties must consent. Ensure your use complies with applicable law in your jurisdiction and the jurisdiction of all participants.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">7. Service availability</h2>
+          <p class="text-slate-400 leading-relaxed">
+            We aim for high availability but do not guarantee uninterrupted access. Planned maintenance will be communicated in advance. Enterprise accounts include uptime commitments specified in their individual agreements. We are not liable for losses resulting from service interruptions beyond our reasonable control.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">8. Billing and cancellation</h2>
+          <p class="text-slate-400 leading-relaxed mb-3">
+            Paid subscriptions are billed monthly or annually in advance. Overage charges (audio hours beyond your plan allocation) are billed at the end of each billing period. You may cancel at any time — your plan remains active until the end of the current billing period, after which it reverts to Free.
+          </p>
+          <p class="text-slate-400 leading-relaxed">
+            We do not offer refunds for partial billing periods. If you believe a charge is incorrect, contact <a href="mailto:hello@hyphos.io" class="text-indigo-400 hover:text-indigo-300 transition-colors">hello@hyphos.io</a> within 30 days of the charge.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">9. Intellectual property</h2>
+          <p class="text-slate-400 leading-relaxed">
+            The Hyphos platform, including its ontology, extraction models, Praxis pattern library, and all software, is owned by Hyphos and protected by applicable intellectual property laws. These terms do not grant you any rights in Hyphos intellectual property beyond the right to use the service as described.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">10. Limitation of liability</h2>
+          <p class="text-slate-400 leading-relaxed">
+            To the maximum extent permitted by applicable law, Hyphos is not liable for indirect, incidental, or consequential damages arising from your use of the platform. Our total liability for any claim arising from these terms or your use of the service is limited to the amount you paid us in the 12 months preceding the claim.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">11. Governing law</h2>
+          <p class="text-slate-400 leading-relaxed">
+            These terms are governed by the laws of Alberta, Canada, without regard to conflict of law principles. Any dispute arising under these terms will be resolved in the courts of Alberta, Canada.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white mb-3">12. Changes to these terms</h2>
+          <p class="text-slate-400 leading-relaxed">
+            We may update these terms from time to time. Material changes will be communicated by email to account holders at least 14 days before taking effect. Continued use of the platform after that date constitutes acceptance of the updated terms.
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-white/8">
+          <p class="text-sm text-slate-500">
+            Questions about these terms? Contact us at <a href="mailto:hello@hyphos.io" class="text-indigo-400 hover:text-indigo-300 transition-colors">hello@hyphos.io</a> or write to Hyphos, Alberta, Canada.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

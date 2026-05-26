@@ -1,0 +1,58 @@
+---
+/**
+ * Hyphos mark — central engagement node with six things orbiting back to it.
+ *
+ * Hub-and-spokes topology: one engagement, everything (people, meetings,
+ * decisions, deliverables, documents, threads) connected to it. Same node
+ * and line vocabulary as the Hyphos Consulting mark, different geometry —
+ * the consulting mark is K4 (everything to everything), this one is hub
+ * (everything to the engagement).
+ *
+ * Center node is rendered in the accent colour (defaults to brand cyan) and
+ * sized slightly larger to read as the focal point.
+ */
+interface Props {
+  /** Pixel size of the square mark. */
+  size?: number;
+  /** Stroke + outer-node colour. Defaults to currentColor. */
+  color?: string;
+  /** Accent colour for the central engagement node. Defaults to brand cyan. */
+  accent?: string;
+  /** Accessible label. Leave blank for purely decorative use. */
+  label?: string;
+}
+
+const { size = 32, color = 'currentColor', accent = '#22d3ee', label } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role={label ? 'img' : 'presentation'}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {/* Spokes — center to each outer node. Slightly faded so the nodes lead. */}
+  <g stroke={color} stroke-width="1.5" stroke-linecap="round" opacity="0.5">
+    <line x1="32" y1="32" x2="32" y2="11" />
+    <line x1="32" y1="32" x2="50" y2="21" />
+    <line x1="32" y1="32" x2="50" y2="43" />
+    <line x1="32" y1="32" x2="32" y2="53" />
+    <line x1="32" y1="32" x2="14" y2="43" />
+    <line x1="32" y1="32" x2="14" y2="21" />
+  </g>
+
+  {/* Six outer nodes — the things orbiting the engagement. */}
+  <circle cx="32" cy="11" r="3.5" fill={color} />
+  <circle cx="50" cy="21" r="3.5" fill={color} />
+  <circle cx="50" cy="43" r="3.5" fill={color} />
+  <circle cx="32" cy="53" r="3.5" fill={color} />
+  <circle cx="14" cy="43" r="3.5" fill={color} />
+  <circle cx="14" cy="21" r="3.5" fill={color} />
+
+  {/* Central engagement node — accent, larger. */}
+  <circle cx="32" cy="32" r="6" fill={accent} />
+</svg>

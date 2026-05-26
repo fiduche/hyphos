@@ -1,0 +1,46 @@
+---
+import Mark from './Mark.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-3">
+          <Mark size={28} color="#ffffff" accent="#22d3ee" />
+          <span class="text-lg font-bold tracking-tight text-white">Hyphos</span>
+        </div>
+        <p class="text-sm text-slate-500 max-w-xs leading-relaxed">
+          The engagement, apprenticed. Hyphos is the enterprise knowledge and apprenticeship layer above your operational systems — the deliverables your team would have made, with the craft behind each one made visible.
+        </p>
+      </div>
+
+      <!-- Family -->
+      <div>
+        <h3 class="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-3">Two products, one company</h3>
+        <ul class="space-y-2 text-sm text-slate-500">
+          <li><a href="https://hyphosconsulting.com/products#foundation" class="hover:text-white transition-colors">Foundation — operating system</a></li>
+          <li><a href="/" class="hover:text-white transition-colors">Hyphos — knowledge layer</a></li>
+          <li><a href="https://hyphosconsulting.com" class="hover:text-white transition-colors">Hyphos Consulting →</a></li>
+          <li><a href="mailto:hello@hyphos.io" class="hover:text-white transition-colors">hello@hyphos.io</a></li>
+        </ul>
+      </div>
+
+      <!-- Policies -->
+      <div>
+        <h3 class="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-3">Legal</h3>
+        <ul class="space-y-2 text-sm text-slate-500">
+          <li><a href="/privacy" class="hover:text-white transition-colors">Privacy</a></li>
+          <li><a href="/terms" class="hover:text-white transition-colors">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/5 mt-10 pt-5 flex flex-col sm:flex-row sm:justify-between gap-2">
+      <p class="text-xs text-slate-600">&copy; {year} Hyphos. All rights reserved.</p>
+      <p class="text-xs text-slate-600 italic">Efficiency is a byproduct, not a north star.</p>
+    </div>
+  </div>
+</footer>

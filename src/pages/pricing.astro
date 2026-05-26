@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Why no self-serve pricing tiers?',
+    a: 'Hyphos sits inside the work of real engagements. Pricing a tier the way SaaS usually does — seats and a monthly fee — would commit us to a shallow integration before the engagement is even shaped. We\'re running this stage as a small cohort of design partners so the pricing forms around what actually happens on a pilot, not before it.',
+  },
+  {
+    q: 'Who is this stage for?',
+    a: 'Organizations whose IP is the craft of their seniors — and whose juniors would benefit from apprenticing to that craft through the work itself. Law firms, engineering and architecture firms, consulting practices, healthcare and clinical operations, financial advisory, capital-project teams, anywhere complex knowledge work compounds in value when captured. If the cost of forgetting in your business is measured in real money or real consequences, you\'re the fit.',
+  },
+  {
+    q: 'What does a pilot look like?',
+    a: 'One real engagement, one cohort of users from your team, a defined window, success criteria agreed up front. We deploy alongside the engagement, capture what\'s already happening, produce the deliverables that engagement was going to need anyway, and report back on what changed. Pricing is shaped to the engagement — typically a flat pilot fee plus AI-usage passthrough, not seats.',
+  },
+  {
+    q: 'What does Hyphos do with our data?',
+    a: 'Customer-specific knowledge — your deliverables, your meetings, your decisions, your edits — stays in your organization\'s partition. Knowledge graphs are partitioned per organization with role and attribute-based access control. The platform itself improves over time by learning structural craft patterns, and we\'re transparent about exactly what\'s learned and how: anonymized only, stripped of names, companies, projects, and locations before any cross-customer use. Enterprise deployments can opt out entirely with contractual no-secondary-use. Every claim Hyphos surfaces is traceable back to its source — no black boxes, full provenance. The platform records what people did, decided, and committed to. It does not score how they are.',
+  },
+  {
+    q: 'What about our existing systems of record?',
+    a: 'Hyphos sits above the systems of record you already run — CRM, ERP, scheduling, document repositories, finance systems — not in place of them. It\'s the intelligence and apprenticeship layer that ties scope, schedule, cost, quality, and resources to what is actually happening on the engagement. Your existing systems stay as the systems of record they were built to be. Hyphos reads from them and connects them.',
+  },
+  {
+    q: 'How does Hyphos relate to Foundation?',
+    a: 'Foundation is the integrated business operating system from Hyphos Consulting — one shared database for customer, calendar, financials, documents, and audit, shaped per industry. Hyphos is the knowledge and apprenticeship layer above operational systems like that. Deploy them independently, or together as one stack — if Foundation is already in place, Hyphos plugs into the same shared database, one ground truth across operations and knowledge.',
+  },
+  {
+    q: 'Does Hyphos replace our portal-style document-control system?',
+    a: 'Yes — for the document-control layer specifically. Capture, classify, draft, route, approve, distribute, audit. Hyphos runs that process invisibly in the channels your team already uses, rather than as a portal you have to visit. That replacement is one of the clearest value points of the platform.',
+  },
+  {
+    q: 'When does general availability open?',
+    a: 'When the pilot cohort has matured to the point where we can offer the platform to a wider audience without compromising the depth of integration that makes it work. We\'d rather take longer and get the apprenticeship loop right than open self-serve early and ship a thinner product.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pilots & access"
+  description="Hyphos is in design partnership now — a small cohort of consulting firms and owner / contractor teams running real engagements. Pricing is shaped to the engagement, not the seat."
+>
+
+  {/* ─── Hero ─── */}
+  <section class="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-30"></div>
+    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-500/8 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium tracking-wide uppercase mb-6">
+        Design partner cohort · limited
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-5">
+        Pilot on a real engagement.<br />
+        <span class="text-gradient">Pricing shaped to the work.</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-4">
+        Hyphos isn't ready for self-serve, and we won't pretend it is. Right now, we deploy alongside a small number of design partners — teams running complex work where the cost of forgetting is high — and shape the engagement together.
+      </p>
+      <p class="text-sm text-slate-500 max-w-xl mx-auto mb-10">
+        If your organization's IP is the craft of its seniors and you'd benefit from apprenticing your team in that craft through the work itself, write to us. We reply personally.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-all glow-indigo"
+        >
+          Talk about a pilot
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </a>
+        <a
+          href="mailto:hello@hyphos.io"
+          class="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold rounded-lg border border-white/10 text-slate-300 hover:text-white hover:border-white/20 transition-all"
+        >
+          hello@hyphos.io
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ─── Three engagement shapes ─── */}
+  <section class="pb-20 sm:pb-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Three shapes a pilot can take</h2>
+        <p class="text-sm text-slate-400 max-w-xl mx-auto">We size each pilot to the engagement, not to a price card. These are the shapes we've seen so far.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        {/* Team pilot — current stage */}
+        <div class="flex flex-col rounded-2xl border border-indigo-500/40 bg-indigo-950/60 p-7 shadow-xl shadow-indigo-500/10 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full text-[10px] font-bold bg-indigo-600 text-white tracking-widest uppercase">
+              Current stage
+            </span>
+          </div>
+          <div class="mb-5">
+            <p class="text-xs font-semibold tracking-widest uppercase text-indigo-300 mb-2">Team pilot</p>
+            <h3 class="text-lg font-bold text-white mb-2">One team, one engagement</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">For a team that wants to apprentice juniors on real work. Hyphos sits inside one engagement, produces its deliverables, and captures the craft of how your organization does it.</p>
+          </div>
+          <div class="border-t border-indigo-500/30 pt-5 mt-auto">
+            <p class="text-xs font-semibold tracking-widest uppercase text-indigo-300/80 mb-3">Typically includes</p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2 items-start"><span class="text-indigo-400 mt-0.5">·</span> One engagement, one cohort of users</li>
+              <li class="flex gap-2 items-start"><span class="text-indigo-400 mt-0.5">·</span> Proposal / plan / report deliverable production</li>
+              <li class="flex gap-2 items-start"><span class="text-indigo-400 mt-0.5">·</span> Brand and house-style capture</li>
+              <li class="flex gap-2 items-start"><span class="text-indigo-400 mt-0.5">·</span> Channel-native capture from email &amp; meetings</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Operational pilot — next */}
+        <div class="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-7 hover:border-white/15 transition-all relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full text-[10px] font-bold bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 tracking-widest uppercase">
+              Next
+            </span>
+          </div>
+          <div class="mb-5">
+            <p class="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-2">Operational pilot</p>
+            <h3 class="text-lg font-bold text-white mb-2">Multiple teams, live operations</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">For an organization running several concurrent engagements where document control, deliverable production, and cross-engagement memory all matter. Hyphos sits above existing systems of record and ties the work together.</p>
+          </div>
+          <div class="border-t border-white/8 pt-5 mt-auto">
+            <p class="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-3">Typically includes</p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2 items-start"><span class="text-cyan-400 mt-0.5">·</span> Engagement scope/schedule/cost/quality/resources spine</li>
+              <li class="flex gap-2 items-start"><span class="text-cyan-400 mt-0.5">·</span> Invisible document control end-to-end</li>
+              <li class="flex gap-2 items-start"><span class="text-cyan-400 mt-0.5">·</span> Integration with existing CRM, ERP, scheduling systems</li>
+              <li class="flex gap-2 items-start"><span class="text-cyan-400 mt-0.5">·</span> Per-engagement SLA and dedicated team</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Enterprise */}
+        <div class="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-7 hover:border-white/15 transition-all">
+          <div class="mb-5">
+            <p class="text-xs font-semibold tracking-widest uppercase text-emerald-400 mb-2">Enterprise</p>
+            <h3 class="text-lg font-bold text-white mb-2">Organization-wide deployment</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">For organizations ready to deploy Hyphos across the portfolio. Full data sovereignty, private cloud, custom integrations, and a dedicated success team.</p>
+          </div>
+          <div class="border-t border-white/8 pt-5 mt-auto">
+            <p class="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-3">Typically includes</p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2 items-start"><span class="text-emerald-400 mt-0.5">·</span> Private cloud, BYOK, contractual no-secondary-use</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-400 mt-0.5">·</span> Custom ERP and system-of-record integrations</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-400 mt-0.5">·</span> SSO / SAML, RBAC + ABAC, full audit trail</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-400 mt-0.5">·</span> Hyphos Value Report at pilot completion</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="mt-10 text-xs text-slate-500 text-center max-w-2xl mx-auto">
+        Pricing for every shape is a flat pilot fee plus AI-usage passthrough. We define success criteria up front and report back at the end. No surprise overages, no per-seat lock-in.
+      </p>
+
+      {/* Foundation pairing note */}
+      <div class="mt-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-6 max-w-3xl mx-auto">
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-white font-semibold mb-1">Already running Foundation?</p>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              If <a href="https://hyphosconsulting.com/products#foundation" class="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-500/40 underline-offset-4">Foundation</a> is already deployed in your organization, Hyphos plugs into the same shared database — one ground truth across operations and knowledge. Mention it when you write in and we'll scope the pilot accordingly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ─── How a pilot runs ─── */}
+  <section class="py-20 sm:py-28 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">How a pilot runs</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">A typical engagement, from first conversation to value report.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {[
+          { n: '1', title: 'Shape', body: 'A working conversation about the engagement, the team, the deliverables, and what would change if it worked. We decide together whether Hyphos is the right fit before either of us commits.' },
+          { n: '2', title: 'Deploy', body: 'Hyphos goes live alongside the engagement, captures what is already happening in your channels, and integrates with your systems of record. No retraining of the team, no portal to learn.' },
+          { n: '3', title: 'Apprentice', body: 'The system produces the deliverables your engagement was going to need anyway — proposals, plans, reports, briefings, decisions — with the reasoning behind each one made visible to the team.' },
+          { n: '4', title: 'Report', body: 'At the end of the window, we deliver a Hyphos Value Report against the success criteria we agreed up front. Then we decide together what comes next.' },
+        ].map((step) => (
+          <div class="glass-card rounded-2xl p-6">
+            <div class="text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-2">{step.n}</div>
+            <h3 class="font-bold text-white mb-2">{step.title}</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ─── FAQ ─── */}
+  <section class="py-20 sm:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Common questions</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group glass-card rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none text-white font-medium hover:text-indigo-300 transition-colors">
+              {faq.q}
+              <svg class="w-4 h-4 text-slate-500 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ─── Final CTA ─── */}
+  <section class="py-20 sm:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-5">
+        If this sounds like your firm,<br />
+        <span class="text-gradient">we'd like to talk.</span>
+      </h2>
+      <p class="text-slate-400 mb-2 text-lg">
+        Pilots are scoped one at a time. Write to us about the engagement you have in mind.
+      </p>
+      <p class="text-slate-600 text-sm mb-10">No deck, no demo dance, no sales sequence. A working conversation.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-colors glow-indigo text-base">
+          Talk about a pilot
+        </a>
+        <a href="mailto:hello@hyphos.io" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-slate-300 font-semibold hover:text-white hover:border-white/20 transition-colors text-base">
+          hello@hyphos.io
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
