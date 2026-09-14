@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/field-notes.css';
+interface Props { title: string; description: string; number: string; readTime: string; nextHref: string; nextTitle: string; }
+const { title, description, number, readTime, nextHref, nextTitle } = Astro.props;
+const email = `mailto:info@hyphos.io?subject=${encodeURIComponent(`A question about: ${title}`)}&body=${encodeURIComponent(`Hi Hyphos,\n\nI was reading ${new URL(Astro.url.pathname, 'https://hyphos.io').href}\n\nMy question is: \n`)}`;
+---
+<BaseLayout title={title} description={description} article>
+  <div class="fn-page"><article class="fn-shell">
+    <a class="fn-back" href="/field-notes/">← All field notes</a>
+    <header><p class="fn-meta">Field note {number} · Hyphos Inc. · <time datetime="2026-09-14">14 September 2026</time> · {readTime}</p><h1>{title}</h1><p class="fn-deck">{description}</p></header>
+    <div class="fn-article"><slot />
+      <aside class="fn-question"><h2>Does this happen in your business?</h2><p>A specific question is a good place to start. You don’t need a project brief.</p><a class="fn-email" href={email}>Ask us about this note ↗</a><small>Opens your email app. Send only what you’re comfortable sharing.</small></aside>
+      <a class="fn-next" href={nextHref}>Read next: {nextTitle} →</a>
+    </div>
+  </article></div>
+</BaseLayout>

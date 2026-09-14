@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/FlowIcon.astro';
 import ScrollConnections from '../components/ScrollConnections.astro';
+import FieldNotesPreview from '../components/FieldNotesPreview.astro';
 import { consultingUrl } from '../lib/site-links';
 import '../styles/visual-home.css';
 ---
-<BaseLayout title="Hyphos — connect the context behind your work" description="Hyphos bridges AI conversations, documents, meetings, business development, scopes and requirements. Domas builds and evolves Hyphos around your business.">
+<BaseLayout title="Hyphos — your best people have better things to do" description="Less chasing information. Less entering it twice. Hyphos connects the knowledge behind your work, with people providing judgment where it matters.">
 <div class="visual-page v-dark">
   <section class="v-hero v-shell">
     <p class="v-eyebrow">Hyphos · Developing with design partners</p>
-    <h1>Stop losing context<br /><em>between tools.</em></h1>
-    <p class="v-intro">The reasoning is in an AI chat. The promise is in a meeting. The scope is somewhere else. Hyphos bridges them.</p>
-    <div class="v-actions"><a href="/contact" class="button button--gold">Discuss a pilot ↗</a><a href="#how-it-works" class="text-link">See the pieces connect ↓</a></div>
+    <h1>Your best people<br /><em>have better things to do.</em></h1>
+    <p class="v-intro">Less chasing information. Less entering it twice. Less explaining it again.</p>
+    <p class="v-hero-context">Hyphos connects the knowledge behind your work and helps carry it forward—with people providing judgment where it matters.</p>
+    <div class="v-actions"><a href="#how-it-works" class="button button--gold">See how it works ↓</a><a href="#field-notes" class="text-link">Explore the field notes ↓</a></div>
     <details class="v-detail"><summary>What is Hyphos?</summary><div><p>Hyphos connects the context scattered across AI conversations, documents, meetings, client relationships, scopes of work and regulations. The relationships stay visible: what was promised, what applies, what changed and why.</p><p>We’re developing the product with design partners around real workflows. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
   </section>
   <ScrollConnections />
@@ -45,7 +47,8 @@ import '../styles/visual-home.css';
     <p class="v-domas-loop">Understand the business → Build → Review → Evolve ↻</p>
     <details class="v-detail"><summary>How Domas adapts Hyphos to you</summary><div><p>Your business has its own language, relationships, approval steps and exceptions. Domas is the build and adaptation capability behind Hyphos: it carries that context into planning, building and reviewing changes to the platform.</p><p>The result can include tailored workflows, integrations and capabilities. Changes are shaped with your team and reviewed before release, with the reasoning retained for the next improvement.</p><p><a href="/architecture#domas">Explore Domas and the architecture ↗</a></p></div></details>
   </div></section>
-  <section class="v-closing v-shell"><p class="v-eyebrow" style="margin-bottom:20px">Build with us</p><h2>Start with one piece<br /><em>of real work.</em></h2><p>Bring the tools, handoffs and exceptions your business runs on.</p><div class="v-actions"><a href="/contact" class="button button--gold">Discuss a pilot ↗</a><a href="/pricing" class="text-link">What a pilot looks like ↗</a></div></section>
+  <FieldNotesPreview />
+  <section class="v-closing v-shell"><p class="v-eyebrow" style="margin-bottom:20px">Start small</p><h2>Does this happen<br /><em>in your business?</em></h2><p>A question is enough. There’s no need for a prepared brief.</p><div class="v-actions"><a href="mailto:info@hyphos.io?subject=A%20question%20about%20Hyphos" class="button button--gold">Ask us a question ↗</a><a href="/contact" class="text-link">Talk with us ↗</a></div><p>Opens your email app.</p></section>
   <div class="v-bridge v-shell"><span>A product from Hyphos Inc.</span><a href={consultingUrl}>Need help connecting your business systems? ↗</a></div>
 </div>
 </BaseLayout>

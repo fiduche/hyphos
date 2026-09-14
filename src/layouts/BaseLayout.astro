@@ -7,14 +7,24 @@ import PreviewBar from '../components/PreviewBar.astro';
 interface Props {
   title: string;
   description?: string;
+  article?: boolean;
 }
 
-const { title, description = 'Hyphos connects the decisions, documents and experience behind your work. A knowledge and work platform from Hyphos Inc., developed with design partners.' } = Astro.props;
+const { title, article = false, description = 'Hyphos connects the decisions, documents and experience behind your work. A knowledge and work platform from Hyphos Inc., developed with design partners.' } = Astro.props;
 const fullTitle = title.startsWith('Hyphos') ? title : `${title} | Hyphos`;
 const siteUrl = 'https://hyphos.io';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 
-const schema = {
+const schema = article ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "mainEntityOfPage": canonicalUrl,
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "author": { "@type": "Organization", "name": "Hyphos Inc.", "url": siteUrl }
+} : {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Hyphos",
@@ -40,7 +50,7 @@ const schema = {
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Hyphos" />
     <meta name="twitter:card" content="summary_large_image" />

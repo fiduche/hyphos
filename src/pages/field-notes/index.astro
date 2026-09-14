@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { consultingUrl } from '../../lib/site-links';
+import '../../styles/field-notes.css';
+const notes = [
+  {number:'01',kind:'Documents · Practical guide',title:'Finding a document isn’t the same as knowing you can use it.',description:'Four questions that help a team identify the right information for the work.',href:'/field-notes/which-document-can-you-trust/'},
+  {number:'02',kind:'AI & people · Practical guide',title:'What should AI handle—and what should a person decide?',description:'A way to separate preparation, checking and judgment before automating a workflow.',href:'/field-notes/what-should-ai-handle/'},
+  {number:'03',kind:'Connected systems · Client case study',title:'When your website becomes part of your business.',description:'See how business records, staff-reviewed publishing and marketing feedback connect in software we built.',href:`${consultingUrl}/work/cornerstone/`}
+];
+---
+<BaseLayout title="Field notes — useful ideas for the work behind your business" description="Practical Hyphos guides on documents, AI and connected business systems. Read the examples and sources freely, without registration.">
+  <div class="fn-page"><section class="fn-shell"><p class="fn-meta">Field notes · Hyphos Inc.</p><h1>Ideas you can<br />put to work.</h1><p class="fn-deck fn-index-intro">Practical guides and examples from our research and client work. Open to read and share. No signup.</p>
+    <div class="fn-list">{notes.map(note=><a href={note.href}><span class="fn-number">{note.number}</span><div><small>{note.kind}</small><h2>{note.title}</h2><p>{note.description}</p></div><span aria-hidden="true">↗</span></a>)}</div>
+  </section></div>
+</BaseLayout>

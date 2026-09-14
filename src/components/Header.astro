@@ -1,14 +1,14 @@
 ---
 import { consultingUrl, productUrl } from '../lib/site-links';
 import SiteSwitcher from './SiteSwitcher.astro';
-const nav = [{label:'How it works',href:'/#how-it-works'},{label:'Our approach',href:'/about'},{label:'Pilots',href:'/pricing'}];
+const nav = [{label:'How it works',href:'/#how-it-works'},{label:'Field notes',href:'/field-notes'},{label:'Our approach',href:'/about'}];
 ---
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <div class="header-brand-group"><a href="/" class="brand-lockup" aria-label="Hyphos Inc. — home"><img class="brand-mark" src="/brand/hyphos-mark.svg" alt="" width="37" height="37" /><img class="brand-wordmark" src="/brand/hyphos-wordmark.svg" alt="hyphos" width="101" height="32" /></a><SiteSwitcher site="product" /></div>
-  <nav class="site-nav" aria-label="Main navigation">{nav.map(item => <a href={item.href} aria-current={Astro.url.pathname.replace(/\/$/, '') === item.href ? 'page' : undefined}>{item.label}</a>)}<a href="/contact" class="nav-action">Discuss a pilot <span aria-hidden="true">↗</span></a></nav>
+  <nav class="site-nav" aria-label="Main navigation">{nav.map(item => <a href={item.href} aria-current={Astro.url.pathname.replace(/\/$/, '') === item.href ? 'page' : undefined}>{item.label}</a>)}<a href="/contact" class="nav-action">Talk with us <span aria-hidden="true">↗</span></a></nav>
   <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"></span></button>
-</div><nav id="nav-panel" class="nav-panel" aria-label="Mobile navigation" hidden>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contact">Discuss a pilot ↗</a><a href={consultingUrl} >Hyphos Consulting ↗</a></nav></header>
+</div><nav id="nav-panel" class="nav-panel" aria-label="Mobile navigation" hidden>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contact">Talk with us ↗</a><a href={consultingUrl} >Hyphos Consulting ↗</a></nav></header>
 <script>
 const button = document.querySelector<HTMLButtonElement>('#nav-toggle');
 const panel = document.querySelector<HTMLElement>('#nav-panel');

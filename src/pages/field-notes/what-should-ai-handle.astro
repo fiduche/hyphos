@@ -1,0 +1,24 @@
+---
+import FieldNote from '../../layouts/FieldNoteLayout.astro';
+import { consultingUrl } from '../../lib/site-links';
+---
+<FieldNote title="What should AI handle—and what should a person decide?" description="The work still needs to happen. The opportunity is to reduce the manual effort while keeping judgment where it belongs." number="02" readTime="4 minute read" nextHref={`${consultingUrl}/work/cornerstone/`} nextTitle="When your website becomes part of your business">
+  <div class="fn-callout"><span class="fn-label">Start with the task</span><p>Ask what someone has to gather, check and decide. Those steps may need very different levels of automation.</p></div>
+  <h2>Take a scope review.</h2>
+  <p>Before a project lead can approve a scope, someone finds the client’s request, compares drafts, checks the proposed work and identifies open questions. Much of the effort happens before the decision.</p>
+  <p>A useful starting design gives software the preparation work it can reliably support, then gives the reviewer the evidence needed to make the decision.</p>
+  <figure><div class="fn-flow"><div class="fn-step"><strong>Prepare</strong><span>Gather permitted sources.<br />Draft a comparison.<br />Keep references attached.</span></div><div class="fn-step"><strong>Check</strong><span>Verify against originals.<br />Surface missing information.<br />Identify exceptions.</span></div><div class="fn-step"><strong>Decide</strong><span>A responsible person resolves the tradeoff and approves the commitment.</span></div></div><figcaption>Suggested division for a consequential scope review. The right balance depends on the task and evidence of reliability.</figcaption></figure>
+  <h2>Look for bounded work.</h2>
+  <p>Good candidates have a clear input, an observable result and a way to catch errors. Checking that required fields are present may need an ordinary rule. Comparing two pieces of prose may benefit from AI, with a person checking the differences it identifies.</p>
+  <p>“Handle our documents” is too broad to evaluate. “Suggest a document category, show the source and let us correct it” gives the team something concrete to test. Some routine steps can run automatically once their behaviour and recovery path are understood.</p>
+  <h2>Make review possible, not ceremonial.</h2>
+  <p>An approval button is only useful if the reviewer can understand what they are approving. Show the original sources, the proposed change and any unresolved question together. Give the person a real way to correct, reject or pause the action.</p>
+  <p>NIST’s AI Risk Management Framework calls for clearly differentiated human roles and responsibilities. Its discussion of human–AI interaction also recognises that oversight needs vary by application. <a href="https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/">Read NIST’s discussion.</a></p>
+  <h2>Try it on a small set of real examples.</h2>
+  <ul><li><strong>Include awkward cases.</strong> Try an outdated source, conflicting instructions and a missing document—not only the examples that work cleanly.</li><li><strong>Count the checking effort.</strong> A fast draft is less useful if correcting it takes longer than doing the task.</li><li><strong>Look for quiet mistakes.</strong> Does the process flag a missing source, or continue as though nothing is wrong?</li><li><strong>Keep a recovery path.</strong> Decide who can correct the result and what happens to work already affected.</li></ul>
+  <div class="fn-callout"><span class="fn-label">A useful question before automating</span><p>“What would a wrong answer change—and how would we notice before it mattered?”</p></div>
+  <h2>Build around the way the business works.</h2>
+  <p>The right division depends on your people, permissions, commitments and exceptions. That is why we start with a workflow. Domas helps us build and adapt Hyphos around that context, with changes reviewed before release.</p>
+  <p>For work involving regulatory requirements, preparation might mean locating source material and highlighting a possible gap. Determining what applies and accepting responsibility for the work still requires the appropriate expertise.</p>
+  <details><summary>About this note and its source</summary><div><p>This is a Hyphos working approach, not a reported benchmark or a guarantee of performance. The scope example is illustrative. NIST provides the broader guidance on roles and oversight; the prepare–check–decide sequence is our practical way of framing the conversation.</p><p>Hyphos is developing with design partners. Specific integrations and automation boundaries are defined for the workflow being built.</p></div></details>
+</FieldNote>
