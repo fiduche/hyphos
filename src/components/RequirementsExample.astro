@@ -1,0 +1,32 @@
+---
+import Icon from './FlowIcon.astro';
+---
+<figure class="requirements-example">
+  <div class="requirement-sources">
+    <div class="requirement-source"><Icon name="document" /><span class="requirement-label">The contract</span><h3>What did we agree?</h3><p>Include a site assessment and a written report.</p><span class="requirement-reference">Source: contract · Deliverables</span></div>
+    <div class="requirement-source"><Icon name="regulations" /><span class="requirement-label">The regulatory requirement</span><h3>What must the work satisfy?</h3><p>Retain a record of findings and the reviewer’s sign-off.</p><span class="requirement-reference">Source: regulatory document · Records</span></div>
+    <div class="requirement-source"><Icon name="scope" /><span class="requirement-label">The working scope</span><h3>What are we planning to do?</h3><p>A site visit and report. No review or records step assigned.</p><span class="requirement-reference">Source: scope · Current draft</span></div>
+  </div>
+  <div class="requirement-bridge"><span aria-hidden="true">↓</span><img src="/brand/hyphos-mark.svg" width="34" height="34" alt="" /><strong>Hyphos connects the sources to the work.</strong><span aria-hidden="true">↓</span></div>
+  <div class="requirement-result"><span class="requirement-label">A gap the team can act on</span><h3>The assessment is scoped.<br />The review and recordkeeping need an owner.</h3><p>Bring the contract commitment, regulatory source and draft scope into the same review. Confirm which requirement applies, assign the missing work and keep the evidence linked.</p><div class="requirement-links"><span>Contract commitment</span><span>Regulatory source</span><span>Scope item</span><span>Owner & review</span></div></div>
+  <figcaption class="v-caption">Illustrative workflow · All contract terms, regulatory requirements and scope details above are fictional.</figcaption>
+</figure>
+<style>
+.requirements-example{max-width:1040px;margin:auto!important;text-align:left;}
+.requirement-sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.requirement-source{background:#2d3035;border:1px solid #575a60;border-radius:10px;padding:24px;display:flex;flex-direction:column;min-width:0;}
+.requirement-source>svg{width:27px;height:27px;color:#d2b582;margin-bottom:20px;}
+.requirement-label{font-size:.875rem;color:#d2b582;display:block;margin-bottom:12px;line-height:1.5;}
+.requirements-example h3{color:#efeff0;font-weight:500;line-height:1.3;letter-spacing:-.02em;font-size:1.35rem;margin:0 0 16px!important;}
+.requirements-example p{color:#c9cace;font-size:1rem;line-height:1.7;margin:0 0 24px!important;}
+.requirement-reference{color:#bec0c4;font-size:.875rem;line-height:1.5;border-top:1px solid #ffffff26;padding-top:16px;margin-top:auto;}
+.requirement-bridge{display:flex;align-items:center;justify-content:center;gap:14px;padding:26px 0;color:#d2b582;}
+.requirement-bridge strong{font-size:1rem;font-weight:500;line-height:1.5;}
+.requirement-result{border:1px solid #b69259;background:#303237;border-radius:10px;padding:28px;max-width:810px;margin:auto;}
+.requirement-result h3{font-size:clamp(1.45rem,3vw,2rem);}
+.requirement-result p{max-width:690px;}
+.requirement-links{display:flex;flex-wrap:wrap;gap:8px;}
+.requirement-links span{border:1px solid #68635a;padding:7px 11px;border-radius:4px;font-size:.875rem;color:#e1d1b5;}
+.requirements-example figcaption{text-align:center;}
+@media(max-width:700px){.requirement-sources{grid-template-columns:1fr;gap:12px;}.requirement-source{padding:22px;}.requirement-source>svg{margin-bottom:12px;}.requirement-result{padding:22px;}.requirement-bridge{gap:10px;}.requirement-bridge strong{max-width:220px;}.requirement-bridge>span{display:none;}}
+</style>

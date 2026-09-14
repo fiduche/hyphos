@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/FlowIcon.astro';
 import ScrollConnections from '../components/ScrollConnections.astro';
 import FieldNotesPreview from '../components/FieldNotesPreview.astro';
+import RequirementsExample from '../components/RequirementsExample.astro';
 import { consultingUrl } from '../lib/site-links';
 import '../styles/visual-home.css';
 ---
@@ -12,27 +13,20 @@ import '../styles/visual-home.css';
     <p class="v-eyebrow">Hyphos · Developing with design partners</p>
     <h1>Your best people<br /><em>have better things to do.</em></h1>
     <p class="v-intro">Less chasing information. Less entering it twice. Less explaining it again.</p>
-    <p class="v-hero-context">Hyphos connects the knowledge behind your work and helps carry it forward—with people providing judgment where it matters.</p>
+    <p class="v-hero-context">What does the contract say? What do the regulations require? Hyphos connects those obligations with your conversations, documents and scope of work—so your team can see what needs doing, and why.</p>
     <div class="v-actions"><a href="#how-it-works" class="button button--gold">See how it works ↓</a><a href="#field-notes" class="text-link">Explore the field notes ↓</a></div>
-    <details class="v-detail"><summary>What is Hyphos?</summary><div><p>Hyphos connects the context scattered across AI conversations, documents, meetings, client relationships, scopes of work and regulations. The relationships stay visible: what was promised, what applies, what changed and why.</p><p>We’re developing the product with design partners around real workflows. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
+    <details class="v-detail"><summary>What is Hyphos?</summary><div><p>Hyphos connects the context scattered across AI conversations, documents, meetings, contracts, scopes of work and regulations. A contract commitment can be connected to a scope item, the regulatory source that affects it and the evidence from the work.</p><p>Those relationships help your team review gaps, understand the effect of a change and trace a decision back to its sources. We’re developing the product with design partners around real workflows. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
   </section>
   <ScrollConnections />
   <section id="client-example" class="v-chapter v-light-chapter"><div class="v-shell">
-    <div class="v-chapter-heading"><p class="v-eyebrow">02 · From business development to delivery</p><h2>A promise made.<br /><em>A scope that remembers.</em></h2></div>
-    <figure>
-      <div class="v-promise-scene">
-        <div class="v-promise-note"><Icon name="conversation" /><p>Client conversation</p><blockquote>“We’ll include a site assessment.”</blockquote><small>Easy to lose between the call and the proposal.</small></div>
-        <span class="v-arrow" aria-label="linked to the scope">→</span>
-        <div class="v-decision"><div class="v-decision-header"><Icon name="scope" /><strong>The scope.<br />With its context.</strong></div><dl><div><dt>Included</dt><dd>Site assessment</dd></div><div><dt>Source</dt><dd>Client call & proposal</dd></div><div><dt>Review</dt><dd>Applicable requirements</dd></div></dl></div>
-      </div>
-      <figcaption class="v-caption" style="text-align:center">Illustrative example · A client commitment linked to the work it affects</figcaption>
-    </figure>
-    <details class="v-detail"><summary>What gets lost between the call and delivery?</summary><div><p>A sales conversation sets an expectation. An AI chat helps shape the proposal. A scope defines the work, while regulations and internal standards introduce requirements. Those pieces need to stay connected as the work changes.</p><p>Hyphos is designed to connect those sources so people can trace the commitment, review what applies and resolve gaps before they carry into delivery.</p></div></details>
+    <div class="v-chapter-heading"><p class="v-eyebrow">02 · Commitments, requirements & delivery</p><h2>What was agreed.<br />What is required.<br /><em>What needs doing.</em></h2><p>Hyphos brings these relationships into view, with the source behind each one.</p></div>
+    <RequirementsExample />
+    <details class="v-detail"><summary>What happens when a requirement changes?</summary><div><p>The next question is which commitments, scope items, tasks and records depend on it. Hyphos is designed to carry those relationships with the information, so your team can see what needs another look.</p><p>The source stays available alongside the work. People can check applicability, resolve conflicting obligations and review the proposed change with the relevant evidence in view.</p><p><a href="/field-notes/which-document-can-you-trust/">Read the field note: what does this work need to satisfy? ↗</a></p></div></details>
   </div></section>
   <section class="v-chapter"><div class="v-shell">
     <div class="v-chapter-heading"><p class="v-eyebrow">03 · Carry it forward</p><h2>New person.<br /><em>Same understanding.</em></h2></div>
     <figure>
-      <div class="v-handoff"><div class="v-person"><Icon name="people" /><span>Today’s team</span></div><div class="v-task"><p>Next step · Operations lead</p><h3>Prepare the site assessment.</h3><ul><li><Icon name="check" />Commitment: site assessment</li><li><Icon name="check" />Scope & requirements linked</li><li><Icon name="document" />Client conversation included</li></ul></div><div class="v-person"><Icon name="people" /><span>The next person</span></div></div>
+      <div class="v-handoff"><div class="v-person"><Icon name="people" /><span>Today’s team</span></div><div class="v-task"><p>Next step · Operations lead</p><h3>Resolve the assessment scope.</h3><ul><li><Icon name="document" />Contract: assessment & report</li><li><Icon name="regulations" />Review record: source linked</li><li><Icon name="scope" />Open: confirm requirement & owner</li></ul></div><div class="v-person"><Icon name="people" /><span>The next person</span></div></div>
       <figcaption class="v-caption" style="text-align:center">Illustrative handoff · Sample content</figcaption>
     </figure>
     <details class="v-detail"><summary>What changes at the handoff?</summary><div><p>The next person gets more than an instruction. They can see the client commitment, the scope, the relevant sources and the work still to do, without asking someone to reconstruct every conversation.</p><p>Hyphos supports their judgment; the team remains responsible for reviewing and carrying out the work.</p></div></details>
