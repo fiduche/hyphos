@@ -1,0 +1,53 @@
+---
+import Icon from './FlowIcon.astro';
+const sources = [
+  { label:'AI conversations', icon:'ai', turn:'-5deg', drift:'-34px' },
+  { label:'Documents', icon:'document', turn:'4deg', drift:'-48px' },
+  { label:'Meetings', icon:'meeting', turn:'-4deg', drift:'-26px' },
+  { label:'Conversations', icon:'conversation', turn:'5deg', drift:'-42px' },
+  { label:'Business development', icon:'business', turn:'5deg', drift:'40px' },
+  { label:'Scopes of work', icon:'scope', turn:'-4deg', drift:'28px' },
+  { label:'Regulations', icon:'regulations', turn:'5deg', drift:'46px' },
+  { label:'Team experience', icon:'people', turn:'-5deg', drift:'32px' }
+] as const;
+---
+<section id="how-it-works" class="v-connect-story" data-scroll-bridge aria-labelledby="connection-title">
+  <div class="v-connect-sticky v-shell">
+    <div class="v-connect-heading"><p class="v-eyebrow">01 · The everyday challenge</p><h2 id="connection-title">Different tools.<br /><em>One connected business.</em></h2></div>
+    <figure>
+      <div class="v-connect-stage">
+        <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M180 62C360 62 340 220 500 220 M180 163C370 163 350 220 500 220 M180 277C370 277 350 220 500 220 M180 378C360 378 340 220 500 220 M820 62C640 62 660 220 500 220 M820 163C630 163 650 220 500 220 M820 277C630 277 650 220 500 220 M820 378C640 378 660 220 500 220" /></g></svg>
+        <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M100 41C100 170 200 120 200 230 M300 41C300 170 200 120 200 230 M100 115C100 190 200 165 200 230 M300 115C300 190 200 165 200 230 M100 345C100 270 200 290 200 230 M300 345C300 270 200 290 200 230 M100 419C100 300 200 340 200 230 M300 419C300 300 200 340 200 230" /></g></svg>
+        {sources.map((source,i)=><div class="v-connect-source" style={`--item:${i};--turn:${source.turn};--drift:${source.drift}`}><Icon name={source.icon} /><span>{source.label}</span></div>)}
+        <div class="v-connect-hub"><img src="/brand/hyphos-mark.svg" width="62" height="62" alt="" /><img src="/brand/hyphos-wordmark.svg" width="101" height="32" alt="Hyphos" /><span>Shared context.<br />Connected work.</span></div>
+      </div>
+      <figcaption class="v-connect-caption"><span data-connect-status>One view of the work.</span><small>Illustrated concept · Your sources, connected in context</small></figcaption>
+    </figure>
+    <a class="v-skip-scene" href="#client-example">See a business example ↓</a>
+  </div>
+</section>
+<script>
+document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const status = story.querySelector<HTMLElement>('[data-connect-status]');
+  let scheduled = false;
+  function update() {
+    scheduled = false;
+    const headerHeight = header?.getBoundingClientRect().height ?? 88;
+    story.style.setProperty('--sticky-top', `${headerHeight + 10}px`);
+    const rect = story.getBoundingClientRect();
+    const travel = Math.max(160, story.offsetHeight - (story.firstElementChild as HTMLElement).offsetHeight);
+    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (headerHeight + 10 - rect.top) / travel));
+    story.style.setProperty('--connect', String(progress));
+    story.dataset.motion = reduceMotion.matches ? 'reduced' : 'scroll';
+    if (status) status.textContent = progress < .35 ? 'The pieces live in different places.' : progress < .8 ? 'Hyphos brings the relationships into view.' : 'One view of the work.';
+  }
+  function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  reduceMotion.addEventListener('change', schedule);
+  if (header) new ResizeObserver(schedule).observe(header);
+  update();
+});
+</script>
