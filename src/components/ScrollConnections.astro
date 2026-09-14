@@ -37,8 +37,12 @@ document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => 
     const headerHeight = header?.getBoundingClientRect().height ?? 88;
     story.style.setProperty('--sticky-top', `${headerHeight + 10}px`);
     const rect = story.getBoundingClientRect();
-    const travel = Math.max(160, story.offsetHeight - (story.firstElementChild as HTMLElement).offsetHeight);
-    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (headerHeight + 10 - rect.top) / travel));
+    // Connect while the scene enters the viewport, then hold the finished view
+    // through the sticky section. This also works on short, unpinned screens.
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+    const start = viewportHeight * .7;
+    const finish = Math.max(headerHeight + 10, viewportHeight * .25);
+    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (start - rect.top) / Math.max(1, start - finish)));
     story.style.setProperty('--connect', String(progress));
     story.dataset.motion = reduceMotion.matches ? 'reduced' : 'scroll';
     if (status) status.textContent = progress < .35 ? 'The pieces live in different places.' : progress < .8 ? 'Hyphos brings the relationships into view.' : 'One view of the work.';
@@ -46,6 +50,7 @@ document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => 
   function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
+  window.visualViewport?.addEventListener('resize', schedule);
   reduceMotion.addEventListener('change', schedule);
   if (header) new ResizeObserver(schedule).observe(header);
   update();
