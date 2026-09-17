@@ -12,9 +12,9 @@ const isCurrent = (href: string) => (href !== '/#how-it-works' && (current === h
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <div class="header-brand-group"><a href="/" class="brand-lockup" aria-label="Hyphos Inc. home"><img class="brand-mark" src="/brand/hyphos-mark.svg" alt="" width="37" height="37" /><img class="brand-wordmark" src="/brand/hyphos-wordmark.svg" alt="hyphos" width="101" height="32" /></a></div>
-  <nav class="site-nav" aria-label="Main navigation">{nav.map(item => <a href={item.href} aria-current={isCurrent(item.href)}>{item.label}</a>)}<a href="/contact" class="nav-action">Talk With Us <span aria-hidden="true">↗</span></a></nav>
-  <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"></span></button>
-</div><nav id="nav-panel" class="nav-panel" aria-label="Mobile navigation" hidden>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contact">Talk With Us <span aria-hidden="true">↗</span></a></nav></header>
+  <nav class="site-nav" aria-label="Main navigation">{nav.map(item => <a href={item.href} aria-current={isCurrent(item.href)}>{item.label}</a>)}<a href="/contact" class="nav-action">Contact Us <span aria-hidden="true">↗</span></a></nav>
+  <div class="header-actions"><a href="/contact" class="header-cta">Contact Us</a><button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"></span></button></div>
+</div><nav id="nav-panel" class="nav-panel" aria-label="Mobile navigation" hidden>{nav.map(item=><a href={item.href}>{item.label}</a>)}<a href="/contact">Contact Us</a></nav></header>
 <script>
 const button = document.querySelector<HTMLButtonElement>('#nav-toggle');
 const panel = document.querySelector<HTMLElement>('#nav-panel');
