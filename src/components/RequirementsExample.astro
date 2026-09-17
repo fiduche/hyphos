@@ -1,26 +1,89 @@
 ---
 import Icon from './FlowIcon.astro';
+
+/**
+ * One example, two scales. The small-business job and the larger engagement
+ * make the same point: the sources sit in different places, and the gap only
+ * shows up when they are seen together.
+ *
+ * Every capability the small-business example implies is built (checked
+ * against the Hyphos and Cornerstone code on 17 Sept 2026): estimates that
+ * convert to invoices, timesheets, supplier bills read by AI and approved by a
+ * person, invoices built from time and expenses, and bills read in from the
+ * accounting system (QuickBooks Online today).
+ * All names, hours, amounts and terms are fictional.
+ *
+ * Without JavaScript both examples show, one after the other.
+ */
+const examples = [
+  {
+    key: 'small',
+    tab: 'A Small Business Job',
+    sources: [
+      { icon: 'invoice', label: 'The Estimate', title: 'What Did We Quote?', body: 'Bathroom renovation: 32 hours of labour and $4,800 in materials.', ref: 'Source: estimate · Accepted by the customer' },
+      { icon: 'payroll', label: 'Timesheets And Supplier Bills', title: 'What Did The Job Take?', body: '38 hours logged. The tile supplier’s bill came in $620 over the materials quoted.', ref: 'Source: timesheets · Supplier bill, read and approved' },
+      { icon: 'ledger', label: 'Invoicing And Accounting', title: 'What Are We Billing?', body: 'The invoice was started from the estimate. The extra hours and materials are not on it yet.', ref: 'Source: invoice draft · Bills in your accounting system' },
+    ],
+    bridge: 'Hyphos connects the numbers to the job.',
+    resultLabel: 'A Gap The Team Can Act On',
+    result: ['The Job Ran Over', 'The Invoice Does Not Show It Yet'],
+    resultBody: 'See the quote, the hours and the bills side by side before the invoice goes out. Add the approved extras, or call the customer first, with the evidence in one place.',
+    links: ['Estimate', 'Timesheets', 'Supplier Bill', 'Invoice'],
+    caption: 'Illustrative small business job · All names, hours and amounts above are fictional.',
+  },
+  {
+    key: 'engagement',
+    tab: 'A Larger Engagement',
+    sources: [
+      { icon: 'document', label: 'The Contract', title: 'What Did We Agree?', body: 'Interview the team and deliver a recommendations report.', ref: 'Source: contract · Deliverables' },
+      { icon: 'regulations', label: 'The Regulatory Requirement', title: 'What Must The Work Satisfy?', body: 'Review personal information before sharing the findings.', ref: 'Source: regulatory document · Personal information' },
+      { icon: 'scope', label: 'The Working Scope', title: 'What Are We Planning To Do?', body: 'Interviews, analysis and a report. No privacy review assigned.', ref: 'Source: scope · Current draft' },
+    ],
+    bridge: 'Hyphos connects the sources to the work.',
+    resultLabel: 'A Gap The Team Can Act On',
+    result: ['The Recommendations Are Scoped', 'The Privacy Review Needs An Owner'],
+    resultBody: 'Bring the contract commitment, regulatory source and draft scope into the same review. Confirm which requirement applies, assign the missing work and keep the evidence linked.',
+    links: ['Contract Commitment', 'Regulatory Source', 'Scope Item', 'Owner & Review'],
+    caption: 'Illustrative consulting engagement · All contract terms, regulatory requirements and scope details above are fictional.',
+  },
+] as const;
 ---
-<figure class="requirements-example">
-  <div class="requirement-sources">
-    <div class="requirement-source"><Icon name="document" /><span class="requirement-label">The contract</span><h3>What Did We Agree?</h3><p>Interview the team and deliver a recommendations report.</p><span class="requirement-reference">Source: contract · Deliverables</span></div>
-    <div class="requirement-source"><Icon name="regulations" /><span class="requirement-label">The regulatory requirement</span><h3>What Must The Work Satisfy?</h3><p>Review personal information before sharing the findings.</p><span class="requirement-reference">Source: regulatory document · Personal information</span></div>
-    <div class="requirement-source"><Icon name="scope" /><span class="requirement-label">The working scope</span><h3>What Are We Planning To Do?</h3><p>Interviews, analysis and a report. No privacy review assigned.</p><span class="requirement-reference">Source: scope · Current draft</span></div>
+<div class="requirements-example" data-example-switch>
+  <div class="example-tabs" role="tablist" aria-label="Choose an example" hidden>
+    {examples.map((ex, i) => <button type="button" role="tab" id={`example-tab-${ex.key}`} aria-controls={`example-panel-${ex.key}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{ex.tab}</button>)}
   </div>
-  <div class="requirement-bridge"><span aria-hidden="true">↓</span><img src="/brand/hyphos-mark.svg" width="34" height="34" alt="" /><strong>Hyphos connects the sources to the work.</strong><span aria-hidden="true">↓</span></div>
-  <div class="requirement-result"><span class="requirement-label">A gap the team can act on</span><h3>The Recommendations Are Scoped<br />The Privacy Review Needs An Owner</h3><p>Bring the contract commitment, regulatory source and draft scope into the same review. Confirm which requirement applies, assign the missing work and keep the evidence linked.</p><div class="requirement-links"><span>Contract commitment</span><span>Regulatory source</span><span>Scope item</span><span>Owner & review</span></div></div>
-  <figcaption class="v-caption">Illustrative consulting engagement · All contract terms, regulatory requirements and scope details above are fictional.</figcaption>
-</figure>
+  {examples.map((ex) => (
+    <figure class="example-panel" id={`example-panel-${ex.key}`} role="tabpanel" aria-labelledby={`example-tab-${ex.key}`}>
+      <p class="example-noscript-label">{ex.tab}</p>
+      <div class="requirement-sources">
+        {ex.sources.map((s) => <div class="requirement-source"><Icon name={s.icon} /><span class="requirement-label">{s.label}</span><h3>{s.title}</h3><p>{s.body}</p><span class="requirement-reference">{s.ref}</span></div>)}
+      </div>
+      <div class="requirement-bridge"><span aria-hidden="true">↓</span><img src="/brand/hyphos-mark.svg" width="34" height="34" alt="" /><strong>{ex.bridge}</strong><span aria-hidden="true">↓</span></div>
+      <div class="requirement-result"><span class="requirement-label">{ex.resultLabel}</span><h3>{ex.result[0]}<br />{ex.result[1]}</h3><p>{ex.resultBody}</p><div class="requirement-links">{ex.links.map((l) => <span>{l}</span>)}</div></div>
+      <figcaption class="v-caption">{ex.caption}</figcaption>
+    </figure>
+  ))}
+</div>
 <style>
 .requirements-example{max-width:1040px;margin:auto!important;text-align:left;}
+.example-tabs{display:flex;justify-content:center;gap:6px;margin:0 auto 26px;padding:5px;border:1px solid #cfcfcf;border-radius:999px;width:max-content;max-width:100%;background:#e4e4e5;}
+.example-tabs button{border:0;background:none;color:#4a4a4c;font:inherit;font-size:.9375rem;font-weight:500;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px;}
+.example-tabs button[aria-selected="true"]{background:#2d3035;color:#f1efe2;}
+.example-tabs button:focus-visible{outline:2px solid #7a5b27;outline-offset:2px;}
+.example-panel{margin:0;}
+.example-panel+.example-panel{margin-top:48px;}
+.requirements-example[data-ready] .example-panel+.example-panel{margin-top:0;}
+.example-noscript-label{text-align:center;font-weight:600;color:#4a4a4c;margin:0 0 16px!important;}
+.requirements-example[data-ready] .example-noscript-label{display:none;}
 .requirement-sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
 .requirement-source{background:#2d3035;border:1px solid #575a60;border-radius:10px;padding:24px;display:flex;flex-direction:column;min-width:0;}
 .requirement-source>svg{width:27px;height:27px;color:#d2b582;margin-bottom:20px;}
 .requirement-label{font-size:.875rem;color:#d2b582;display:block;margin-bottom:12px;line-height:1.5;}
 .requirements-example h3{color:#efeff0;font-weight:500;line-height:1.3;letter-spacing:-.02em;font-size:1.35rem;margin:0 0 16px!important;}
 .requirements-example p{color:#c9cace;font-size:1rem;line-height:1.7;margin:0 0 24px!important;}
+.requirements-example .example-noscript-label{color:#4a4a4c;}
 .requirement-reference{color:#bec0c4;font-size:.875rem;line-height:1.5;border-top:1px solid #ffffff26;padding-top:16px;margin-top:auto;}
-.requirement-bridge{display:flex;align-items:center;justify-content:center;gap:14px;padding:26px 0;color:#d2b582;}
+.requirement-bridge{display:flex;align-items:center;justify-content:center;gap:14px;padding:26px 0;color:#7a5b27;}
 .requirement-bridge strong{font-size:1rem;font-weight:500;line-height:1.5;}
 .requirement-result{border:1px solid #b69259;background:#303237;border-radius:10px;padding:28px;max-width:810px;margin:auto;}
 .requirement-result h3{font-size:clamp(1.45rem,3vw,2rem);}
@@ -28,5 +91,34 @@ import Icon from './FlowIcon.astro';
 .requirement-links{display:flex;flex-wrap:wrap;gap:8px;}
 .requirement-links span{border:1px solid #68635a;padding:7px 11px;border-radius:4px;font-size:.875rem;color:#e1d1b5;}
 .requirements-example figcaption{text-align:center;}
-@media(max-width:700px){.requirement-sources{grid-template-columns:1fr;gap:12px;}.requirement-source{padding:22px;}.requirement-source>svg{margin-bottom:12px;}.requirement-result{padding:22px;}.requirement-bridge{gap:10px;}.requirement-bridge strong{max-width:220px;}.requirement-bridge>span{display:none;}}
+@media(max-width:700px){.requirement-sources{grid-template-columns:1fr;gap:12px;}.requirement-source{padding:22px;}.requirement-source>svg{margin-bottom:12px;}.requirement-result{padding:22px;}.requirement-bridge{gap:10px;}.requirement-bridge strong{max-width:220px;}.requirement-bridge>span{display:none;}.example-tabs{width:100%;}.example-tabs button{flex:1;padding:10px 12px;font-size:.875rem;}}
 </style>
+<script>
+document.querySelectorAll<HTMLElement>('[data-example-switch]').forEach((root) => {
+  const tablist = root.querySelector<HTMLElement>('[role="tablist"]');
+  const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+  const panels = [...root.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+  if (!tablist || !tabs.length) return;
+  function select(index: number, focus = false) {
+    tabs.forEach((tab, i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
+    panels.forEach((panel, i) => { panel.hidden = i !== index; });
+    if (focus) tabs[index].focus();
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(i));
+    tab.addEventListener('keydown', (event) => {
+      let n = i;
+      if (event.key === 'ArrowRight') n = (i + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') n = (i + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') n = 0;
+      else if (event.key === 'End') n = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      select(n, true);
+    });
+  });
+  tablist.hidden = false;
+  root.dataset.ready = '';
+  select(0);
+});
+</script>
