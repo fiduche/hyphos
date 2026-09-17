@@ -1,6 +1,38 @@
 # Infrastructure — hyphos.io
 
-Operational reference for the `hyphos.io` marketing site. Captures what's set up, how it deploys, where the gotchas are, and what to do when something looks broken.
+Operational reference for the `hyphos.io` site. Captures what's set up, how it deploys, where the gotchas are, and what to do when something looks broken.
+
+---
+
+## One site, two repositories (17 September 2026)
+
+hyphos.io is now the **only** Hyphos site. hyphosconsulting.com redirects to it.
+
+| What | Where it lives |
+|---|---|
+| Every marketing page | This repo, `fiduche/hyphos`, deployed to the `hyphos-website` worker |
+| Work, Services, the Cornerstone case study, the "10 ways" field note | Moved here from the consulting site |
+| The golf tournament (`/golf`, `/course`, `/c/`, `/go/`, `/api/golf/*`, `/api/course/*`) | Still `fiduche/hyphos-consulting`, which owns the `hyphos-golf` D1 database. This worker passes those paths to it through the `GOLF` **service binding** (see `src/worker.js`), plus any `/_astro/` file it does not have itself |
+| hyphosconsulting.com | Redirects: tournament paths 302 to the same path here, everything else 301 to its mapped page. `/go/` and `/c/` still count scans there first |
+
+**Both repositories are public on GitHub.** A password sat in the consulting
+repo's history until 17 Sept, when it was rotated, and `src/data/roster.json`
+there holds 116 real names. Making both private, and scrubbing that history,
+is open.
+
+### Rules this site is held to
+
+- **Claims are checked against source before they go up.** The Work page, the
+  homepage tool list and the small-business example were all verified against
+  the Cornerstone and Hyphos codebases; the file comments name what was checked
+  and when. Do not add a capability claim without checking it.
+- **What must not be claimed today:** hosted Hyphos or a data region (it runs on
+  Daniel's Mac), security or access controls (deferred), two-way accounting
+  sync, emailing or online payment of invoices, payroll outside Canada,
+  per-client Domas adaptation, and Wander on Google Play.
+- **Style:** no em dashes anywhere, and titles, headings and labels in title
+  case. Body prose stays sentence case. A build check counts em dashes; keep it
+  at zero.
 
 ---
 
