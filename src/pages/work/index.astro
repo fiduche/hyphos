@@ -11,8 +11,14 @@ import '../../styles/work.css';
  * Flask; there are seven modules, not sixteen; social posting is copy-paste
  * until Meta approves the app; the dollar and hours figures had no source.
  * Wander is a client project published under Daniel's own developer account,
- * which is why the App Store lists him as the seller. Its source was not
- * available to check, so its list is kept to what is publicly verifiable. Re-check before adding claims.
+ * which is why the App Store lists him as the seller. Its claims were checked
+ * against the fiduche/wander-app-prod and map-discovery-api repos on 17 Sept
+ * 2026: React Native 0.81 + Expo 54 + TypeScript, 37 screens, Mapbox, Sentry,
+ * Supabase, location, camera, contacts, sensors, haptics, secure store, push,
+ * over-the-air updates, socket.io; backend on Express + PostgreSQL with JWT
+ * auth, sharp, Anthropic/OpenAI and a search-embeddings migration. iOS is live;
+ * Android builds from the same code but is not on Google Play yet, so the site
+ * must not say it is. Re-check before adding claims.
  */
 const cornerstoneBuilt = [
   'Family and client records, with at-need and preneed arrangements',
@@ -32,16 +38,19 @@ const cornerstoneBuilt = [
   'One database underneath all of it',
 ];
 const wanderBuilt = [
-  'A complete iPhone app, live on the App Store',
-  'Maps and search for places nearby',
-  'Photos and reviews shared between people using the app',
-  'Plans people can share with friends',
-  'The public website at wanderapp.ca',
-  'App Store submission, Apple’s review and launch',
+  'True cross-platform: one codebase, native apps for iPhone and Android',
+  'Native device features: location, camera, contacts, sensors, push notifications, offline mode',
+  'Maps and location: interactive vector maps, directions and offline caching',
+  'Real-time: live messaging and social features over WebSockets',
+  'AI features: natural-language search powered by language models and vector search',
+  'Augmented reality: camera and motion-sensor driven',
+  'Full backend: Node, PostgreSQL, authentication and image processing',
+  'Production operations: crash monitoring, analytics and over-the-air updates',
+  'App Store delivery: submission, privacy declarations, review and ongoing releases',
 ];
 ---
-<BaseLayout title="Work" description="Software built by Hyphos Inc.: connected business software for Cornerstone Funeral Home, and Wander, a family app for finding parks and trails.">
-<section class="product-editorial-hero page-shell"><p class="section-label">Selected Work</p><h1>Software We've<br />Shipped</h1><p>A small portfolio, by design. We take on a few engagements a year so we can stay close to the work. Two we can talk about publicly are below.</p><nav class="work-jump" aria-label="Jump to a project"><a href="#cornerstone">Connected Business Software <span aria-hidden="true">↓</span></a><a href="#wander">Wander <span aria-hidden="true">↓</span></a></nav></section>
+<BaseLayout title="Work" description="Software built by Hyphos Inc.: connected business software for Cornerstone Funeral Home, and Wander, a production mobile app for iPhone and Android.">
+<section class="product-editorial-hero page-shell"><p class="section-label">Selected Work</p><h1>Software We've<br />Shipped</h1><p>A small portfolio, by design. We take on a few engagements a year so we can stay close to the work. Two we can talk about publicly are below.</p><nav class="work-jump" aria-label="Jump to a project"><a href="#cornerstone">Connected Business Software <span aria-hidden="true">↓</span></a><a href="#wander">Wander Mobile App <span aria-hidden="true">↓</span></a></nav></section>
 
 <section id="cornerstone" class="work-case page-shell">
   <div class="work-tags"><span class="work-tag">Business Software · Web</span><span class="work-status">In production</span></div>
@@ -69,30 +78,33 @@ const wanderBuilt = [
 </section>
 
 <section id="wander" class="work-case page-shell">
-  <div class="work-tags"><span class="work-tag">Client Project · iOS</span><span class="work-status">Available on the App Store</span></div>
+  <div class="work-tags"><span class="work-tag">Client Project · iPhone &amp; Android</span><span class="work-status">Live on the App Store</span></div>
   <h2>Wander</h2>
-  <p class="work-lede">Client: Wander. A complete mobile app, designed, built and released on the App Store. The app helps families find parks and trails; the part that matters for you is that it went all the way from an idea to launch.</p>
-  <div class="work-links"><a href={wanderAppStoreUrl} class="text-link" target="_blank" rel="noopener">Download On The App Store <span aria-hidden="true">↗</span></a><a href={wanderWebsiteUrl} class="text-link" target="_blank" rel="noopener">Visit wanderapp.ca <span aria-hidden="true">↗</span></a></div>
+  <p class="work-lede">Client: Wander. A production mobile app we took from a blank page to the App Store: design, mobile app, backend, data pipeline, marketing site and store submission.</p>
+  <div class="work-links"><a href={wanderAppStoreUrl} class="text-link" target="_blank" rel="noopener">See It On The App Store <span aria-hidden="true">↗</span></a><a href={wanderWebsiteUrl} class="text-link" target="_blank" rel="noopener">Visit wanderapp.ca <span aria-hidden="true">↗</span></a></div>
 
   <div class="work-grid">
     <div>
-      <div class="work-block"><p class="section-label">The Brief</p><p>Turn an app idea into something people can actually download: a working iPhone app, the website around it, and a release that passes Apple’s review.</p></div>
+      <div class="work-block"><p class="section-label">One Codebase, Two Platforms</p><p>Wander is built on React Native and Expo with TypeScript, so one codebase produces a genuine native app for both iPhone and Android, not a website in an app shell. People get native performance and full access to the device: GPS and background location, camera and photo library, contacts, motion sensors, haptics, encrypted on-device storage and push notifications.</p></div>
+      <div class="work-block"><p class="section-label">Under The Hood</p><p>Thirty-seven screens. Interactive vector maps with light, dark and satellite modes, plus offline caching so it keeps working without signal. Real-time messaging and social features over WebSockets. A natural-language search that understands plain-English requests, including what to leave out, using language models and vector search. An augmented-reality feature that anchors virtual objects in the camera view using the phone’s motion sensors. Behind it, a Node and PostgreSQL backend with authentication, image processing, and crash and error monitoring wired into the live app.</p></div>
       <div class="work-block"><p class="section-label">What We Built</p><ul class="work-list">{wanderBuilt.map((item) => <li>{item}</li>)}</ul></div>
-      <div class="work-block"><p class="section-label">Status</p><p>Live on the App Store and free to download on iPhone. Android is coming soon.</p></div>
     </div>
     <div>
-      <div class="work-panel"><p class="section-label">Why It Matters For You</p><p>Plenty of app ideas stall somewhere between a prototype and the App Store. Wander went the whole way: built, tested, approved by Apple and in people’s hands.</p><p>If you have an app in mind for your business or your customers, that finished, launched version is what we build.</p></div>
+      <div class="work-panel"><p class="section-label">What This Demonstrates</p><p>We can build, ship and maintain a real mobile product on both platforms: App Store submission, privacy compliance, crash monitoring and ongoing releases included.</p><p>We also own the release pipeline. Automated cloud builds go to TestFlight and the App Store, and over-the-air updates let us ship a fix to people in minutes without waiting on app store review. The same pipeline produces the Android release from the identical codebase.</p></div>
+      <div class="work-block"><p class="section-label">Status</p><p>iPhone: live on the App Store. Android: built from the same codebase, with the Google Play listing in progress.</p></div>
     </div>
   </div>
 
   <figure class="work-figure">
-    <div class="work-figure-head"><div><p class="section-label">A Look Inside The App</p><h3>Wander On iPhone</h3></div><p>Explore the map, check the details and make plans.</p></div>
+    <div class="work-figure-head"><div><p class="section-label">A Look Inside The App</p><h3>Wander On iPhone</h3></div><p>Maps, place details and plans to share, from the live App Store release.</p></div>
     <div class="work-shots">
-      <img src="/work/wander/wander-find.webp" width="640" height="1388" alt="Wander map showing nearby parks and playgrounds" loading="lazy" />
-      <img src="/work/wander/wander-check.webp" width="640" height="1388" alt="Wander park details with photos, reviews and amenities" loading="lazy" />
-      <img src="/work/wander/wander-go.webp" width="640" height="1388" alt="Wander outing plan to share with friends" loading="lazy" />
+      <img src="/work/wander/wander-find.webp" width="640" height="1388" alt="Wander map of nearby places" loading="lazy" />
+      <img src="/work/wander/wander-check.webp" width="640" height="1388" alt="Wander place details with photos, reviews and amenities" loading="lazy" />
+      <img src="/work/wander/wander-go.webp" width="640" height="1388" alt="Wander plan to share with friends" loading="lazy" />
     </div>
   </figure>
+
+  <div class="work-stack"><strong>Stack</strong><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Mapbox</span><span>Node.js</span><span>PostgreSQL</span><span>Supabase</span><span>WebSockets</span><span>Sentry</span></div>
 </section>
 
 <section class="product-editorial-closing page-shell"><span class="section-label">Other Engagements</span><h2>Most Of Our Work Doesn't<br />Have A Public Face</h2><p>Internal systems, back-office integrations and AI tooling for operations teams. If you'd like to hear about work relevant to your situation, ask.</p><a href="/contact" class="button button--gold">Ask About Relevant Work <span aria-hidden="true">↗</span></a></section>
