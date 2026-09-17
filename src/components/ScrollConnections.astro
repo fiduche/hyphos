@@ -10,9 +10,11 @@ import Icon from './FlowIcon.astro';
  * today?" and answers with what needs attention, each line tagged with the
  * tool it came from.
  *
- * Everything is driven by one number, --connect, from 0 (chaos) to 1 (answered),
- * set from scroll position. Reduced motion, print and no-JavaScript all show the
- * finished, answered state.
+ * Everything is driven by one number, --connect, from 0 (chaos) to 1 (answered).
+ * It is not tied to scroll position: the page has too little scroll distance for
+ * the sort to be seen, so the scene waits in chaos and plays once, on a timer,
+ * when it is mostly on screen. Reduced motion, print and no-JavaScript all show
+ * the finished, answered state.
  *
  * Every tool is something Hyphos or our client software connects, and the
  * Hyphos assistant does answer with sources (checked against both codebases on
@@ -67,16 +69,12 @@ const answers = [
     </figure>
     <a class="v-skip-scene" href="#client-example">See a business example ↓</a>
   </div>
-  <!-- Scroll room for the pinned scene. A sticky element only travels inside its
-       parent's content box, so this has to be a real element, not padding. -->
-  <div class="v-connect-runway" aria-hidden="true"></div>
 </section>
 
 <style is:global>
-/* Pinned stretch so chaos, order and the answer each get room. */
-.visual-page .v-connect-story[data-motion="scroll"]{padding-bottom:45px;}
-.v-connect-runway{height:0;}
-.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:900px;}
+/* Plays on a timer when in view, so nothing pins and no extra scroll is added. */
+.visual-page .v-connect-story[data-motion]{padding-bottom:45px;}
+.visual-page .v-connect-story .v-connect-sticky{position:relative;top:auto;}
 
 /* Lines draw in one after another. */
 .v-connect-story .v-connect-lines{opacity:1;}
@@ -130,8 +128,7 @@ const answers = [
 
 /* Phones: three pairs above and three below, with room for the chat between. */
 @media(max-width:600px){
-  .visual-page .v-connect-story[data-motion="scroll"]{padding-bottom:28px;}
-  .visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:700px;}
+  .visual-page .v-connect-story[data-motion]{padding-bottom:28px;}
   .v-connect-story .v-connect-stage{height:540px;}
   .v-connect-story .v-connect-caption{margin-top:4px;min-height:0;}
   .v-connect-story .v-connect-caption small{margin-top:4px;}
@@ -150,54 +147,54 @@ const answers = [
   .v-chat-a li{flex-direction:row;align-items:center;font-size:.75rem;padding:6px 0;}
   .v-chat-a li:nth-child(4){display:none;}
 }
-@media(min-width:601px) and (max-height:820px){.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:760px;}}
-/* Where the scene cannot pin (short screens, reduced motion) there is no runway. */
-@media(max-height:700px){.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:0;}}
-@media(prefers-reduced-motion:reduce){.visual-page .v-connect-story .v-connect-runway{height:0;}}
 @media(prefers-reduced-motion:reduce){.v-connect-story .v-connect-source,.v-chat-caret,.v-chat-thinking i{animation:none;}}
 </style>
 
 <script>
 document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const header = document.querySelector<HTMLElement>('.site-header');
-  const sticky = story.querySelector<HTMLElement>('.v-connect-sticky');
+  const stage = story.querySelector<HTMLElement>('.v-connect-stage');
   const status = story.querySelector<HTMLElement>('[data-connect-status]');
   const typed = story.querySelector<HTMLElement>('[data-chat-typed]');
   const full = typed?.dataset.full ?? '';
-  let scheduled = false;
+  const DURATION = 5200;   // ms from chaos to the last answer line
   let shown = -1;
-  function update() {
-    scheduled = false;
-    const headerHeight = header?.getBoundingClientRect().height ?? 88;
-    const stickyTop = headerHeight + 10;
-    story.style.setProperty('--sticky-top', `${stickyTop}px`);
-    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-    const rect = story.getBoundingClientRect();
-    // Stay in full chaos until the scene is pinned and fully in view, then
-    // resolve over the pinned stretch, finishing a little before it ends so the
-    // answered state is held. Unpinned layouts (short screens) resolve as the
-    // scene scrolls up to the header instead.
-    const travel = Math.max(0, rect.height - (sticky?.offsetHeight ?? 0));
-    const pinned = travel > 200;
-    const begin = pinned ? stickyTop : viewportHeight * .6;
-    const end = pinned ? stickyTop - travel * .88 : stickyTop;
-    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (begin - rect.top) / Math.max(1, begin - end)));
+
+  function render(progress: number) {
     story.style.setProperty('--connect', progress.toFixed(3));
-    story.dataset.motion = reduceMotion.matches ? 'reduced' : 'scroll';
     if (progress > .5) story.dataset.settled = ''; else delete story.dataset.settled;
     if (typed) {
       const count = Math.round(full.length * Math.max(0, Math.min(1, (progress - .38) / .2)));
       if (count !== shown) { typed.textContent = full.slice(0, count); shown = count; }
     }
-    if (status) status.textContent = progress < .22 ? 'Invoices here. Emails there. Hours somewhere else.' : progress < .55 ? 'Hyphos pulls the pieces together.' : 'One question. A clear answer, with its sources.';
+    if (status) status.textContent = progress < .12 ? 'Invoices here. Emails there. Hours somewhere else.' : progress < .55 ? 'Hyphos pulls the pieces together.' : 'One question. A clear answer, with its sources.';
   }
-  function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }
-  window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', schedule);
-  window.visualViewport?.addEventListener('resize', schedule);
-  reduceMotion.addEventListener('change', schedule);
-  if (header) new ResizeObserver(schedule).observe(header);
-  update();
+
+  if (reduceMotion.matches || !stage || !('IntersectionObserver' in window)) {
+    story.dataset.motion = 'reduced';
+    render(1);
+    return;
+  }
+
+  // Wait in chaos, then play once when most of the scene is on screen.
+  story.dataset.motion = 'timed';
+  render(0);
+  let started = false;
+  const play = () => {
+    if (started) return;
+    started = true;
+    const t0 = performance.now();
+    const frame = (now: number) => {
+      const p = Math.min(1, (now - t0) / DURATION);
+      render(p);
+      if (p < 1 && !reduceMotion.matches) requestAnimationFrame(frame); else render(1);
+    };
+    requestAnimationFrame(frame);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) { observer.disconnect(); setTimeout(play, 250); }
+  }, { threshold: .6 });
+  observer.observe(stage);
+  reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) { started = true; observer.disconnect(); render(1); } });
 });
 </script>
