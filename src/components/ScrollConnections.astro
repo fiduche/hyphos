@@ -1,14 +1,22 @@
 ---
 import Icon from './FlowIcon.astro';
+// Twelve tools a small business actually runs on, each one something Hyphos
+// or our client software already connects (checked against both codebases on
+// 17 Sept 2026). Left column is money and the day-to-day; right column is
+// communication and know-how. On phones they pair up in this order.
 const sources = [
-  { label:'AI conversations', icon:'ai', turn:'-5deg', drift:'-34px' },
-  { label:'Documents', icon:'document', turn:'4deg', drift:'-48px' },
-  { label:'Meetings', icon:'meeting', turn:'-4deg', drift:'-26px' },
-  { label:'Contracts', icon:'document', turn:'5deg', drift:'-42px' },
-  { label:'Business development', icon:'business', turn:'5deg', drift:'40px' },
-  { label:'Scopes of work', icon:'scope', turn:'-4deg', drift:'28px' },
-  { label:'Regulations', icon:'regulations', turn:'5deg', drift:'46px' },
-  { label:'Team experience', icon:'people', turn:'-5deg', drift:'32px' }
+  { label:'Estimates & Invoices', icon:'invoice', turn:'-5deg', drift:'-34px' },
+  { label:'Emails', icon:'email', turn:'5deg', drift:'40px' },
+  { label:'Payroll & Timesheets', icon:'payroll', turn:'4deg', drift:'-48px' },
+  { label:'Files & Documents', icon:'files', turn:'-4deg', drift:'28px' },
+  { label:'QuickBooks', icon:'ledger', turn:'-4deg', drift:'-26px' },
+  { label:'Meetings', icon:'meeting', turn:'5deg', drift:'46px' },
+  { label:'Supplier Bills', icon:'bill', turn:'5deg', drift:'-42px' },
+  { label:'Website & Reviews', icon:'website', turn:'-5deg', drift:'32px' },
+  { label:'Customers', icon:'people', turn:'-3deg', drift:'-30px' },
+  { label:'AI Conversations', icon:'ai', turn:'4deg', drift:'36px' },
+  { label:'Calendar & Tasks', icon:'calendar', turn:'4deg', drift:'-38px' },
+  { label:'Team Know-How', icon:'conversation', turn:'-4deg', drift:'30px' }
 ] as const;
 ---
 <section id="how-it-works" class="v-connect-story" data-scroll-bridge aria-labelledby="connection-title">
@@ -16,12 +24,12 @@ const sources = [
     <div class="v-connect-heading"><p class="v-eyebrow">01 · The Everyday Challenge</p><h2 id="connection-title">Different Tools<br /><em>One Connected Business</em></h2></div>
     <figure>
       <div class="v-connect-stage">
-        <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M180 62C360 62 340 220 500 220 M180 163C370 163 350 220 500 220 M180 277C370 277 350 220 500 220 M180 378C360 378 340 220 500 220 M820 62C640 62 660 220 500 220 M820 163C630 163 650 220 500 220 M820 277C630 277 650 220 500 220 M820 378C640 378 660 220 500 220" /></g></svg>
-        <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M100 41C100 170 200 120 200 230 M300 41C300 170 200 120 200 230 M100 115C100 190 200 165 200 230 M300 115C300 190 200 165 200 230 M100 345C100 270 200 290 200 230 M300 345C300 270 200 290 200 230 M100 419C100 300 200 340 200 230 M300 419C300 300 200 340 200 230" /></g></svg>
+        <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M180 36.7C360 36.7 340 220 500 220 M180 110.0C360 110.0 340 220 500 220 M180 183.3C360 183.3 340 220 500 220 M180 256.7C360 256.7 340 220 500 220 M180 330.0C360 330.0 340 220 500 220 M180 403.3C360 403.3 340 220 500 220 M820 36.7C640 36.7 660 220 500 220 M820 110.0C640 110.0 660 220 500 220 M820 183.3C640 183.3 660 220 500 220 M820 256.7C640 256.7 660 220 500 220 M820 330.0C640 330.0 660 220 500 220 M820 403.3C640 403.3 660 220 500 220" /></g></svg>
+        <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M100 32.2C100 142.2 200 175.4 200 230 M300 32.2C300 142.2 200 175.4 200 230 M100 92C100 202 200 185.3 200 230 M300 92C300 202 200 185.3 200 230 M100 151.8C100 261.8 200 195.3 200 230 M300 151.8C300 261.8 200 195.3 200 230 M100 308.2C100 198.2 200 264.7 200 230 M300 308.2C300 198.2 200 264.7 200 230 M100 368C100 258 200 274.7 200 230 M300 368C300 258 200 274.7 200 230 M100 427.8C100 317.8 200 284.6 200 230 M300 427.8C300 317.8 200 284.6 200 230" /></g></svg>
         {sources.map((source,i)=><div class="v-connect-source" style={`--item:${i};--turn:${source.turn};--drift:${source.drift}`}><Icon name={source.icon} /><span>{source.label}</span></div>)}
-        <div class="v-connect-hub"><img src="/brand/hyphos-mark.svg" width="62" height="62" alt="" /><img src="/brand/hyphos-wordmark.svg" width="101" height="32" alt="Hyphos" /><span>Commitments.<br />Requirements. Work.</span></div>
+        <div class="v-connect-hub"><img src="/brand/hyphos-mark.svg" width="62" height="62" alt="" /><img src="/brand/hyphos-wordmark.svg" width="101" height="32" alt="Hyphos" /><span>Customers.<br />Money. Work.</span></div>
       </div>
-      <figcaption class="v-connect-caption"><span data-connect-status>One view of the work.</span><small>Illustrated concept · Your sources, connected in context</small></figcaption>
+      <figcaption class="v-connect-caption"><span data-connect-status>One view of the work.</span><small>Illustrated concept · The tools you already use, connected</small></figcaption>
     </figure>
     <a class="v-skip-scene" href="#client-example">See a business example ↓</a>
   </div>

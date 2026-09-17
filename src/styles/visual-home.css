@@ -145,3 +145,33 @@
 .visual-page .v-hero h1{max-width:1060px;}
 /* The gold used on dark sections is 2:1 on the light ones. A deeper gold keeps the accent readable. */
 .visual-page .v-light-chapter h2 em{color:#7a5b27;}
+
+/* Twelve connected tools: six rows per side on wide screens, three pairs above
+   and below the hub on phones. Sources are ordered in pairs (odd index on the
+   left, even on the right) so both layouts read from the same list. */
+.v-connect-stage{height:480px;}
+.v-connect-source:nth-of-type(n){left:18%;}
+.v-connect-source:nth-of-type(even){left:82%;}
+.v-connect-source:nth-of-type(1),.v-connect-source:nth-of-type(2){top:8.33%;}
+.v-connect-source:nth-of-type(3),.v-connect-source:nth-of-type(4){top:25%;}
+.v-connect-source:nth-of-type(5),.v-connect-source:nth-of-type(6){top:41.67%;}
+.v-connect-source:nth-of-type(7),.v-connect-source:nth-of-type(8){top:58.33%;}
+.v-connect-source:nth-of-type(9),.v-connect-source:nth-of-type(10){top:75%;}
+.v-connect-source:nth-of-type(11),.v-connect-source:nth-of-type(12){top:91.67%;}
+@media(max-width:600px){
+  .v-connect-stage{height:480px;}
+  .v-connect-source:nth-of-type(n){left:25%;}
+  .v-connect-source:nth-of-type(even){left:75%;}
+  .v-connect-source:nth-of-type(1),.v-connect-source:nth-of-type(2){top:7%;}
+  .v-connect-source:nth-of-type(3),.v-connect-source:nth-of-type(4){top:20%;}
+  .v-connect-source:nth-of-type(5),.v-connect-source:nth-of-type(6){top:33%;}
+  .v-connect-source:nth-of-type(7),.v-connect-source:nth-of-type(8){top:67%;}
+  .v-connect-source:nth-of-type(9),.v-connect-source:nth-of-type(10){top:80%;}
+  .v-connect-source:nth-of-type(11),.v-connect-source:nth-of-type(12){top:93%;}
+}
+/* Short laptop screens: tighten the rows so the heading, all twelve tools and
+   the caption fit under the sticky header together. */
+@media(min-width:601px) and (max-height:820px){
+  .v-connect-stage{height:430px;}
+  .v-connect-source{min-height:54px;padding-block:9px;}
+}
