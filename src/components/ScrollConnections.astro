@@ -1,22 +1,48 @@
 ---
 import Icon from './FlowIcon.astro';
-// Twelve tools a small business actually runs on, each one something Hyphos
-// or our client software already connects (checked against both codebases on
-// 17 Sept 2026). Left column is money and the day-to-day; right column is
-// communication and know-how. On phones they pair up in this order.
+
+/**
+ * "Different Tools, One Connected Business": chaos to order, driven by scroll.
+ *
+ * The twelve tools start scattered, tilted and drifting over the middle of the
+ * stage. As the visitor scrolls they settle into two columns, the connecting
+ * lines draw in, and a chat in the centre asks "What's happening in my business
+ * today?" and answers with what needs attention, each line tagged with the
+ * tool it came from.
+ *
+ * Everything is driven by one number, --connect, from 0 (chaos) to 1 (answered),
+ * set from scroll position. Reduced motion, print and no-JavaScript all show the
+ * finished, answered state.
+ *
+ * Every tool is something Hyphos or our client software connects, and the
+ * Hyphos assistant does answer with sources (checked against both codebases on
+ * 17 Sept 2026). The question and figures are fictional and labelled so.
+ */
+
+// cx / cy: where each tool sits in the chaos, relative to its column slot.
+// Chosen so the loose tools cross the middle and pile over the chat.
+// jx / jy: how far it drifts while it is still loose.
 const sources = [
-  { label:'Estimates & Invoices', icon:'invoice', turn:'-5deg', drift:'-34px' },
-  { label:'Emails', icon:'email', turn:'5deg', drift:'40px' },
-  { label:'Payroll & Timesheets', icon:'payroll', turn:'4deg', drift:'-48px' },
-  { label:'Files & Documents', icon:'files', turn:'-4deg', drift:'28px' },
-  { label:'Accounting', icon:'ledger', turn:'-4deg', drift:'-26px' },
-  { label:'Meetings', icon:'meeting', turn:'5deg', drift:'46px' },
-  { label:'Supplier Bills', icon:'bill', turn:'5deg', drift:'-42px' },
-  { label:'Website & Reviews', icon:'website', turn:'-5deg', drift:'32px' },
-  { label:'Customers', icon:'people', turn:'-3deg', drift:'-30px' },
-  { label:'AI Conversations', icon:'ai', turn:'4deg', drift:'36px' },
-  { label:'Calendar & Tasks', icon:'calendar', turn:'4deg', drift:'-38px' },
-  { label:'Team Know-How', icon:'conversation', turn:'-4deg', drift:'30px' }
+  { label:'Estimates & Invoices', icon:'invoice',      cx:250, cy:170, turn:'-24deg', jx:9,  jy:-7, phase:'-.4s' },
+  { label:'Emails',               icon:'email',        cx:-520, cy:290, turn:'17deg',  jx:-8, jy:6,  phase:'-1.2s' },
+  { label:'Payroll & Timesheets', icon:'payroll',      cx:440, cy:-30, turn:'13deg',  jx:7,  jy:9,  phase:'-2.1s' },
+  { label:'Files & Documents',    icon:'files',        cx:-260, cy:180, turn:'-19deg', jx:-10,jy:-6, phase:'-.9s' },
+  { label:'Accounting',           icon:'ledger',       cx:70, cy:-80, turn:'-11deg',  jx:8,  jy:7,  phase:'-1.7s' },
+  { label:'Meetings',             icon:'meeting',      cx:-100, cy:220, turn:'22deg',  jx:-7, jy:-9, phase:'-2.6s' },
+  { label:'Supplier Bills',       icon:'bill',         cx:320, cy:-120, turn:'26deg',  jx:10, jy:-8, phase:'-.2s' },
+  { label:'Website & Reviews',    icon:'website',      cx:-650, cy:140, turn:'-15deg', jx:-9, jy:8,  phase:'-1.4s' },
+  { label:'Customers',            icon:'people',       cx:580, cy:-160, turn:'9deg',   jx:6,  jy:10, phase:'-2.3s' },
+  { label:'AI Conversations',     icon:'ai',           cx:-420, cy:-300, turn:'-23deg', jx:-8, jy:-7, phase:'-.6s' },
+  { label:'Calendar & Tasks',     icon:'calendar',     cx:470, cy:-140, turn:'-17deg', jx:9,  jy:6,  phase:'-1.9s' },
+  { label:'Team Know-How',        icon:'conversation', cx:-490, cy:-190, turn:'14deg',  jx:-6, jy:-10,phase:'-2.8s' },
+] as const;
+
+const question = 'What’s happening in my business today?';
+const answers = [
+  { text:'2 invoices due this week, $6,480 in total', source:'Invoices' },
+  { text:'The bathroom renovation is 6 hours over its estimate', source:'Timesheets' },
+  { text:'Sarah replied about Thursday’s site visit', source:'Email' },
+  { text:'Timesheets for payroll close Friday', source:'Payroll' },
 ] as const;
 ---
 <section id="how-it-works" class="v-connect-story" data-scroll-bridge aria-labelledby="connection-title">
@@ -24,36 +50,147 @@ const sources = [
     <div class="v-connect-heading"><p class="v-eyebrow">01 · The Everyday Challenge</p><h2 id="connection-title">Different Tools<br /><em>One Connected Business</em></h2></div>
     <figure>
       <div class="v-connect-stage">
-        <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M180 36.7C360 36.7 340 220 500 220 M180 110.0C360 110.0 340 220 500 220 M180 183.3C360 183.3 340 220 500 220 M180 256.7C360 256.7 340 220 500 220 M180 330.0C360 330.0 340 220 500 220 M180 403.3C360 403.3 340 220 500 220 M820 36.7C640 36.7 660 220 500 220 M820 110.0C640 110.0 660 220 500 220 M820 183.3C640 183.3 660 220 500 220 M820 256.7C640 256.7 660 220 500 220 M820 330.0C640 330.0 660 220 500 220 M820 403.3C640 403.3 660 220 500 220" /></g></svg>
-        <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M100 32.2C100 142.2 200 175.4 200 230 M300 32.2C300 142.2 200 175.4 200 230 M100 92C100 202 200 185.3 200 230 M300 92C300 202 200 185.3 200 230 M100 151.8C100 261.8 200 195.3 200 230 M300 151.8C300 261.8 200 195.3 200 230 M100 308.2C100 198.2 200 264.7 200 230 M300 308.2C300 198.2 200 264.7 200 230 M100 368C100 258 200 274.7 200 230 M300 368C300 258 200 274.7 200 230 M100 427.8C100 317.8 200 284.6 200 230 M300 427.8C300 317.8 200 284.6 200 230" /></g></svg>
-        {sources.map((source,i)=><div class="v-connect-source" style={`--item:${i};--turn:${source.turn};--drift:${source.drift}`}><Icon name={source.icon} /><span>{source.label}</span></div>)}
-        <div class="v-connect-hub"><img src="/brand/hyphos-mark.svg" width="62" height="62" alt="" /><img src="/brand/hyphos-wordmark.svg" width="101" height="32" alt="Hyphos" /><span>Customers.<br />Money. Work.</span></div>
+        <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path pathLength="1" style="--i:0" d="M180 36.7C360 36.7 340 220 500 220" /><path pathLength="1" style="--i:1" d="M820 36.7C640 36.7 660 220 500 220" /><path pathLength="1" style="--i:2" d="M180 110.0C360 110.0 340 220 500 220" /><path pathLength="1" style="--i:3" d="M820 110.0C640 110.0 660 220 500 220" /><path pathLength="1" style="--i:4" d="M180 183.3C360 183.3 340 220 500 220" /><path pathLength="1" style="--i:5" d="M820 183.3C640 183.3 660 220 500 220" /><path pathLength="1" style="--i:6" d="M180 256.7C360 256.7 340 220 500 220" /><path pathLength="1" style="--i:7" d="M820 256.7C640 256.7 660 220 500 220" /><path pathLength="1" style="--i:8" d="M180 330.0C360 330.0 340 220 500 220" /><path pathLength="1" style="--i:9" d="M820 330.0C640 330.0 660 220 500 220" /><path pathLength="1" style="--i:10" d="M180 403.3C360 403.3 340 220 500 220" /><path pathLength="1" style="--i:11" d="M820 403.3C640 403.3 660 220 500 220" /></g></svg>
+        <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path pathLength="1" style="--i:0" d="M100 25.3C100 115.3 200 156.3 200 230" /><path pathLength="1" style="--i:1" d="M300 25.3C300 115.3 200 156.3 200 230" /><path pathLength="1" style="--i:2" d="M100 69.0C100 159.0 200 167.2 200 230" /><path pathLength="1" style="--i:3" d="M300 69.0C300 159.0 200 167.2 200 230" /><path pathLength="1" style="--i:4" d="M100 112.7C100 202.7 200 178.2 200 230" /><path pathLength="1" style="--i:5" d="M300 112.7C300 202.7 200 178.2 200 230" /><path pathLength="1" style="--i:6" d="M100 347.3C100 257.3 200 281.8 200 230" /><path pathLength="1" style="--i:7" d="M300 347.3C300 257.3 200 281.8 200 230" /><path pathLength="1" style="--i:8" d="M100 391.0C100 301.0 200 292.8 200 230" /><path pathLength="1" style="--i:9" d="M300 391.0C300 301.0 200 292.8 200 230" /><path pathLength="1" style="--i:10" d="M100 434.7C100 344.7 200 303.7 200 230" /><path pathLength="1" style="--i:11" d="M300 434.7C300 344.7 200 303.7 200 230" /></g></svg>
+        {sources.map((s, i) => <div class="v-connect-source" style={`--i:${i};--turn:${s.turn};--cx:${s.cx}px;--cy:${s.cy}px;--jx:${s.jx}px;--jy:${s.jy}px;animation-delay:${s.phase}`}><Icon name={s.icon} /><span>{s.label}</span></div>)}
+        <div class="v-chat" role="group" aria-label="Example question to Hyphos and its answer">
+          <div class="v-chat-head"><img src="/brand/hyphos-mark.svg" width="22" height="22" alt="" /><span>Ask Hyphos</span><i class="v-chat-live" aria-hidden="true"></i></div>
+          <p class="v-chat-q" aria-label={question}><span data-chat-typed data-full={question}>{question}</span><b class="v-chat-caret" aria-hidden="true"></b></p>
+          <div class="v-chat-thinking" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="v-chat-a">
+            <p class="v-chat-intro">Here’s what needs you today:</p>
+            <ul>{answers.map((a, n) => <li style={`--n:${n}`}><span>{a.text}</span><em>{a.source}</em></li>)}</ul>
+          </div>
+        </div>
       </div>
-      <figcaption class="v-connect-caption"><span data-connect-status>One view of the work.</span><small>Illustrated concept · The tools you already use, connected</small></figcaption>
+      <figcaption class="v-connect-caption"><span data-connect-status>One question. A clear answer, with its sources.</span><small>Illustrated concept · Sample question and answer, figures are fictional</small></figcaption>
     </figure>
     <a class="v-skip-scene" href="#client-example">See a business example ↓</a>
   </div>
+  <!-- Scroll room for the pinned scene. A sticky element only travels inside its
+       parent's content box, so this has to be a real element, not padding. -->
+  <div class="v-connect-runway" aria-hidden="true"></div>
 </section>
+
+<style is:global>
+/* Pinned stretch so chaos, order and the answer each get room. */
+.visual-page .v-connect-story[data-motion="scroll"]{padding-bottom:45px;}
+.v-connect-runway{height:0;}
+.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:900px;}
+
+/* Lines draw in one after another. */
+.v-connect-story .v-connect-lines{opacity:1;}
+.v-connect-story .v-connect-lines path{stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0, (var(--connect) - .18 - var(--i) * .018) * 3.2, 1));}
+
+/* Tools: loose, tilted and drifting until they settle. */
+.v-connect-story .v-connect-source{
+  --chaos:calc(1 - clamp(0, (var(--connect) - .04) * 2.3, 1));
+  --spread:1;
+  --spready:1;
+  z-index:2;
+  transform:translate(calc(-50% + var(--cx) * var(--spread) * var(--chaos)), calc(-50% + var(--cy) * var(--spready) * var(--chaos))) rotate(calc(var(--turn) * var(--chaos))) scale(calc(1 - .06 * var(--chaos)));
+  box-shadow:0 calc(14px * var(--chaos)) calc(30px * var(--chaos)) #0000004d;
+  animation:v-drift 2.6s ease-in-out infinite alternate;
+  transition:none;
+}
+.v-connect-story[data-settled] .v-connect-source{animation:none;}
+@keyframes v-drift{from{translate:calc(var(--jx) * var(--chaos)) calc(var(--jy) * var(--chaos));}to{translate:calc(var(--jx) * var(--chaos) * -1) calc(var(--jy) * var(--chaos) * -1);}}
+
+/* The chat in the centre. */
+.v-chat{
+  position:absolute;left:50%;top:50%;z-index:1;width:400px;text-align:left;
+  transform:translate(-50%,-50%) scale(calc(.9 + .1 * clamp(0, (var(--connect) - .25) * 4, 1)));
+  opacity:calc(.35 + .65 * clamp(0, (var(--connect) - .25) * 4, 1));
+  padding:14px 16px 12px;border-radius:16px;background:#1d1f22;border:1px solid #b6925966;
+  box-shadow:0 0 calc(46px * clamp(0, (var(--connect) - .6) * 2.5, 1)) #c9a46a2e, 0 20px 40px #00000040;
+}
+.v-chat-head{display:flex;align-items:center;gap:8px;font-size:.75rem;letter-spacing:.02em;color:#c9c9cc;padding-bottom:10px;border-bottom:1px solid #ffffff14;}
+.v-chat-head img{width:22px;height:22px;}
+.v-chat-live{margin-left:auto;width:7px;height:7px;border-radius:99px;background:#6fbf8a;opacity:clamp(0, (var(--connect) - .3) * 6, 1);}
+.v-chat-q{margin:12px 0 0 auto!important;width:fit-content;max-width:92%;background:#3a3c40;color:#f1efe2;border-radius:12px 12px 4px 12px;padding:9px 12px;font-size:.875rem;line-height:1.35;min-height:1.35em;
+  opacity:clamp(0, (var(--connect) - .36) * 20, 1);}
+.v-chat-caret{display:inline-block;width:1px;height:1em;margin-left:2px;vertical-align:-2px;background:#d6ba8a;opacity:clamp(0, (.6 - var(--connect)) * 20, 1);animation:v-blink 1s steps(1) infinite;}
+@keyframes v-blink{50%{visibility:hidden;}}
+.v-chat-thinking{display:flex;gap:5px;height:0;overflow:visible;padding-left:4px;transform:translateY(14px);opacity:clamp(0, min((var(--connect) - .6) * 20, (.72 - var(--connect)) * 20), 1);}
+.v-chat-thinking i{width:6px;height:6px;border-radius:99px;background:#c9a46a;animation:v-dot 1s ease-in-out infinite;}
+.v-chat-thinking i:nth-child(2){animation-delay:.15s;}.v-chat-thinking i:nth-child(3){animation-delay:.3s;}
+@keyframes v-dot{50%{transform:translateY(-4px);opacity:.5;}}
+.v-chat-a{margin-top:12px;}
+.v-chat-intro{font-size:.8125rem!important;color:#c9cace!important;margin:0 0 4px!important;opacity:clamp(0, (var(--connect) - .72) * 20, 1);}
+.v-chat-a ul{list-style:none;margin:0;padding:0;}
+.v-chat-a li{
+  --show:clamp(0, (var(--connect) - .76 - var(--n) * .055) * 16, 1);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid #ffffff12;font-size:.8125rem;line-height:1.35;color:#eeeef0;
+  opacity:var(--show);transform:translateY(calc((1 - var(--show)) * 6px));
+}
+.v-chat-a li em{font-style:normal;font-size:.6875rem;color:#d6ba8a;border:1px solid #b6925966;border-radius:999px;padding:2px 8px;white-space:nowrap;flex:0 0 auto;}
+
+@media(max-width:1100px){.v-chat{width:340px;}}
+@media(max-width:850px){.v-chat{width:270px;padding:12px;}.v-chat-a li{flex-direction:column;align-items:flex-start;gap:4px;}.v-connect-story .v-connect-source{--spread:.6;}}
+
+/* Phones: three pairs above and three below, with room for the chat between. */
+@media(max-width:600px){
+  .visual-page .v-connect-story[data-motion="scroll"]{padding-bottom:28px;}
+  .visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:700px;}
+  .v-connect-story .v-connect-stage{height:540px;}
+  .v-connect-story .v-connect-caption{margin-top:4px;min-height:0;}
+  .v-connect-story .v-connect-caption small{margin-top:4px;}
+  .v-connect-story .v-connect-source{--spread:.28;--spready:.75;}
+  .v-connect-story .v-connect-source:nth-of-type(1),.v-connect-story .v-connect-source:nth-of-type(2){top:5.5%;}
+  .v-connect-story .v-connect-source:nth-of-type(3),.v-connect-story .v-connect-source:nth-of-type(4){top:15%;}
+  .v-connect-story .v-connect-source:nth-of-type(5),.v-connect-story .v-connect-source:nth-of-type(6){top:24.5%;}
+  .v-connect-story .v-connect-source:nth-of-type(7),.v-connect-story .v-connect-source:nth-of-type(8){top:75.5%;}
+  .v-connect-story .v-connect-source:nth-of-type(9),.v-connect-story .v-connect-source:nth-of-type(10){top:85%;}
+  .v-connect-story .v-connect-source:nth-of-type(11),.v-connect-story .v-connect-source:nth-of-type(12){top:94.5%;}
+  .v-chat{width:calc(100% - 8px);max-width:340px;padding:10px 12px;border-radius:13px;}
+  .v-chat-head{padding-bottom:7px;font-size:.6875rem;}
+  .v-chat-q{margin-top:8px!important;font-size:.8125rem;padding:7px 10px;}
+  .v-chat-a{margin-top:8px;}
+  .v-chat-intro{display:none;}
+  .v-chat-a li{flex-direction:row;align-items:center;font-size:.75rem;padding:6px 0;}
+  .v-chat-a li:nth-child(4){display:none;}
+}
+@media(min-width:601px) and (max-height:820px){.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:760px;}}
+/* Where the scene cannot pin (short screens, reduced motion) there is no runway. */
+@media(max-height:700px){.visual-page .v-connect-story[data-motion="scroll"] .v-connect-runway{height:0;}}
+@media(prefers-reduced-motion:reduce){.visual-page .v-connect-story .v-connect-runway{height:0;}}
+@media(prefers-reduced-motion:reduce){.v-connect-story .v-connect-source,.v-chat-caret,.v-chat-thinking i{animation:none;}}
+</style>
+
 <script>
 document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.querySelector<HTMLElement>('.site-header');
+  const sticky = story.querySelector<HTMLElement>('.v-connect-sticky');
   const status = story.querySelector<HTMLElement>('[data-connect-status]');
+  const typed = story.querySelector<HTMLElement>('[data-chat-typed]');
+  const full = typed?.dataset.full ?? '';
   let scheduled = false;
+  let shown = -1;
   function update() {
     scheduled = false;
     const headerHeight = header?.getBoundingClientRect().height ?? 88;
-    story.style.setProperty('--sticky-top', `${headerHeight + 10}px`);
-    const rect = story.getBoundingClientRect();
-    // Connect while the scene enters the viewport, then hold the finished view
-    // through the sticky section. This also works on short, unpinned screens.
+    const stickyTop = headerHeight + 10;
+    story.style.setProperty('--sticky-top', `${stickyTop}px`);
     const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-    const start = viewportHeight * .7;
-    const finish = Math.max(headerHeight + 10, viewportHeight * .25);
-    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (start - rect.top) / Math.max(1, start - finish)));
-    story.style.setProperty('--connect', String(progress));
+    const rect = story.getBoundingClientRect();
+    // Stay in full chaos until the scene is pinned and fully in view, then
+    // resolve over the pinned stretch, finishing a little before it ends so the
+    // answered state is held. Unpinned layouts (short screens) resolve as the
+    // scene scrolls up to the header instead.
+    const travel = Math.max(0, rect.height - (sticky?.offsetHeight ?? 0));
+    const pinned = travel > 200;
+    const begin = pinned ? stickyTop : viewportHeight * .6;
+    const end = pinned ? stickyTop - travel * .88 : stickyTop;
+    const progress = reduceMotion.matches ? 1 : Math.max(0, Math.min(1, (begin - rect.top) / Math.max(1, begin - end)));
+    story.style.setProperty('--connect', progress.toFixed(3));
     story.dataset.motion = reduceMotion.matches ? 'reduced' : 'scroll';
-    if (status) status.textContent = progress < .35 ? 'The pieces live in different places.' : progress < .8 ? 'Hyphos brings the relationships into view.' : 'One view of the work.';
+    if (progress > .5) story.dataset.settled = ''; else delete story.dataset.settled;
+    if (typed) {
+      const count = Math.round(full.length * Math.max(0, Math.min(1, (progress - .38) / .2)));
+      if (count !== shown) { typed.textContent = full.slice(0, count); shown = count; }
+    }
+    if (status) status.textContent = progress < .22 ? 'Invoices here. Emails there. Hours somewhere else.' : progress < .55 ? 'Hyphos pulls the pieces together.' : 'One question. A clear answer, with its sources.';
   }
   function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }
   window.addEventListener('scroll', schedule, { passive: true });
