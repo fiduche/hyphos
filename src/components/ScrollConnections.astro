@@ -10,8 +10,11 @@ import Icon from './FlowIcon.astro';
  * today?" and answers with what needs attention, each line tagged with the
  * tool it came from.
  *
- * Everything is driven by one number, --connect, from 0 (chaos) to 1 (answered).
- * It is not tied to scroll position: the page has too little scroll distance for
+ * Everything is driven by one number, --connect, from 0 (chaos) to 1 (draft).
+ * The chat asks twice: once for what needs attention, once for a draft of the
+ * work, to show it produces outputs and not only answers.
+ *
+ * It is not tied to scroll: the page has too little scroll distance for
  * the sort to be seen, so the scene waits in chaos and plays on a timer when it
  * is mostly on screen. It resets once it has scrolled fully out of view, so it
  * plays again on the way back. Reduced motion, print and no-JavaScript all show
@@ -40,12 +43,21 @@ const sources = [
   { label:'Team Know-How',        icon:'conversation', cx:-490, cy:-190, turn:'14deg',  jx:-6, jy:-10,phase:'-2.8s' },
 ] as const;
 
-const question = 'What’s happening in my business today?';
+// Two exchanges: Hyphos answers a question, then produces a draft. Both are
+// things it does (the assistant answers with sources; deliverables, documents
+// and engagement plans are built). The wording and figures are fictional.
+const askOne = 'What’s happening in my business today?';
 const answers = [
   { text:'2 invoices due this week, $6,480 in total', source:'Invoices' },
   { text:'The bathroom renovation is 6 hours over its estimate', source:'Timesheets' },
   { text:'Sarah replied about Thursday’s site visit', source:'Email' },
   { text:'Timesheets for payroll close Friday', source:'Payroll' },
+] as const;
+const askTwo = 'Put together the engagement summary for this client.';
+const output = [
+  { text:'What was agreed: 3 deliverables', source:'Contract' },
+  { text:'Done so far: 38 hours, 2 approved', source:'Timesheets' },
+  { text:'Still open: privacy review has no owner', source:'Scope' },
 ] as const;
 ---
 <section id="how-it-works" class="v-connect-story" data-scroll-bridge aria-labelledby="connection-title">
@@ -56,17 +68,30 @@ const answers = [
         <svg class="v-connect-lines v-connect-lines--wide" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path pathLength="1" style="--i:0" d="M180 36.7C360 36.7 340 220 500 220" /><path pathLength="1" style="--i:1" d="M820 36.7C640 36.7 660 220 500 220" /><path pathLength="1" style="--i:2" d="M180 110.0C360 110.0 340 220 500 220" /><path pathLength="1" style="--i:3" d="M820 110.0C640 110.0 660 220 500 220" /><path pathLength="1" style="--i:4" d="M180 183.3C360 183.3 340 220 500 220" /><path pathLength="1" style="--i:5" d="M820 183.3C640 183.3 660 220 500 220" /><path pathLength="1" style="--i:6" d="M180 256.7C360 256.7 340 220 500 220" /><path pathLength="1" style="--i:7" d="M820 256.7C640 256.7 660 220 500 220" /><path pathLength="1" style="--i:8" d="M180 330.0C360 330.0 340 220 500 220" /><path pathLength="1" style="--i:9" d="M820 330.0C640 330.0 660 220 500 220" /><path pathLength="1" style="--i:10" d="M180 403.3C360 403.3 340 220 500 220" /><path pathLength="1" style="--i:11" d="M820 403.3C640 403.3 660 220 500 220" /></g></svg>
         <svg class="v-connect-lines v-connect-lines--narrow" viewBox="0 0 400 460" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path pathLength="1" style="--i:0" d="M100 25.3C100 115.3 200 156.3 200 230" /><path pathLength="1" style="--i:1" d="M300 25.3C300 115.3 200 156.3 200 230" /><path pathLength="1" style="--i:2" d="M100 69.0C100 159.0 200 167.2 200 230" /><path pathLength="1" style="--i:3" d="M300 69.0C300 159.0 200 167.2 200 230" /><path pathLength="1" style="--i:4" d="M100 112.7C100 202.7 200 178.2 200 230" /><path pathLength="1" style="--i:5" d="M300 112.7C300 202.7 200 178.2 200 230" /><path pathLength="1" style="--i:6" d="M100 347.3C100 257.3 200 281.8 200 230" /><path pathLength="1" style="--i:7" d="M300 347.3C300 257.3 200 281.8 200 230" /><path pathLength="1" style="--i:8" d="M100 391.0C100 301.0 200 292.8 200 230" /><path pathLength="1" style="--i:9" d="M300 391.0C300 301.0 200 292.8 200 230" /><path pathLength="1" style="--i:10" d="M100 434.7C100 344.7 200 303.7 200 230" /><path pathLength="1" style="--i:11" d="M300 434.7C300 344.7 200 303.7 200 230" /></g></svg>
         {sources.map((s, i) => <div class="v-connect-source" style={`--i:${i};--turn:${s.turn};--cx:${s.cx}px;--cy:${s.cy}px;--jx:${s.jx}px;--jy:${s.jy}px;animation-delay:${s.phase}`}><Icon name={s.icon} /><span>{s.label}</span></div>)}
-        <div class="v-chat" role="group" aria-label="Example question to Hyphos and its answer">
+        <div class="v-chat" role="group" aria-label="Example questions to Hyphos, its answer and the draft it produces">
           <div class="v-chat-head"><img src="/brand/hyphos-mark.svg" width="22" height="22" alt="" /><span>Ask Hyphos</span><i class="v-chat-live" aria-hidden="true"></i></div>
-          <p class="v-chat-q" aria-label={question}><span data-chat-typed data-full={question}>{question}</span><b class="v-chat-caret" aria-hidden="true"></b></p>
-          <div class="v-chat-thinking" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="v-chat-a">
-            <p class="v-chat-intro">Here’s what needs you today:</p>
-            <ul>{answers.map((a, n) => <li style={`--n:${n}`}><span>{a.text}</span><em>{a.source}</em></li>)}</ul>
+          <div class="v-chat-body">
+            <div class="v-chat-ex">
+              <p class="v-chat-q" aria-label={askOne}><span data-typed data-full={askOne} data-from=".18" data-to=".28">{askOne}</span><b class="v-chat-caret" style="--from:.18;--to:.3" aria-hidden="true"></b></p>
+              <div class="v-chat-thinking" style="--from:.29;--to:.37" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="v-chat-a">
+                <p class="v-chat-intro">Here’s what needs you today:</p>
+                <ul>{answers.map((a, n) => <li style={`--n:${n};--from:.37`}><span>{a.text}</span><em>{a.source}</em></li>)}</ul>
+              </div>
+            </div>
+            <div class="v-chat-ex">
+              <p class="v-chat-q" aria-label={askTwo}><span data-typed data-full={askTwo} data-from=".56" data-to=".67">{askTwo}</span><b class="v-chat-caret" style="--from:.56;--to:.69" aria-hidden="true"></b></p>
+              <div class="v-chat-thinking" style="--from:.68;--to:.76" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="v-chat-draft">
+                <p class="v-draft-head"><span>Engagement Summary</span><em>Draft</em></p>
+                <ul>{output.map((o, n) => <li style={`--n:${n};--from:.78`}><span>{o.text}</span><em>{o.source}</em></li>)}</ul>
+                <p class="v-draft-foot">Ready for your review.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <figcaption class="v-connect-caption"><span data-connect-status>One question. A clear answer, with its sources.</span><small>Illustrated concept · Sample question and answer, figures are fictional</small></figcaption>
+      <figcaption class="v-connect-caption"><span data-connect-status>Ask for the work itself. Get a draft you can check.</span><small>Illustrated concept · Sample questions, answer and draft, figures are fictional</small></figcaption>
     </figure>
     <a class="v-skip-scene" href="#client-example">See a business example ↓</a>
   </div>
@@ -106,25 +131,44 @@ const answers = [
 .v-chat-head{display:flex;align-items:center;gap:8px;font-size:.75rem;letter-spacing:.02em;color:#c9c9cc;padding-bottom:10px;border-bottom:1px solid #ffffff14;}
 .v-chat-head img{width:22px;height:22px;}
 .v-chat-live{margin-left:auto;width:7px;height:7px;border-radius:99px;background:#6fbf8a;opacity:clamp(0, (var(--connect) - .3) * 6, 1);}
+.v-chat-body{position:relative;overflow:hidden;max-height:302px;
+  /* The conversation scrolls up as the second question arrives, so the box
+     keeps its height instead of growing past the scene. */
+  --scroll:clamp(0, (var(--connect) - .55) * 5, 1);
+  mask-image:linear-gradient(#0000 0, #000 calc(18px * var(--scroll)), #000 100%);}
+.v-chat-ex{transform:translateY(calc(var(--scroll) * -196px));}
 .v-chat-q{margin:12px 0 0 auto!important;width:fit-content;max-width:92%;background:#3a3c40;color:#f1efe2;border-radius:12px 12px 4px 12px;padding:9px 12px;font-size:.875rem;line-height:1.35;min-height:1.35em;
-  opacity:clamp(0, (var(--connect) - .36) * 20, 1);}
-.v-chat-caret{display:inline-block;width:1px;height:1em;margin-left:2px;vertical-align:-2px;background:#d6ba8a;opacity:clamp(0, (.6 - var(--connect)) * 20, 1);animation:v-blink 1s steps(1) infinite;}
+  opacity:clamp(0, (var(--connect) - var(--from)) * 22, 1);}
+.v-chat-caret{display:inline-block;width:1px;height:1em;margin-left:2px;vertical-align:-2px;background:#d6ba8a;opacity:clamp(0, min((var(--connect) - var(--from)) * 22, (var(--to) - var(--connect)) * 22), 1);animation:v-blink 1s steps(1) infinite;}
 @keyframes v-blink{50%{visibility:hidden;}}
-.v-chat-thinking{display:flex;gap:5px;height:0;overflow:visible;padding-left:4px;transform:translateY(14px);opacity:clamp(0, min((var(--connect) - .6) * 20, (.72 - var(--connect)) * 20), 1);}
+.v-chat-thinking{display:flex;gap:5px;height:0;overflow:visible;padding-left:4px;transform:translateY(14px);opacity:clamp(0, min((var(--connect) - var(--from)) * 22, (var(--to) - var(--connect)) * 22), 1);}
 .v-chat-thinking i{width:6px;height:6px;border-radius:99px;background:#c9a46a;animation:v-dot 1s ease-in-out infinite;}
 .v-chat-thinking i:nth-child(2){animation-delay:.15s;}.v-chat-thinking i:nth-child(3){animation-delay:.3s;}
 @keyframes v-dot{50%{transform:translateY(-4px);opacity:.5;}}
 .v-chat-a{margin-top:12px;}
-.v-chat-intro{font-size:.8125rem!important;color:#c9cace!important;margin:0 0 4px!important;opacity:clamp(0, (var(--connect) - .72) * 20, 1);}
+.v-chat-intro{font-size:.8125rem!important;color:#c9cace!important;margin:0 0 4px!important;opacity:clamp(0, (var(--connect) - .36) * 22, 1);}
 .v-chat-a ul{list-style:none;margin:0;padding:0;}
 .v-chat-a li{
-  --show:clamp(0, (var(--connect) - .76 - var(--n) * .055) * 16, 1);
+  --show:clamp(0, (var(--connect) - var(--from) - var(--n) * .035) * 22, 1);
   display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid #ffffff12;font-size:.8125rem;line-height:1.35;color:#eeeef0;
   opacity:var(--show);transform:translateY(calc((1 - var(--show)) * 6px));
 }
+/* The draft it produces, rather than just an answer. */
+.v-chat-draft{margin-top:12px;border:1px solid #b6925966;border-radius:10px;background:#242629;padding:10px 12px;
+  opacity:clamp(0, (var(--connect) - .77) * 22, 1);}
+.v-draft-head{display:flex!important;align-items:center;justify-content:space-between;gap:8px;margin:0 0 4px!important;font-size:.8125rem!important;color:#f1efe2!important;font-weight:500;}
+.v-draft-head em{font-style:normal;font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:#1a1a1a;background:#c9a46a;border-radius:4px;padding:2px 6px;}
+.v-chat-draft ul{list-style:none;margin:0;padding:0;}
+.v-chat-draft li{
+  --show:clamp(0, (var(--connect) - var(--from) - var(--n) * .045) * 22, 1);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid #ffffff12;font-size:.8125rem;line-height:1.35;color:#eeeef0;
+  opacity:var(--show);transform:translateY(calc((1 - var(--show)) * 6px));}
+.v-draft-foot{margin:8px 0 0!important;font-size:.6875rem!important;color:#c9a46a!important;opacity:clamp(0, (var(--connect) - .94) * 20, 1);}
+.v-chat-draft li em,
 .v-chat-a li em{font-style:normal;font-size:.6875rem;color:#d6ba8a;border:1px solid #b6925966;border-radius:999px;padding:2px 8px;white-space:nowrap;flex:0 0 auto;}
 
 @media(max-width:1100px){.v-chat{width:340px;}}
+@media(max-width:850px){.v-chat-body{max-height:290px;}.v-chat-ex{transform:translateY(calc(var(--scroll) * -214px));}}
 @media(max-width:850px){.v-chat{width:270px;padding:12px;}.v-chat-a li{flex-direction:column;align-items:flex-start;gap:4px;}.v-connect-story .v-connect-source{--spread:.6;}}
 
 /* Phones: three pairs above and three below, with room for the chat between. */
@@ -147,8 +191,18 @@ const answers = [
   .v-chat-intro{display:none;}
   .v-chat-a li{flex-direction:row;align-items:center;font-size:.75rem;padding:6px 0;}
   .v-chat-a li:nth-child(4){display:none;}
+  /* Sized to the second exchange (question plus draft), measured at 375px. */
+  .v-chat-body{max-height:170px;}
+  .v-chat-ex{transform:translateY(calc(var(--scroll) * -153px));}
+  .v-chat-draft{margin-top:8px;padding:8px 10px;}
+  .v-chat-draft li{font-size:.75rem;padding:5px 0;}
+  /* Two lines of the draft fit between the tool rows on a phone. */
+  .v-chat-draft li:nth-child(3){display:none;}
+  .v-draft-foot{display:none;}
+  .v-draft-head{font-size:.75rem!important;}
 }
-@media(prefers-reduced-motion:reduce){.v-connect-story .v-connect-source,.v-chat-caret,.v-chat-thinking i{animation:none;}}
+@media(prefers-reduced-motion:reduce){.v-connect-story .v-connect-source,.v-chat-caret,.v-chat-thinking i{animation:none;}
+.v-chat-caret{opacity:0;}}
 </style>
 
 <script>
@@ -156,19 +210,28 @@ document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const stage = story.querySelector<HTMLElement>('.v-connect-stage');
   const status = story.querySelector<HTMLElement>('[data-connect-status]');
-  const typed = story.querySelector<HTMLElement>('[data-chat-typed]');
-  const full = typed?.dataset.full ?? '';
-  const DURATION = 5200;   // ms from chaos to the last answer line
-  let shown = -1;
+  const typers = [...story.querySelectorAll<HTMLElement>('[data-typed]')].map((el) => ({
+    el,
+    full: el.dataset.full ?? '',
+    from: Number(el.dataset.from ?? 0),
+    to: Number(el.dataset.to ?? 1),
+    shown: -1,
+  }));
+  const DURATION = 9000;   // ms from chaos through the answer to the draft
 
   function render(progress: number) {
     story.style.setProperty('--connect', progress.toFixed(3));
     if (progress > .5) story.dataset.settled = ''; else delete story.dataset.settled;
-    if (typed) {
-      const count = Math.round(full.length * Math.max(0, Math.min(1, (progress - .38) / .2)));
-      if (count !== shown) { typed.textContent = full.slice(0, count); shown = count; }
+    for (const t of typers) {
+      const count = Math.round(t.full.length * Math.max(0, Math.min(1, (progress - t.from) / (t.to - t.from))));
+      if (count !== t.shown) { t.el.textContent = t.full.slice(0, count); t.shown = count; }
     }
-    if (status) status.textContent = progress < .12 ? 'Invoices here. Emails there. Hours somewhere else.' : progress < .55 ? 'Hyphos pulls the pieces together.' : 'One question. A clear answer, with its sources.';
+    if (status) {
+      status.textContent = progress < .12 ? 'Invoices here. Emails there. Hours somewhere else.'
+        : progress < .35 ? 'Hyphos pulls the pieces together.'
+        : progress < .7 ? 'Ask a question. Get the answer, with its sources.'
+        : 'Ask for the work itself. Get a draft you can check.';
+    }
   }
 
   if (reduceMotion.matches || !stage || !('IntersectionObserver' in window)) {
