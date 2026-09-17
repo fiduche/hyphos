@@ -1,0 +1,53 @@
+---
+import FieldNote from '../../layouts/FieldNoteLayout.astro';
+
+/**
+ * The "10 ways" piece promised on the golf entry form and linked from the
+ * follow-up email. Moved from hyphosconsulting.com/ai, which now redirects
+ * here. Written for a small business owner reading on a phone in the evening:
+ * concrete pains first, why most AI disappoints second, one small offer last.
+ */
+const ways = [
+  ['Reading Supplier Invoices', 'Pull the amounts, dates and line items off a PDF and code them to the right account, instead of someone retyping them into the accounting system.'],
+  ['Turning A Conversation Into A Quote', 'Notes from a site visit become a priced estimate in your own format, with your own margins, ready for you to check rather than write.'],
+  ['Meetings That Produce Actions, Not Transcripts', "A wall of text nobody reads is not useful. What is useful: here are the four things somebody agreed to do, and who owns each one."],
+  ['Filling Out Your Own Paperwork', 'Contracts, letters, service agreements: the ones where 90% is the same every time and 10% is the part that matters. The 90% should not be manual.'],
+  ['Catching What Does Not Match', 'Invoices against purchase orders, payments against invoices, hours against schedules. Software is patient about reconciliation in a way people are not.'],
+  ['Answering The Same Question For The Hundredth Time', '"Where is my order." "What are your hours." "What do I need to bring." A portal that answers accurately from your real data beats a game of phone tag.'],
+  ['Timesheets That Fill Themselves In', 'Most of the information (who was where, on what job, for how long) already exists somewhere else in your business. Asking people to retype it is a choice.'],
+  ['Finding The Thing You Know You Have Somewhere', 'Search that understands "the Henderson quote from last spring" rather than needing the exact filename you cannot remember.'],
+  ['Drafting The Follow-Up You Keep Not Sending', 'The email to the customer who went quiet. The review request. The seasonal reminder. Drafted and waiting for your approval beats sitting in your head.'],
+  ['Noticing What Is About To Go Wrong', 'A job trending over budget, a client who has gone quiet, a renewal nobody has picked up. The signals are usually already in your systems, unwatched.'],
+];
+---
+<FieldNote title="10 Ways Small Businesses Are Actually Using AI Right Now" description="Not the demos. The unglamorous things that quietly take hours out of a week, and the reason most of it disappoints the first time." number="03" readTime="5 minute read" nextHref="/work/cornerstone/" nextTitle="When Your Website Becomes Part Of Your Business">
+  <p>If one of these is the thing you wrote down at the golf tournament, that is not a coincidence. Nearly everybody writes down one of these.</p>
+
+  <ol class="fn-ways">
+    {ways.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+  </ol>
+
+  <h2>Why Most Of This Disappoints The First Time</h2>
+  <p>Every business owner who has tried this has had the same experience. The demo is astonishing. You bring it into your actual business and it is confidently, fluently wrong, because it does not know your suppliers, your pricing, your customers, or the way you actually do things.</p>
+  <div class="fn-callout"><span class="fn-label">The Real Problem</span><p>That is not a smartness problem. It is an information problem.</p></div>
+  <p>A model with no access to your business will guess, and it will guess in complete sentences, which is what makes it dangerous rather than merely useless.</p>
+  <p>You cannot fix that by asking it to be more careful. It is already trying. The fix is structural: give it your real information, stored so it can be retrieved and checked, and build in the discipline to answer "I don't know" instead of filling the gap.</p>
+  <p>That is most of the job. The interesting part was never the chatbot. It is the plumbing underneath it.</p>
+
+  <h2>What We've Built</h2>
+  <p><strong>Connected business software for <a href="/work/cornerstone/">Cornerstone Funeral Home</a>.</strong> The system the business runs on: estimates, documents, scheduling, QuickBooks integration, the public website and marketing reporting, on one database, so one business stops retyping itself into six different tools.</p>
+  <p><strong><a href="/work#wander">Wander</a>.</strong> A family app for finding parks, playgrounds and trails nearby, live on the App Store.</p>
+  <p><strong><a href="/#how-it-works">Hyphos</a>.</strong> Our own platform, and the deep end of this: the layer that gives AI the correct information from your business and a way to show where it came from.</p>
+
+  <h2>If One Of These Is Your Thing</h2>
+  <p>Daniel will spend 45 minutes with you mapping where AI could realistically save your business time, and you get a one-page write-up at the end, whether or not we end up working together. If the honest answer is that you do not need us for it, we would rather tell you that.</p>
+  <p><a href="/contact">Ask about a 45-minute session</a> or <a href="/work">see the work</a>.</p>
+</FieldNote>
+
+<style is:global>
+  .fn-ways { list-style: none; counter-reset: way; padding-left: 0 !important; }
+  .fn-ways li { counter-increment: way; display: grid; grid-template-columns: 2.4rem 1fr; column-gap: 10px; padding: 14px 0 !important; margin: 0 !important; border-top: 1px solid #ffffff1f; }
+  .fn-ways li::before { content: counter(way, decimal-leading-zero); color: #d6bb90; font-size: .95rem; font-variant-numeric: tabular-nums; padding-top: 3px; grid-row: span 2; }
+  .fn-ways h3 { margin: 0 0 6px !important; }
+  .fn-ways p { margin: 0 !important; }
+</style>

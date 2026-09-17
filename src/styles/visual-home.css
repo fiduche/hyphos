@@ -140,3 +140,8 @@
 @media(prefers-reduced-motion:reduce){.v-connect-story[data-motion]{padding-bottom:28px;}.v-connect-sticky{position:relative;top:auto;}}
 @media(max-height:700px){.v-connect-sticky{position:relative;top:auto;}.v-connect-story[data-motion="scroll"]{padding-bottom:28px;}}
 @media print{.v-connect-story{--connect:1!important;padding-bottom:20px!important;}.v-connect-sticky{position:relative;top:auto;}.v-skip-scene{display:none;}}
+
+/* Title case runs wider than sentence case; give the hero line room so it does not strand a single word. */
+.visual-page .v-hero h1{max-width:1060px;}
+/* The gold used on dark sections is 2:1 on the light ones. A deeper gold keeps the accent readable. */
+.visual-page .v-light-chapter h2 em{color:#7a5b27;}

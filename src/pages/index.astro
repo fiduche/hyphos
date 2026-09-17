@@ -4,45 +4,63 @@ import Icon from '../components/FlowIcon.astro';
 import ScrollConnections from '../components/ScrollConnections.astro';
 import FieldNotesPreview from '../components/FieldNotesPreview.astro';
 import RequirementsExample from '../components/RequirementsExample.astro';
-import { consultingUrl } from '../lib/site-links';
+import { wanderAppStoreUrl, wanderWebsiteUrl } from '../lib/site-links';
 import '../styles/visual-home.css';
 ---
-<BaseLayout title="Hyphos — your best people have better things to do" description="Less chasing information. Less entering it twice. Hyphos connects the knowledge behind your work, with people providing judgment where it matters.">
+<BaseLayout title="Hyphos: Your Best People Have Better Things To Do" description="Less chasing information. Less entering it twice. Hyphos connects the knowledge behind your work, with people providing judgment where it matters.">
 <div class="visual-page v-dark">
   <section class="v-hero v-shell">
-    <p class="v-eyebrow">Hyphos · Developing with design partners</p>
-    <h1>Your best people<br /><em>have better things to do.</em></h1>
+    <p class="v-eyebrow">Hyphos Inc. · Software &amp; Knowledge Platform</p>
+    <h1>Your Best People<br /><em>Have Better Things To Do</em></h1>
     <p class="v-intro">Less chasing information. Less entering it twice. Less explaining it again.</p>
-    <p class="v-hero-context">What does the contract say? What do the regulations require? Hyphos connects those obligations with your conversations, documents and scope of work—so your team can see what needs doing, and why.</p>
-    <div class="v-actions"><a href="#how-it-works" class="button button--gold">See how it works ↓</a><a href="#field-notes" class="text-link">Explore the field notes ↓</a></div>
-    <details class="v-detail"><summary>What is Hyphos?</summary><div><p>Hyphos connects the context scattered across AI conversations, documents, meetings, contracts, scopes of work and regulations. A contract commitment can be connected to a scope item, the regulatory source that affects it and the evidence from the work.</p><p>Those relationships help your team review gaps, understand the effect of a change and trace a decision back to its sources. We’re developing the product with design partners around real workflows. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
+    <p class="v-hero-context">What does the contract say? What do the regulations require? Hyphos connects those obligations with your conversations, documents and scope of work, so your team can see what needs doing, and why.</p>
+    <div class="v-actions"><a href="#how-it-works" class="button button--gold">See How It Works ↓</a><a href="#field-notes" class="text-link">Explore The Field Notes ↓</a></div>
+    <details class="v-detail"><summary>What Is Hyphos?</summary><div><p>Hyphos connects the context scattered across AI conversations, documents, meetings, contracts, scopes of work and regulations. A contract commitment can be connected to a scope item, the regulatory source that affects it and the evidence from the work.</p><p>Those relationships help your team review gaps, understand the effect of a change and trace a decision back to its sources. We’re open to design partners who want to shape it around a real workflow. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
   </section>
   <ScrollConnections />
   <section id="client-example" class="v-chapter v-light-chapter"><div class="v-shell">
-    <div class="v-chapter-heading"><p class="v-eyebrow">02 · A consulting engagement, connected</p><h2>What was agreed.<br />What is required.<br /><em>What needs doing.</em></h2><p>Hyphos brings these relationships into view, with the source behind each one.</p></div>
+    <div class="v-chapter-heading"><p class="v-eyebrow">02 · A Consulting Engagement, Connected</p><h2>What Was Agreed<br />What Is Required<br /><em>What Needs Doing</em></h2><p>Hyphos brings these relationships into view, with the source behind each one.</p></div>
     <RequirementsExample />
-    <details class="v-detail"><summary>What happens when a requirement changes?</summary><div><p>The next question is which commitments, scope items, tasks and records depend on it. Hyphos is designed to carry those relationships with the information, so your team can see what needs another look.</p><p>The source stays available alongside the work. People can check applicability, resolve conflicting obligations and review the proposed change with the relevant evidence in view.</p><p><a href="/field-notes/which-document-can-you-trust/">Read the field note: what does this work need to satisfy? ↗</a></p></div></details>
+    <details class="v-detail"><summary>What Happens When A Requirement Changes?</summary><div><p>The next question is which commitments, scope items, tasks and records depend on it. Hyphos is designed to carry those relationships with the information, so your team can see what needs another look.</p><p>The source stays available alongside the work. People can check applicability, resolve conflicting obligations and review the proposed change with the relevant evidence in view.</p><p><a href="/field-notes/which-document-can-you-trust/">Read the field note: what does this work need to satisfy? ↗</a></p></div></details>
   </div></section>
   <section class="v-chapter"><div class="v-shell">
-    <div class="v-chapter-heading"><p class="v-eyebrow">03 · Carry it forward</p><h2>New person.<br /><em>Same understanding.</em></h2></div>
+    <div class="v-chapter-heading"><p class="v-eyebrow">03 · Carry It Forward</p><h2>New Person<br /><em>Same Understanding</em></h2></div>
     <figure>
-      <div class="v-handoff"><div class="v-person"><Icon name="people" /><span>Today’s team</span></div><div class="v-task"><p>Next step · Engagement lead</p><h3>Complete the engagement scope.</h3><ul><li><Icon name="document" />Contract: interviews & recommendations</li><li><Icon name="regulations" />Privacy requirement: source linked</li><li><Icon name="scope" />Open: confirm review & owner</li></ul></div><div class="v-person"><Icon name="people" /><span>The next person</span></div></div>
+      <div class="v-handoff"><div class="v-person"><Icon name="people" /><span>Today’s team</span></div><div class="v-task"><p>Next step · Engagement lead</p><h3>Complete The Engagement Scope</h3><ul><li><Icon name="document" />Contract: interviews & recommendations</li><li><Icon name="regulations" />Privacy requirement: source linked</li><li><Icon name="scope" />Open: confirm review & owner</li></ul></div><div class="v-person"><Icon name="people" /><span>The next person</span></div></div>
       <figcaption class="v-caption" style="text-align:center">Illustrative handoff · Sample content</figcaption>
     </figure>
-    <details class="v-detail"><summary>What changes at the handoff?</summary><div><p>The next consultant or team member can see the client commitment, the scope, the relevant sources and the work still to do, without asking someone to reconstruct every conversation.</p><p>Hyphos supports their judgment; the team remains responsible for reviewing and carrying out the work.</p></div></details>
-    <div class="v-work-links"><a href="/architecture" class="text-link">Explore how Hyphos is designed ↗</a></div>
+    <details class="v-detail"><summary>What Changes At The Handoff?</summary><div><p>The next consultant or team member can see the client commitment, the scope, the relevant sources and the work still to do, without asking someone to reconstruct every conversation.</p><p>Hyphos supports their judgment; the team remains responsible for reviewing and carrying out the work.</p></div></details>
+    <div class="v-work-links"><a href="/architecture" class="text-link">Explore How Hyphos Is Designed ↗</a></div>
   </div></section>
   <section id="domas" class="v-chapter v-domas"><div class="v-shell">
-    <div class="v-chapter-heading"><p class="v-eyebrow">Domas · Build & evolve</p><h2>Hyphos, shaped<br /><em>around your business.</em></h2><p>From consulting engagements to day-to-day operations, Domas builds and evolves Hyphos around your workflows, terminology and requirements.</p></div>
+    <div class="v-chapter-heading"><p class="v-eyebrow">Domas · Build & Evolve</p><h2>Hyphos, Shaped<br /><em>Around Your Business</em></h2><p>From consulting engagements to day-to-day operations, Domas builds and evolves Hyphos around your workflows, terminology and requirements.</p></div>
     <figure>
-      <div class="v-domas-flow"><div class="v-business-needs"><div><Icon name="people" /><span>Your process</span></div><div><Icon name="document" /><span>Your terminology</span></div><div><Icon name="regulations" /><span>Your requirements</span></div></div><div class="v-domas-core"><strong>Domas</strong><span aria-label="shapes">→</span></div><div class="v-tailored"><p>Hyphos for your business</p><h3>Your way of working.</h3><ol><li><span>01</span>Client intake</li><li><span>02</span>Scope approval</li><li><span>03</span>Delivery & review</li></ol></div></div>
+      <div class="v-domas-flow"><div class="v-business-needs"><div><Icon name="people" /><span>Your process</span></div><div><Icon name="document" /><span>Your terminology</span></div><div><Icon name="regulations" /><span>Your requirements</span></div></div><div class="v-domas-core"><strong>Domas</strong><span aria-label="shapes">→</span></div><div class="v-tailored"><p>Hyphos for your business</p><h3>Your Way Of Working</h3><ol><li><span>01</span>Client intake</li><li><span>02</span>Scope approval</li><li><span>03</span>Delivery & review</li></ol></div></div>
       <figcaption class="v-caption" style="text-align:center">Illustrative workflow · Shaped with your team</figcaption>
     </figure>
     <p class="v-domas-loop">Understand the business → Build → Review → Evolve ↻</p>
-    <details class="v-detail"><summary>How Domas adapts Hyphos to you</summary><div><p>Your business has its own language, relationships, approval steps and exceptions. Domas is the build and adaptation capability behind Hyphos: it carries that context into planning, building and reviewing changes to the platform.</p><p>The result can include tailored workflows, integrations and capabilities. Changes are shaped with your team and reviewed before release, with the reasoning retained for the next improvement.</p><p><a href="/architecture#domas">Explore Domas and the architecture ↗</a></p></div></details>
+    <details class="v-detail"><summary>How Domas Adapts Hyphos To You</summary><div><p>Your business has its own language, relationships, approval steps and exceptions. Domas is the build and adaptation capability behind Hyphos: it carries that context into planning, building and reviewing changes to the platform.</p><p>The result can include tailored workflows, integrations and capabilities. Changes are shaped with your team and reviewed before release, with the reasoning retained for the next improvement.</p><p><a href="/architecture#domas">Explore Domas and the architecture ↗</a></p></div></details>
+  </div></section>
+  <section id="selected-work" class="v-chapter v-proof v-light-chapter"><div class="v-shell">
+    <div class="v-chapter-heading"><p class="v-eyebrow">Built By Hyphos</p><h2>Behind The Website<br /><em>A Connected Business</em></h2><p>We also build software for clients. The same idea runs through it: record information once, and use it where it belongs.</p></div>
+    <div class="v-proof-display">
+      <figure><div class="v-portal-frame"><img src="/work/cornerstone/staff-portal.png" width="2912" height="2340" alt="Actual client staff portal, showing its calendar and business navigation" loading="lazy" /></div><figcaption class="v-caption">Actual client software · Staff portal</figcaption></figure>
+      <div class="v-proof-points"><div class="v-proof-point"><Icon name="people" /><div><strong>The Team</strong><span>Records &amp; daily work</span></div></div><div class="v-proof-point"><Icon name="website" /><div><strong>The Customer</strong><span>Website &amp; publishing</span></div></div><div class="v-proof-point"><Icon name="insight" /><div><strong>The Next Decision</strong><span>Marketing &amp; reporting</span></div></div></div>
+    </div>
+    <details class="v-detail"><summary>See How The Pieces Connect</summary><div><p>For client Cornerstone Funeral Home, service records can supply website content. The public site reads published information, while website activity and available marketing signals feed staff reporting.</p><p><a href="/work/cornerstone">Explore the connected software ↗</a></p></div></details>
+    <div class="v-work-links"><a href="/work" class="text-link">See All Our Work <span aria-hidden="true">↗</span></a></div>
+  </div></section>
+  <section class="v-chapter v-wander v-light-chapter"><div class="v-shell">
+    <div class="v-chapter-heading"><p class="v-eyebrow">Wander · Live On The App Store</p><h2>From “Let’s Go Outside”<br /><em>To Out The Door</em></h2><p>A family app for finding parks, playgrounds and trails, built from the ground up.</p></div>
+    <div class="v-wander-shots"><img src="/work/wander/wander-find.webp" width="640" height="1388" alt="Wander map showing nearby parks and playgrounds" loading="lazy" /><img src="/work/wander/wander-check.webp" width="640" height="1388" alt="Wander park details with photos, reviews and amenities" loading="lazy" /><img src="/work/wander/wander-go.webp" width="640" height="1388" alt="Wander outing plan to share with friends" loading="lazy" /></div>
+    <div class="v-actions"><a href={wanderAppStoreUrl} class="button button--gold" target="_blank" rel="noopener">Get Wander <span aria-hidden="true">↗</span></a><a href="/work#wander" class="text-link">About The Project <span aria-hidden="true">↗</span></a></div>
+  </div></section>
+  <section class="v-chapter"><div class="v-shell">
+    <div class="v-chapter-heading"><p class="v-eyebrow">Where We Can Help</p><h2>Start Where The Work<br /><em>Gets Stuck</em></h2></div>
+    <div class="v-capabilities"><article><Icon name="records" /><h3>Connect Your Systems</h3><p>Less copying. Fewer gaps.</p></article><article><Icon name="website" /><h3>Build The Missing Piece</h3><p>Software and apps that fit the work.</p></article><article><Icon name="people" /><h3>Put Knowledge To Work</h3><p>Practical AI on your own information.</p></article></div>
+    <div class="v-work-links"><a href="/services" class="text-link">Explore Our Services <span aria-hidden="true">↗</span></a></div>
   </div></section>
   <FieldNotesPreview />
-  <section class="v-closing v-shell"><p class="v-eyebrow" style="margin-bottom:20px">Start small</p><h2>Does this happen<br /><em>in your business?</em></h2><p>A question is enough. There’s no need for a prepared brief.</p><div class="v-actions"><a href="mailto:info@hyphos.io?subject=A%20question%20about%20Hyphos" class="button button--gold">Ask us a question ↗</a><a href="/contact" class="text-link">Talk with us ↗</a></div><p>Opens your email app.</p></section>
-  <div class="v-bridge v-shell"><span>A product from Hyphos Inc.</span><a href={consultingUrl}>Need help connecting your business systems? ↗</a></div>
+  <section class="v-closing v-shell"><p class="v-eyebrow" style="margin-bottom:20px">Start Small</p><h2>Does This Happen<br /><em>In Your Business?</em></h2><p>A question is enough. There’s no need for a prepared brief.</p><div class="v-actions"><a href="mailto:info@hyphos.io?subject=A%20question%20about%20Hyphos" class="button button--gold">Ask Us A Question ↗</a><a href="/contact" class="text-link">Talk With Us ↗</a></div><p>Opens your email app.</p></section>
 </div>
 </BaseLayout>

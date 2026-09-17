@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { consultingUrl } from '../../lib/site-links';
 import '../../styles/field-notes.css';
 const notes = [
-  {number:'01',kind:'Contracts & requirements · Practical guide',title:'What does this work need to satisfy?',description:'Connect contract commitments and regulatory requirements to scope, assigned work and evidence.',href:'/field-notes/which-document-can-you-trust/'},
-  {number:'02',kind:'AI & people · Practical guide',title:'What should AI handle—and what should a person decide?',description:'A way to separate preparation, checking and judgment before automating a workflow.',href:'/field-notes/what-should-ai-handle/'},
-  {number:'03',kind:'Connected systems · Client case study',title:'When your website becomes part of your business.',description:'See how business records, staff-reviewed publishing and marketing feedback connect in software we built.',href:`${consultingUrl}/work/cornerstone/`}
+  {number:'01',kind:'Contracts & requirements · Practical guide',title:'What Does This Work Need To Satisfy?',description:'Connect contract commitments and regulatory requirements to scope, assigned work and evidence.',href:'/field-notes/which-document-can-you-trust/'},
+  {number:'02',kind:'AI & people · Practical guide',title:'What Should AI Handle, And What Should A Person Decide?',description:'A way to separate preparation, checking and judgment before automating a workflow.',href:'/field-notes/what-should-ai-handle/'},
+  {number:'03',kind:'Small business · Practical guide',title:'10 Ways Small Businesses Are Actually Using AI Right Now',description:'The unglamorous things that quietly take hours out of a week, and the reason most of it disappoints the first time.',href:'/field-notes/ten-ways-small-businesses-use-ai/'},
+  {number:'04',kind:'Connected systems · Client case study',title:'When Your Website Becomes Part Of Your Business',description:'See how business records, staff-reviewed publishing and marketing feedback connect in software we built.',href:'/work/cornerstone/'}
 ];
 ---
-<BaseLayout title="Field notes — useful ideas for the work behind your business" description="Practical Hyphos guides on documents, AI and connected business systems. Read the examples and sources freely, without registration.">
-  <div class="fn-page"><section class="fn-shell"><p class="fn-meta">Field notes · Hyphos Inc.</p><h1>Ideas you can<br />put to work.</h1><p class="fn-deck fn-index-intro">Practical guides and examples from our research and client work. Open to read and share. No signup.</p>
+<BaseLayout title="Field Notes: Useful Ideas For The Work Behind Your Business" description="Practical Hyphos guides on documents, AI and connected business systems. Read the examples and sources freely, without registration.">
+  <div class="fn-page"><section class="fn-shell"><p class="fn-meta">Field notes · Hyphos Inc.</p><h1>Ideas You Can<br />Put To Work</h1><p class="fn-deck fn-index-intro">Practical guides and a client case study. Open to read and share. No signup.</p>
     <div class="fn-list">{notes.map(note=><a href={note.href}><span class="fn-number">{note.number}</span><div><small>{note.kind}</small><h2>{note.title}</h2><p>{note.description}</p></div><span aria-hidden="true">↗</span></a>)}</div>
   </section></div>
 </BaseLayout>

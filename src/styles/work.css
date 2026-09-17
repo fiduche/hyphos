@@ -1,0 +1,41 @@
+/* Client work. Dark, to sit with the rest of hyphos.io. */
+.work-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.work-jump a { color: #e8e8e9; text-decoration: none; border: 1px solid #ffffff2e; border-radius: 999px; padding: 7px 14px; font-size: .9rem; }
+.work-jump a:hover { border-color: #d6ba8a; color: #d6ba8a; }
+
+.work-case { padding-block: 72px; border-bottom: 1px solid #ffffff24; scroll-margin-top: 96px; }
+.work-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 18px; }
+.work-tag { font-size: .8rem; color: #1a1a1a; background: #d6ba8a; border-radius: 999px; padding: 4px 11px; font-weight: 600; }
+.work-status { font-size: .9rem; color: #a9abaf; }
+.work-case h2 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); line-height: 1.08; letter-spacing: -.045em; font-weight: 400; color: #f1efe2; margin: 0; }
+.work-lede { font-size: 1.15rem; line-height: 1.7; color: #c3c3c3; max-width: 720px; margin: 18px 0 0; }
+.work-links { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 22px; }
+
+.work-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; margin-top: 48px; }
+.work-block + .work-block { margin-top: 34px; }
+.work-block .section-label { color: #c9ae7d; }
+.work-block p { font-size: 1.0625rem; line-height: 1.8; color: #c3c3c3; margin: 12px 0 0; }
+.work-list { list-style: none; padding: 0; margin: 14px 0 0; }
+.work-list li { color: #d2d3d6; font-size: 1rem; line-height: 1.6; padding: 9px 0; border-top: 1px solid #ffffff1a; }
+.work-panel { background: #202326; border: 1px solid #ffffff1f; border-radius: 10px; padding: 30px; }
+.work-panel .section-label { color: #d6ba8a; }
+.work-panel p { font-size: 1.05rem; line-height: 1.8; color: #d2d3d6; margin: 14px 0 0; }
+
+.work-figure { margin: 56px 0 0; }
+.work-figure-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 18px; }
+.work-figure-head h3 { font-size: 1.5rem; font-weight: 400; letter-spacing: -.02em; color: #f1efe2; margin: 8px 0 0; }
+.work-figure-head p { font-size: .9rem; color: #a9abaf; max-width: 380px; margin: 0; line-height: 1.6; }
+.work-shot { background: #111315; border: 1px solid #ffffff1f; border-radius: 10px; padding: clamp(10px, 2vw, 22px); }
+.work-shot img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.work-shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.work-shots img { display: block; width: 100%; height: auto; border-radius: 14px; background: #111315; }
+.work-caption { font-size: .85rem; color: #a9abaf; margin-top: 12px; }
+
+.work-stack { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 40px; padding-top: 22px; border-top: 1px solid #ffffff1a; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: #a9abaf; }
+.work-stack strong { color: #e8e8e9; font-weight: 600; }
+
+@media (max-width: 860px) {
+  .work-grid { grid-template-columns: 1fr; gap: 34px; }
+  .work-shots { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+  .work-case { padding-block: 52px; }
+}
