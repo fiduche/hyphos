@@ -12,8 +12,9 @@ import Icon from './FlowIcon.astro';
  *
  * Everything is driven by one number, --connect, from 0 (chaos) to 1 (answered).
  * It is not tied to scroll position: the page has too little scroll distance for
- * the sort to be seen, so the scene waits in chaos and plays once, on a timer,
- * when it is mostly on screen. Reduced motion, print and no-JavaScript all show
+ * the sort to be seen, so the scene waits in chaos and plays on a timer when it
+ * is mostly on screen. It resets once it has scrolled fully out of view, so it
+ * plays again on the way back. Reduced motion, print and no-JavaScript all show
  * the finished, answered state.
  *
  * Every tool is something Hyphos or our client software connects, and the
@@ -176,25 +177,42 @@ document.querySelectorAll<HTMLElement>('[data-scroll-bridge]').forEach(story => 
     return;
   }
 
-  // Wait in chaos, then play once when most of the scene is on screen.
+  // Wait in chaos, play when most of the scene is on screen, and reset once it
+  // has left entirely so it plays again on the way back.
   story.dataset.motion = 'timed';
   render(0);
-  let started = false;
+  let playing = false;
+  let done = false;
+  let raf = 0;
+  let timer = 0;
   const play = () => {
-    if (started) return;
-    started = true;
+    if (playing || done) return;
+    playing = true;
     const t0 = performance.now();
     const frame = (now: number) => {
       const p = Math.min(1, (now - t0) / DURATION);
       render(p);
-      if (p < 1 && !reduceMotion.matches) requestAnimationFrame(frame); else render(1);
+      if (p < 1 && !reduceMotion.matches) { raf = requestAnimationFrame(frame); }
+      else { render(1); playing = false; done = true; raf = 0; }
     };
-    requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
+  };
+  const reset = () => {
+    if (reduceMotion.matches) return;
+    cancelAnimationFrame(raf); clearTimeout(timer);
+    raf = 0; playing = false; done = false;
+    render(0);
   };
   const observer = new IntersectionObserver((entries) => {
-    if (entries.some((e) => e.isIntersecting)) { observer.disconnect(); setTimeout(play, 250); }
-  }, { threshold: .6 });
+    for (const entry of entries) {
+      if (entry.intersectionRatio >= .6) { clearTimeout(timer); timer = window.setTimeout(play, 250); }
+      else if (entry.intersectionRatio === 0) { reset(); }
+    }
+  }, { threshold: [0, .6] });
   observer.observe(stage);
-  reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) { started = true; observer.disconnect(); render(1); } });
+  reduceMotion.addEventListener('change', () => {
+    if (!reduceMotion.matches) return;
+    cancelAnimationFrame(raf); clearTimeout(timer); observer.disconnect(); done = true; render(1);
+  });
 });
 </script>
