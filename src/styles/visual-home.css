@@ -175,3 +175,9 @@
   .v-connect-stage{height:430px;}
   .v-connect-source{min-height:54px;padding-block:9px;}
 }
+
+/* Wander: the steps from idea to launch, the point of the example. */
+.v-app-steps{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 34px;padding:0;max-width:860px;}
+.v-app-steps li{display:flex;align-items:center;gap:8px;border:1px solid #cfcfd2;background:#f7f7f8;border-radius:999px;padding:8px 14px;font-size:.875rem;color:#2d2e31;}
+.v-app-steps li>span{color:#7a5b27;font-size:.75rem;font-variant-numeric:tabular-nums;}
+@media(max-width:600px){.v-app-steps{gap:8px;margin-bottom:24px;}.v-app-steps li{padding:7px 11px;font-size:.8125rem;}}
