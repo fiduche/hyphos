@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /golf
+Disallow: /course
+Disallow: /c/
+Disallow: /go
+Disallow: /api/
+Disallow: /login
+Disallow: /signup
+Disallow: /verify-email
 
 Sitemap: https://hyphos.io/sitemap-index.xml

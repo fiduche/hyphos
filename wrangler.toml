@@ -16,3 +16,9 @@ binding = "ASSETS"
 
 # Domain (hyphos.io / www.hyphos.io) is configured in the Cloudflare
 # dashboard: Workers & Pages → hyphos-website → Settings → Domains & Routes.
+
+# The golf tournament is served by the hyphos-consulting-website worker, which
+# owns the hyphos-golf D1 database. See src/worker.js.
+[[services]]
+binding = "GOLF"
+service = "hyphos-consulting-website"
