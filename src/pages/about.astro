@@ -1,15 +1,80 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/editorial.css';
+
+/**
+ * Daniel's background, and why it matters to a business owner.
+ *
+ * Career facts come from Daniel's LinkedIn experience page and his own summary
+ * (18 Sept 2026). Employers and public projects are named; consulting clients
+ * from his Deloitte years are not, because they were Deloitte's clients, not
+ * Hyphos's. Hyphos is in Calgary, never "Okotoks".
+ */
+const career = [
+  { years: '2008 to 2017', org: 'Kiewit', what: 'Field supervisor, piping superintendent, estimator and project controls manager on bridges, a power plant, hydroelectric projects, oil sands work and the Southwest Calgary Ring Road.' },
+  { years: '2017 to 2022', org: 'Surerus Murphy Joint Venture', what: 'Corporate project controls manager for a pipeline builder. Led the team that built its project management system and standardized reporting across every project.' },
+  { years: '2022 to 2026', org: 'Deloitte', what: 'Senior Manager, Infrastructure & Real Estate. Selected and implemented enterprise project management systems for public sector, energy and infrastructure organizations, then led AI delivery transformation for the practice.' },
+  { years: '2026 on', org: 'Hyphos Inc.', what: 'Building connected, AI-enabled software for businesses of any size, and Hyphos, our knowledge and work platform.' },
+] as const;
+
+const strengths = [
+  'AI system architecture and deployment',
+  'Semantic and vector search',
+  'Graph data modelling',
+  'Requirements engineering',
+  'Project management system implementation, integration and migration',
+  'Complex project delivery',
+] as const;
 ---
-<BaseLayout title="About" description="Hyphos Inc. is Daniel Newton's software company in Okotoks and Calgary. We build software for clients and Hyphos, a platform that keeps knowledge connected to the work.">
+<BaseLayout title="About" description="Hyphos Inc. is Daniel Newton's software company in Calgary. From construction sites to enterprise systems to AI: software that takes the admin off your team.">
 <section class="product-editorial-hero page-shell"><p class="section-label">About Hyphos Inc.</p><h1>Good Systems<br />Give People Room</h1><p>Room to think. To care for customers. To do the part of the work that depends on experience and judgment.</p></section>
-<section class="product-editorial-body page-shell"><aside class="product-editorial-aside"><p class="section-label">The Person Behind The Work</p><p><strong>Daniel Newton</strong><br />Founder, Hyphos Inc.<br />Okotoks &amp; Calgary, Alberta</p><a href="/contact" class="text-link">Start A Conversation <span aria-hidden="true">↗</span></a></aside><div class="product-editorial-prose">
+
+<section class="about-person page-shell" aria-labelledby="meet-daniel">
+  <figure class="about-photo">
+    <img src="/about/daniel-newton.webp" width="1000" height="1250" alt="Daniel Newton, founder of Hyphos Inc." />
+    <figcaption><strong>Daniel Newton</strong><span>Founder, Hyphos Inc. · Calgary, Alberta</span></figcaption>
+  </figure>
+  <div class="about-story">
+    <p class="section-label">The Person Behind The Work</p>
+    <h2 id="meet-daniel">From Job Sites<br /><em>To AI Systems</em></h2>
+    <p>Daniel didn’t start in an office. He started on construction sites, supervising crews and tracking costs on bridges, power plants and pipelines across Western Canada.</p>
+    <p>On every project he saw the same thing. Good people spent hours re-entering numbers, reconciling reports and chasing information that already existed somewhere else. The work that needed their experience waited while they did the admin.</p>
+    <p>So he started fixing it. First with better project controls, then by building the systems himself: a project management platform for a pipeline builder, then enterprise system rollouts for large public sector, energy and infrastructure organizations at Deloitte, and finally leading how that practice put AI to work.</p>
+    <p>Hyphos is where all of that comes together. Daniel designs, builds and deploys AI systems that reduce manual effort, so people can focus on what really matters.</p>
+    <blockquote class="about-quote">“I like to live on the cutting edge of AI so I can understand what can, and more importantly what should, be implemented in a business.”</blockquote>
+    <a href="/contact" class="text-link">Start A Conversation With Daniel <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<section class="about-help page-shell" aria-labelledby="why-it-helps">
+  <p class="section-label">Why It Matters For Your Business</p>
+  <h2 id="why-it-helps">Experience You Don’t Have To Explain Twice</h2>
+  <div class="about-help-grid">
+    <article><h3>He Has Done The Work</h3><p>Estimates, change orders, timesheets, month-end reports and the crew waiting on them. Daniel builds for the people doing the work because he has been one of them.</p></article>
+    <article><h3>Enterprise Discipline, Small Business Speed</h3><p>The requirements, process mapping and system rollouts behind large programs, scaled to a business that needs something working in weeks, not years.</p></article>
+    <article><h3>AI With Judgment</h3><p>He works with the newest AI every day, so he can tell you what it can do for your business, and just as important, where it shouldn’t be trusted yet.</p></article>
+    <article><h3>Connected, Not Just Automated</h3><p>Fragmented processes and data turned into one connected platform, using semantic models, vector search and graph data, so AI answers from your real information and shows where it came from.</p></article>
+  </div>
+</section>
+
+<section class="about-career page-shell" aria-labelledby="career">
+  <div>
+    <p class="section-label">Where The Experience Comes From</p>
+    <h2 id="career">Nearly Two Decades<br />Of Real Projects</h2>
+    <p class="about-sectors">Public sector · Energy · Construction · Infrastructure</p>
+    <ul class="about-strengths">{strengths.map((s) => <li>{s}</li>)}</ul>
+  </div>
+  <ol class="about-timeline">
+    {career.map((c) => <li><span class="t-years">{c.years}</span><h3>{c.org}</h3><p>{c.what}</p></li>)}
+  </ol>
+</section>
+
+<section class="product-editorial-body page-shell"><aside class="product-editorial-aside"><p class="section-label">How We Work</p><p>You work directly with Daniel, from the first conversation to the working software.</p><a href="/contact" class="text-link">Start A Conversation <span aria-hidden="true">↗</span></a></aside><div class="product-editorial-prose">
   <h2>Start With What People Actually Do</h2>
   <p>The work rarely fits neatly into the software. Someone keeps a spreadsheet on the side. Someone remembers the exception. Someone knows who to call.</p>
   <p>Hyphos starts there. We look at how the business runs, connect the information it depends on, and build software around the work.</p>
   <h2>Stay Close Enough To Build The Right Thing</h2>
-  <p>You work directly with Daniel. We talk with the people using the systems, make the problem concrete, and show working software early.</p>
+  <p>We talk with the people using the systems, make the problem concrete, and show working software early.</p>
   <p>Some problems need an integration. Some need custom software. Some need a clearer process. The useful answer starts with knowing which one you're facing.</p>
   <h2>The Reason Matters As Much As The Record</h2>
   <p>A plan tells you what the team intends to do. It rarely tells you everything that led there: the exception, the conversation, the lesson from the last job.</p>
@@ -19,4 +84,44 @@ import '../styles/editorial.css';
   <p>They share one premise. The systems should carry more of the coordination, so people can give their attention to the work that needs them.</p>
   <a href="/work" class="text-link">See The Work <span aria-hidden="true">↗</span></a>
 </div></section>
+
+<style>
+.about-person{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start;padding-block:72px;border-bottom:1px solid #ffffff24;}
+.about-photo{margin:0;position:sticky;top:110px;}
+.about-photo img{display:block;width:100%;height:auto;border-radius:12px;background:#202326;}
+.about-photo figcaption{display:grid;gap:4px;margin-top:16px;color:#a9abaf;font-size:.9rem;}
+.about-photo figcaption strong{color:#f1efe2;font-weight:500;font-size:1.05rem;}
+.about-story>.section-label{color:#c9ae7d;}
+.about-story h2{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.08;letter-spacing:-.045em;font-weight:400;color:#f1efe2;margin:22px 0 28px;}
+.about-story h2 em{font-style:normal;color:#d6ba8a;}
+.about-story p{font-size:1.125rem;line-height:1.8;color:#c9cace;margin:0 0 20px;max-width:640px;}
+.about-quote{margin:34px 0;padding:6px 0 6px 24px;border-left:3px solid #d6ba8a;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.5;color:#f1efe2;max-width:640px;}
+.about-help{padding-block:72px;border-bottom:1px solid #ffffff24;}
+.about-help>.section-label{color:#c9ae7d;}
+.about-help h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.12;letter-spacing:-.045em;font-weight:400;color:#f1efe2;margin:22px 0 40px;}
+.about-help-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.about-help-grid article{background:#202326;border:1px solid #ffffff1f;border-top:3px solid #b69259;border-radius:10px;padding:28px;}
+.about-help-grid h3{font-size:1.3rem;font-weight:500;letter-spacing:-.02em;color:#f1efe2;margin:0 0 12px;}
+.about-help-grid p{font-size:1.0625rem;line-height:1.75;color:#c3c3c3;margin:0;}
+.about-career{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;padding-block:72px;border-bottom:1px solid #ffffff24;}
+.about-career .section-label{color:#c9ae7d;}
+.about-career h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.12;letter-spacing:-.045em;font-weight:400;color:#f1efe2;margin:22px 0 20px;}
+.about-sectors{color:#d6ba8a;font-size:1rem;margin:0 0 24px;}
+.about-strengths{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+.about-strengths li{color:#d2d3d6;font-size:1rem;line-height:1.5;padding:10px 0 10px 18px;border-top:1px solid #ffffff1a;position:relative;}
+.about-strengths li::before{content:'';position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:#b69259;}
+.about-timeline{list-style:none;padding:0;margin:0;border-left:1px solid #ffffff2e;}
+.about-timeline li{position:relative;padding:0 0 34px 30px;}
+.about-timeline li::before{content:'';position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;background:#16181b;border:2px solid #d6ba8a;}
+.about-timeline li:last-child::before{background:#d6ba8a;}
+.t-years{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:#a9abaf;}
+.about-timeline h3{font-size:1.35rem;font-weight:500;letter-spacing:-.02em;color:#f1efe2;margin:6px 0 8px;}
+.about-timeline p{font-size:1.0625rem;line-height:1.7;color:#c3c3c3;margin:0;max-width:620px;}
+@media(max-width:860px){
+  .about-person,.about-career{grid-template-columns:1fr;gap:34px;padding-block:48px;}
+  .about-photo{position:static;max-width:420px;}
+  .about-help{padding-block:48px;}
+  .about-help-grid{grid-template-columns:1fr;}
+}
+</style>
 </BaseLayout>

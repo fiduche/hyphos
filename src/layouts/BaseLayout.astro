@@ -9,7 +9,7 @@ interface Props {
   article?: boolean;
 }
 
-const { title, article = false, description = 'Hyphos connects the decisions, documents and experience behind your work. Software, apps and a knowledge and work platform from Hyphos Inc. in Okotoks and Calgary.' } = Astro.props;
+const { title, article = false, description = 'Hyphos connects the decisions, documents and experience behind your work. Software, apps and a knowledge and work platform from Hyphos Inc. in Calgary.' } = Astro.props;
 const fullTitle = title.startsWith('Hyphos') ? title : `${title} | Hyphos`;
 const siteUrl = 'https://hyphos.io';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
