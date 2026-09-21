@@ -26,11 +26,11 @@ import '../styles/visual-home.css';
       <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when there is a lot of material.</p>
     </div>
     <ul class="v-wall-list">
-      <li><strong>It answers from memory, not from your file. “Hallucination”</strong> It keeps a piece of what it read, fills in the rest, and believes the result. Going back to the full document is not something it does on its own.</li>
-      <li><strong>It can miss what you changed.</strong> You feed it the transcript and assume it caught the reversal. Unless you ask for it directly, the answer can come back with the decision you dropped.</li>
-      <li><strong>It will not double check on its own.</strong> Ask it to go back over an answer and it does find real mistakes. It just never decides to, so at volume you are asking every time, for every answer.</li>
-      <li><strong>It says it read everything.</strong> We gave one twelve hours of meetings. It reported back done. It had skimmed.</li>
-      <li><strong>It forgets the conversation as it gets longer. “Compaction”</strong> To keep going, it compresses everything said so far into a summary. Detail goes, sometimes the point of the job itself, and nothing tells you what was dropped. You find out when an answer contradicts something you settled an hour ago.</li>
+      <li><div class="v-wall-top"><p>01</p><span class="v-wall-chip">“Hallucination”</span></div><h3>It answers from memory, not from your file.</h3><p>It keeps a piece of what it read, fills in the rest, and believes the result. Going back to the full document is not something it does on its own.</p></li>
+      <li><div class="v-wall-top"><p>02</p></div><h3>It can miss what you changed.</h3><p>You feed it the transcript and assume it caught the reversal. Unless you ask for it directly, the answer can come back with the decision you dropped.</p></li>
+      <li><div class="v-wall-top"><p>03</p></div><h3>It will not double check on its own.</h3><p>Ask it to go back over an answer and it does find real mistakes. It just never decides to, so at volume you are asking every time, for every answer.</p></li>
+      <li><div class="v-wall-top"><p>04</p></div><h3>It says it read everything.</h3><p>We gave one twelve hours of meetings. It reported back done. It had skimmed.</p></li>
+      <li><div class="v-wall-top"><p>05</p><span class="v-wall-chip">“Compaction”</span></div><h3>It forgets the conversation as it gets longer.</h3><p>To keep going, it compresses everything said so far into a summary. Detail goes, sometimes the point of the job itself, and nothing tells you what was dropped. You find out when an answer contradicts something you settled an hour ago.</p></li>
     </ul>
     <p class="v-wall-close">A better prompt does not fix this. Every answer has to stay tied to the document it came from, get checked against that document automatically, and be counted, so you can see what was actually read and what was not.</p>
     <div class="v-wall-cta"><a href="/field-notes/it-said-it-read-everything/" class="button button--gold">See How This Goes Wrong ↗</a></div>
@@ -89,13 +89,18 @@ import '../styles/visual-home.css';
 .v-wall{background:#15171a;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;}
 .v-wall .v-chapter-heading{text-align:center;}
 .v-wall-lead{max-width:60ch;margin:0 auto;font-size:1.15rem;line-height:1.7;color:#c9cace;}
-.v-wall-list{list-style:none;padding:0;margin:40px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;}
-.v-wall-list li{border-left:2px solid #b69259;padding:4px 0 4px 16px;font-size:1.0625rem;line-height:1.6;color:#b9babd;}
-.v-wall-list li:last-child{grid-column:1/-1;max-width:calc(50% - 14px);margin:0 auto;}
-.v-wall-list strong{display:block;color:#f1efe2;font-weight:600;}
+.v-wall-list{list-style:none;padding:0;margin:40px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.v-wall-list li{position:relative;overflow:hidden;padding:22px 26px 26px;border:1px solid #ffffff24;border-radius:14px;background:linear-gradient(180deg,#2c2f34,#232528);box-shadow:0 22px 45px -32px #000;}
+.v-wall-list li::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,#b69259,#e3cf9d 42%,#b6925900);}
+.v-wall-list li:last-child{grid-column:1/-1;max-width:calc(50% - 10px);margin:0 auto;}
+.v-wall-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:27px;}
+.v-wall-top p{font-size:.75rem;letter-spacing:.14em;color:#c4ae86;font-variant-numeric:tabular-nums;}
+.v-wall-chip{font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:#e7d5ac;border:1px solid #b6925966;background:#b6925922;border-radius:999px;padding:5px 12px;white-space:nowrap;}
+.v-wall-list h3{margin-top:12px;font-size:1.1875rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:#f1efe2;}
+.v-wall-list li>p:last-child{margin-top:10px;font-size:.9375rem;line-height:1.65;color:#b9babd;}
 .v-wall-close{max-width:70ch;margin:40px auto 0;text-align:center;font-size:1.05rem;line-height:1.75;color:#c9cace;}
 .v-wall-cta{margin-top:30px;text-align:center;}
 .v-wall-cta .button{font-size:1.05rem;padding:15px 30px;}
-@media(max-width:760px){.v-wall-list{grid-template-columns:1fr;gap:12px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
+@media(max-width:760px){.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
 </style>
 </BaseLayout>
