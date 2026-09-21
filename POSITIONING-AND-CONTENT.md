@@ -32,9 +32,11 @@ Why it breaks at volume, in the order the homepage says it:
    source, fills in the rest from that fragment, and believes the result,
    because it did not go back to the full document unless explicitly told to.
    Daniel's correction, 21 Sept: do not describe this as making things up.
-2. **It misses what changed.** Retrieval finds what matches the question. A
-   reversal ("forget that, the client won't wear it") shares no words with the
-   question, so it is invisible to search and obvious to a reader.
+2. **It can miss what you changed.** Not always, and the hedge is deliberate:
+   Daniel's correction, 21 Sept. You hand over the transcript and assume the
+   reversal was captured. Retrieval finds what matches the question, and a
+   reversal ("forget that, the client won't wear it") shares no words with it,
+   so without an explicit instruction and a decision log it can be passed over.
 3. **It cannot check its own work.** A re-check re-reads with the same
    assumptions that produced the error. Independence is what makes a check work.
 4. **It says it read everything.** Completion is a claim, not an event, and the
