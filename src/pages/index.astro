@@ -17,6 +17,24 @@ import '../styles/visual-home.css';
     <div class="v-actions"><a href="#how-it-works" class="button button--gold">See How It Works ↓</a><a href="#field-notes" class="text-link">Explore The Field Notes ↓</a></div>
     <details class="v-detail"><summary>What Is Hyphos?</summary><div><p>Hyphos connects the information scattered across a business: estimates and invoices, timesheets and supplier bills, accounting, emails, documents, meetings and AI conversations. On larger engagements it also connects contracts, scopes of work and regulations.</p><p>Those relationships help your team catch a gap before it costs money, understand the effect of a change and trace a decision back to its sources. We’re open to design partners who want to shape it around a real workflow. <a href="/pricing">See what a pilot involves ↗</a></p></div></details>
   </section>
+  <!-- The question every visitor is already asking, answered in four lines.
+       Depth lives in the field note, not here. -->
+  <section id="the-wall" class="v-chapter v-wall"><div class="v-shell">
+    <div class="v-chapter-heading">
+      <p class="v-eyebrow">The Question We Get Most</p>
+      <h2>Why Not Just Ask<br /><em>Claude Or ChatGPT?</em></h2>
+      <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when there is a lot of material.</p>
+    </div>
+    <ul class="v-wall-list">
+      <li><strong>It makes things up.</strong> If the answer is not in your files, it writes one that sounds right.</li>
+      <li><strong>It misses what you changed.</strong> You decided something, then changed it. It answers with the old decision.</li>
+      <li><strong>It cannot check its own work.</strong> Ask it to double check and it agrees with itself.</li>
+      <li><strong>It says it read everything.</strong> We gave one twelve hours of meetings. It reported back done. It had skimmed.</li>
+    </ul>
+    <p class="v-wall-close">A better prompt does not fix this. Every answer has to stay tied to the document it came from, get checked against that document automatically, and be counted, so you can see what was actually read and what was not.</p>
+    <div class="v-wall-cta"><a href="/field-notes/it-said-it-read-everything/" class="button button--gold">See How This Goes Wrong ↗</a></div>
+  </div></section>
+
   <ScrollConnections />
   <section id="client-example" class="v-chapter v-light-chapter"><div class="v-shell">
     <div class="v-chapter-heading"><p class="v-eyebrow">02 · From A Small Job To A Large Engagement</p><h2>What Was Agreed<br />What It Actually Took<br /><em>What Needs Doing</em></h2><p>A one-week job or a year-long engagement, the gap shows up the same way: the pieces sit in different places. Hyphos brings them into view, with the source behind each one.</p></div>
@@ -65,4 +83,17 @@ import '../styles/visual-home.css';
   <FieldNotesPreview />
   <section class="v-closing v-shell"><p class="v-eyebrow" style="margin-bottom:20px">Start Small</p><h2>Does This Happen<br /><em>In Your Business?</em></h2><p>A question is enough. There’s no need for a prepared brief.</p><div class="v-actions"><a href="mailto:info@hyphos.io?subject=A%20question%20about%20Hyphos" class="button button--gold">Ask Us A Question ↗</a><a href="/contact" class="text-link">Talk With Us ↗</a></div><p>Opens your email app.</p></section>
 </div>
+
+<style>
+.v-wall{background:#15171a;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;}
+.v-wall .v-chapter-heading{text-align:center;}
+.v-wall-lead{max-width:60ch;margin:0 auto;font-size:1.15rem;line-height:1.7;color:#c9cace;}
+.v-wall-list{list-style:none;padding:0;margin:40px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;}
+.v-wall-list li{border-left:2px solid #b69259;padding:4px 0 4px 16px;font-size:1.0625rem;line-height:1.6;color:#b9babd;}
+.v-wall-list strong{display:block;color:#f1efe2;font-weight:600;}
+.v-wall-close{max-width:70ch;margin:40px auto 0;text-align:center;font-size:1.05rem;line-height:1.75;color:#c9cace;}
+.v-wall-cta{margin-top:30px;text-align:center;}
+.v-wall-cta .button{font-size:1.05rem;padding:15px 30px;}
+@media(max-width:760px){.v-wall-list{grid-template-columns:1fr;gap:12px;}.v-wall-lead{font-size:1.05rem;}}
+</style>
 </BaseLayout>

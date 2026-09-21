@@ -1,0 +1,59 @@
+---
+import FieldNote from '../../layouts/FieldNoteLayout.astro';
+
+/**
+ * First in the "Working With AI On Your Own Files" series: short posts, one
+ * technique each, each ending with a 20-minute exercise on the reader's own
+ * documents.
+ *
+ * The technique is general practice, written from scratch. No client, no
+ * engagement, no employer material, and nothing quoted from any playbook.
+ */
+const steps = [
+  ['Number the source before you ask anything.', 'Paste the transcript into a plain text file and put a number on every line, or work from a PDF with real page numbers. You are not being fussy. You are giving yourself something to check an answer against.'],
+  ['Ask it to walk forward, not to search.', 'The instruction that changes everything: "Go through this file from the start to the end, in order. Every time a decision is made, write one line: the decision, and the line number where it happens. Do not skip ahead and do not summarise."'],
+  ['Then ask the second question.', '"Now go through your own list. Which of these decisions were changed, reversed or overtaken later in the same file? Show me both line numbers."'],
+  ['Make it quote, and check three.', 'Ask for the exact words next to each line number, then open the file and check three of them yourself. If one is a paraphrase dressed as a quote, you have learned something important about the rest.'],
+  ['Mark the reversal, keep the original.', 'Do not delete the old decision. Write it as superseded, pointing at the one that replaced it. The reasoning behind a discarded decision is the thing you will want in four months when somebody asks why.'],
+];
+---
+<FieldNote title="The Decision It Missed Was Reversed Three Weeks Ago" description="Why asking AI what you decided returns a confident, out-of-date answer, and the change in reading order that fixes it. Twenty minutes on one of your own meeting transcripts." number="05" readTime="4 minute read" nextHref="/field-notes/ten-ways-small-businesses-use-ai/" nextTitle="10 Ways Small Businesses Are Actually Using AI Right Now">
+  <p>You have the recordings. You have the transcripts, the email chain, the notes. You paste them into an AI on your laptop and ask the reasonable question: what did we decide about the payment terms?</p>
+  <p>It answers immediately, in a clean paragraph, with the wrong answer. Not invented. Just three weeks out of date, because the thing it found was decided in the second meeting and quietly reversed in the fourth.</p>
+  <p>This is the most expensive failure in everyday AI use, and almost nobody notices it happening, because the answer looks exactly like the right one.</p>
+
+  <h2>Why It Happens</h2>
+  <p>When you ask a question, the tool searches backwards from your words. It looks for the passages that resemble "payment terms", finds the meeting where payment terms were debated at length, and answers from there.</p>
+  <p>Now think about how a reversal actually sounds in a real meeting. Nobody says "we are reversing the payment terms decision from meeting two". Somebody says "yeah, forget that, the client will not wear it", and the room moves on. That sentence contains none of the words you searched for. It is invisible to a search and obvious to a reader.</p>
+  <div class="fn-callout"><span class="fn-label">The Whole Trick</span><p>A search finds what matches your question. Reading forwards finds what changed.</p></div>
+
+  <h2>The Fix Is Reading Order, Not A Better Prompt</h2>
+  <p>You do not need a cleverer question or a bigger model. You need the thing to go through the material in the order it happened, before it tries to answer anything.</p>
+
+  <ol class="fn-steps">
+    {steps.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+  </ol>
+
+  <p>The output is no longer an answer. It is a short register of decisions, each with a line number, some marked superseded. That is a different kind of object. You can hand it to somebody. You can check it. You can put it in front of the client and ask "is this right?", which is a much better conversation than reading them a paragraph and hoping.</p>
+
+  <h2>What This Costs You</h2>
+  <p>About twenty minutes the first time, on one transcript. Most of that is numbering the lines and reading three quotes properly.</p>
+  <p>What it buys is the ability to trust the answer enough to act on it. An answer you have to re-check from scratch was worth very little, however quickly it arrived.</p>
+
+  <h2>Try It On One File This Week</h2>
+  <p>Take the messiest project you have where something changed direction. One transcript, or one long email chain. Run the two questions above, in that order, and check three quotes.</p>
+  <p>You are looking for one thing: a decision on that list marked superseded, that you had forgotten was superseded. If you find one, this technique has already paid for itself, and you now know something about every other answer you have accepted from a chat window this year.</p>
+
+  <div class="fn-callout"><span class="fn-label">Next In This Series</span><p>Getting it to admit what it did not read, and why "I have completed the analysis" is the least reliable sentence in the conversation.</p></div>
+
+  <h2>If You Would Rather Be Walked Through It</h2>
+  <p>We run this as a short working session on your own files, not slides: you bring one project's material, we set up the reading order together, and you leave with the register and the method. If you would find that useful, <a href="/contact">ask about a session</a>.</p>
+</FieldNote>
+
+<style is:global>
+  .fn-steps { list-style: none; counter-reset: step; padding-left: 0 !important; margin: 24px 0 !important; }
+  .fn-steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem 1fr; column-gap: 12px; padding: 16px 0 !important; margin: 0 !important; border-top: 1px solid #ffffff1f; }
+  .fn-steps li::before { content: counter(step); color: #d6bb90; font-size: 1.05rem; font-variant-numeric: tabular-nums; padding-top: 2px; grid-row: span 2; }
+  .fn-steps h3 { margin: 0 0 6px !important; }
+  .fn-steps p { margin: 0 !important; }
+</style>

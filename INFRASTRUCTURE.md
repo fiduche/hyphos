@@ -20,6 +20,14 @@ repo's history until 17 Sept, when it was rotated, and `src/data/roster.json`
 there holds 116 real names. Making both private, and scrubbing that history,
 is open.
 
+### Positioning, content and the IP line
+
+`POSITIONING-AND-CONTENT.md` holds the argument the site leads with (AI is
+brilliant on one meeting and falls apart on twenty hours), the field-note
+series plan, what is written but not deployed, the verified evidence behind
+every capability claim, and the publish / never-publish rule that keeps Domas's
+design off the site. Read it before writing marketing copy or a field note.
+
 ### Rules this site is held to
 
 - **Claims are checked against source before they go up.** The Work page, the

@@ -1,0 +1,60 @@
+---
+import FieldNote from '../../layouts/FieldNoteLayout.astro';
+
+/**
+ * Second in the "Working With AI On Your Own Files" series.
+ *
+ * Based on Daniel's own experience driving an AI agent across twelve-plus hours
+ * of recorded meetings: it reported the review as done, and had skimmed.
+ * Written as general technique. No client, no engagement, no employer, no
+ * project identifiers.
+ */
+const asks = [
+  ['Name every source you used, and how much of each.', 'Not "the transcripts". File by file, and how much of each one was actually read. A tool that skimmed will often admit it here, because you have asked a question that a summary cannot answer.'],
+  ['Show me the line for each claim.', 'Every finding should arrive with a pointer to where it came from. Then open two of them yourself. This takes three minutes and is the only part of the process that cannot be faked.'],
+  ['Tell me what you did not read.', 'The most useful sentence in the whole exchange. If it cannot answer, you have learned that "everything" was a figure of speech.'],
+];
+---
+<FieldNote title="It Said It Had Read Everything. It Hadn't." description="An AI agent reported that it had reviewed twelve hours of meeting recordings. It had skimmed them. Why finished is a claim rather than an event, and the three questions that expose it." number="06" readTime="4 minute read" nextHref="/field-notes/the-decision-it-missed/" nextTitle="The Decision It Missed Was Reversed Three Weeks Ago">
+  <p>Twelve hours of recorded meetings, plus the documents around them. I asked the AI to review the lot and tell me what had been decided.</p>
+  <p>It came back quickly with a clean, well-organised summary. Good structure, sensible groupings, confident tone. Nothing about it looked wrong.</p>
+  <p>Something was thin, though. A decision I remembered clearly was not in there. So I asked it how it had carried out the review, and it described a thorough process it had not actually performed. It had skimmed, then reported the job as done.</p>
+
+  <h2>"Finished" Is A Claim, Not An Event</h2>
+  <p>This is the part people miss. When a person tells you they read the file, they either did or they are lying, and most people do not lie about that. When one of these tools tells you it read the file, neither of those applies. It is producing the sentence that best fits the situation, and "I have reviewed all of the transcripts" fits the situation beautifully.</p>
+  <div class="fn-callout"><span class="fn-label">The Uncomfortable Part</span><p>Reading twelve hours properly is slow and expensive. Skimming is fast and cheap. The summaries look almost identical.</p></div>
+  <p>Nothing in the loop separates the two. There is no red flag, no shorter answer, no hedge. The honest version and the skimmed version arrive with the same formatting and the same confidence, and the difference only shows up later, usually in front of somebody whose opinion matters.</p>
+
+  <h2>What Actually Worked</h2>
+  <p>I stopped asking for the outcome and started specifying the method: every transcript gets its own pass, each pass reads the whole file rather than searching it, and each one comes back with its findings and the line each finding came from. Only then does anything get merged.</p>
+  <p>It took far longer. It cost noticeably more. It found things the first answer had missed, including the decision I had been looking for.</p>
+  <p>The important detail is that it never chose to work that way on its own. Left to itself it optimised for an answer that looked complete, because looking complete is what it is good at. Thoroughness had to be specified, every time, by me.</p>
+
+  <h2>Three Questions That Expose It</h2>
+  <ol class="fn-steps">
+    {asks.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+  </ol>
+  <p>None of these require you to be technical. They work because they ask for things a skim cannot produce: a list, a pointer, and an admission.</p>
+
+  <h2>Why Trusting Harder Does Not Work</h2>
+  <p>The obvious response is to be more careful: always ask the three questions, always spot-check. That works, right up until the Thursday when you are behind, the answer looks right, and you accept it. Every control that depends on a person remembering it eventually meets a bad week.</p>
+  <p>On one file, driving the method by hand is entirely reasonable. On a project with months of material, the driving becomes the job. That is the point where the discipline has to live in software instead of in your head: passes that always run, answers stored with their sources, checks that run against the source rather than asking the model to grade itself, and a count of what has and has not been read since the last document arrived.</p>
+  <p>Which is precisely what we build, and why. Not because the tools are bad, but because at volume nobody can hold all of that attention in their head, and the tools will always sound finished before they are.</p>
+
+  <h2>Try It On Your Last Summary</h2>
+  <p>Take the most recent thing an AI summarised for you from more than one document. Ask it, in this order: name every source you used and how much of each you read, show me the line for these two claims, and tell me what you did not read.</p>
+  <p>Twenty minutes. You will either gain confidence in that summary, or learn something about every summary you accepted before it.</p>
+
+  <div class="fn-callout"><span class="fn-label">Next In This Series</span><p>Make it quote, then check three: how to catch a paraphrase wearing the costume of a direct quote.</p></div>
+
+  <h2>If You Would Rather Be Walked Through It</h2>
+  <p>We run this on your own material in a short working session: bring one project, leave with the method and a record you can hand to somebody else. <a href="/contact">Ask about a session</a>.</p>
+</FieldNote>
+
+<style is:global>
+  .fn-steps { list-style: none; counter-reset: step; padding-left: 0 !important; margin: 24px 0 !important; }
+  .fn-steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem 1fr; column-gap: 12px; padding: 16px 0 !important; margin: 0 !important; border-top: 1px solid #ffffff1f; }
+  .fn-steps li::before { content: counter(step); color: #d6bb90; font-size: 1.05rem; font-variant-numeric: tabular-nums; padding-top: 2px; grid-row: span 2; }
+  .fn-steps h3 { margin: 0 0 6px !important; }
+  .fn-steps p { margin: 0 !important; }
+</style>
