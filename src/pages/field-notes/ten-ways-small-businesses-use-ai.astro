@@ -45,18 +45,44 @@ import FieldNote from '../../layouts/FieldNoteLayout.astro';
  * until platform approval), the unused negative_evidence table, the orphaned
  * generic approval_workflows tables, and anything from the BaseMethod client
  * work.
+ *
+ * Reframed 21 Sept 2026 at Daniel's direction: small businesses are not only
+ * using AI, they are building with it (APIs, legal documents, customer-facing
+ * assistants, internal tools, agents that act) without knowing what they have
+ * taken on. The second list and "Half Of That List Is Software Development"
+ * carry that lens. External claims in that section, verified 21 Sept 2026:
+ *
+ *   - Moffatt v Air Canada, BC Civil Resolution Tribunal, 14 Feb 2024. The
+ *     airline argued the chatbot was a separate legal entity responsible for
+ *     its own actions; the tribunal held it responsible for everything on its
+ *     website. Damages $650.88.
+ *     https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416
+ *   - Veracode, Spring 2026 GenAI Code Security update, 24 Mar 2026. 150+
+ *     models, 80 tasks, 4 languages: syntax correctness above 95%, security
+ *     pass rate ~55% and unchanged in two years, Java 29%.
+ *     https://www.veracode.com/blog/spring-2026-genai-code-security/
+ *   - PIPEDA Principle 4.1.3: an organization stays responsible for personal
+ *     information transferred to a third party for processing, and must use
+ *     contractual or other means to provide comparable protection. Stated on
+ *     the page as a plain fact, with no legal advice offered.
+ *
+ * Full working in RESEARCH-CONTEXT-LIMITS.md. Do not add or restate any of
+ * these without reopening the source.
  */
-const ways = [
+const saving = [
   ['Reading Supplier Invoices', 'Pull the amounts, dates and line items off a PDF and code them to the right account, instead of someone retyping them into the accounting system.'],
   ['Turning A Conversation Into A Quote', 'Notes from a site visit become a priced estimate in your own format, with your own margins, ready for you to check rather than write.'],
-  ['Meetings That Produce Actions, Not Transcripts', "A wall of text nobody reads is not useful. What is useful: here are the four things somebody agreed to do, and who owns each one."],
-  ['Filling Out Your Own Paperwork', 'Contracts, letters, service agreements: the ones where 90% is the same every time and 10% is the part that matters. The 90% should not be manual.'],
+  ['Meetings That Produce Actions, Not Transcripts', 'A wall of text nobody reads is not useful. What is useful: here are the four things somebody agreed to do, and who owns each one.'],
   ['Catching What Does Not Match', 'Invoices against purchase orders, payments against invoices, hours against schedules. Software is patient about reconciliation in a way people are not.'],
-  ['Answering The Same Question For The Hundredth Time', '"Where is my order." "What are your hours." "What do I need to bring." A portal that answers accurately from your real data beats a game of phone tag.'],
-  ['Timesheets That Fill Themselves In', 'Most of the information (who was where, on what job, for how long) already exists somewhere else in your business. Asking people to retype it is a choice.'],
   ['Finding The Thing You Know You Have Somewhere', 'Search that understands "the Henderson quote from last spring" rather than needing the exact filename you cannot remember.'],
-  ['Drafting The Follow-Up You Keep Not Sending', 'The email to the customer who went quiet. The review request. The seasonal reminder. Drafted and waiting for your approval beats sitting in your head.'],
-  ['Noticing What Is About To Go Wrong', 'A job trending over budget, a client who has gone quiet, a renewal nobody has picked up. The signals are usually already in your systems, unwatched.'],
+];
+
+const building = [
+  ['Writing The Contract Yourself', 'Service agreements, subcontractor terms, a privacy policy for the website, an employment letter. The work that used to mean a lawyer, or a template you did not really read.'],
+  ['Connecting Two Systems That Were Never Meant To Talk', 'Your booking system into your accounting. Your website form into your CRM. An API key, a few lines of code, and something that was a quote from a developer last year is running by Friday.'],
+  ['Putting An Assistant In Front Of Customers', 'A chatbot on the website that answers questions about your products, your hours, your policies, in your name, when nobody is watching.'],
+  ['Building The Tool You Could Never Justify Paying For', 'The job tracker, the customer portal, the dashboard, the little app your crew uses on site. Described in plain English, built in an afternoon, now part of how the business runs.'],
+  ['Letting It Act Instead Of Advise', 'Not "draft this". Send it. Book it. Order it. Post it. The moment it stops suggesting and starts doing is the moment the stakes change.'],
 ];
 
 const controls = [
@@ -94,11 +120,18 @@ const questions = [
   ['What happens to my data, and where does it live?', 'Whose systems, mixed with whose. Ask how your information is kept separate from another client’s, and get the answer in terms of how it is built, not a promise.'],
 ];
 ---
-<FieldNote title="10 Ways Small Businesses Are Actually Using AI Right Now" description="Not the demos. The unglamorous things that quietly take hours out of a week, why most of it disappoints the first time, and how to tell a demo from software you can run a business on." number="03" readTime="7 minute read" nextHref="/work/cornerstone/" nextTitle="When Your Website Becomes Part Of Your Business">
-  <p>If one of these is the thing you wrote down at the golf tournament, that is not a coincidence. Nearly everybody writes down one of these.</p>
+<FieldNote title="10 Ways Small Businesses Are Actually Using AI Right Now" description="Five that take work off your week, and five that quietly turn you into a software company. What the second half costs, from someone who did it himself, and how to tell a demo from software you can run a business on." number="03" readTime="9 minute read" nextHref="/work/cornerstone/" nextTitle="When Your Website Becomes Part Of Your Business">
+  <p>Two different lists, and most people only notice the first one. The first five take work off your week. The second five quietly turn you into a software company.</p>
 
+  <h2>Five That Take Work Off The Week</h2>
   <ol class="fn-ways">
-    {ways.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+    {saving.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
+  </ol>
+
+  <h2>Five That Build Something That Stays</h2>
+  <p>This is the half that has changed in the last two years, and it is the half nobody warns you about. A year ago these needed a developer and a budget. Now they need an afternoon.</p>
+  <ol class="fn-ways fn-ways--cont" start="6">
+    {building.map(([title, body]) => <li><h3>{title}</h3><p>{body}</p></li>)}
   </ol>
 
   <h2>Why Most Of This Disappoints The First Time</h2>
@@ -108,10 +141,45 @@ const questions = [
   <p>You cannot fix that by asking it to be more careful. It is already trying. The fix is structural: give it your real information, stored so it can be retrieved and checked, and build in the discipline to answer "I don't know" instead of filling the gap.</p>
   <p>That is most of the job. The interesting part was never the chatbot. It is the plumbing underneath it.</p>
 
-  <h2>Everyone Is Building "AI Systems" Right Now</h2>
-  <p>There is a lot of it about. An assistant wired to a few tools, a chain of prompts, a connection between two systems, demonstrated on a clean example and called a platform.</p>
-  <p>Some of it is genuinely useful. Almost none of it is built to be wrong in public, which is the only interesting test. Your business does not need software that works when everything lines up. It needs software that behaves sensibly on the day an invoice is a photograph of a crumpled page, the customer's name is spelled three ways, and the person who knew the exception is on holiday.</p>
-  <p>Four things separate the two. They are not clever, and that is the point.</p>
+  <h2>Half Of That List Is Software Development</h2>
+  <p>Nobody sits down and decides to become a software company. You have a problem on a Tuesday, you describe it to an AI, and by Thursday something is running that your business depends on. There was no project, no budget, no decision. It just happened, and it happened because it finally could.</p>
+  <p>I am not warning you off it. I did exactly this. Hyphos Inc exists because I built it this way, and I had twenty years of putting systems into pipelines and construction projects before I started. That experience is the only reason I know what the list below costs, because I met most of it personally.</p>
+  <div class="fn-callout"><span class="fn-label">The Thing Nobody Says Out Loud</span><p>The building got easy. Knowing what you just took on did not.</p></div>
+  <p>So here is the part that is missing from every article about this. Five things you now own, whether or not anybody told you.</p>
+
+  <ol class="fn-risks">
+    <li>
+      <h3>Its Words Are Your Words</h3>
+      <p>Air Canada put a chatbot on its website. It told a grieving customer he could claim a bereavement fare after flying. He could not. When he took it to a tribunal, the airline argued the chatbot was <a href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416" rel="noopener">a separate legal entity responsible for its own actions</a>. The tribunal disagreed, and held the airline responsible for everything on its website, chatbot or not.</p>
+      <p>The damages were $650.88. The principle costs considerably more. If it speaks in your name, you said it.</p>
+    </li>
+    <li>
+      <h3>Code That Compiles Is Not Code That Is Safe</h3>
+      <p>Veracode has been testing this steadily: over 150 models, eighty coding tasks, four languages. <a href="https://www.veracode.com/blog/spring-2026-genai-code-security/" rel="noopener">As of March this year</a>, AI-written code is correct in form more than 95% of the time, and passes a security test 55% of the time. That number has not moved in two years. In Java it is 29%.</p>
+      <p>Their conclusion is worth reading twice: the models have become excellent at writing code that compiles, and have not become good at writing code that is safe. Working and safe look identical from where you are standing.</p>
+    </li>
+    <li>
+      <h3>Your Privacy Obligations Do Not Transfer</h3>
+      <p>The moment you connect a system, customer information starts moving somewhere it was not before. Under Canadian privacy law you remain accountable for personal information you hand to somebody else to process, and you are expected to have satisfied yourself it is protected comparably over there. The obligation stays with you. It does not move to the vendor, and it certainly does not move to the model.</p>
+      <p>Worth knowing before the API key goes in, rather than after.</p>
+    </li>
+    <li>
+      <h3>A Document Can Read Perfectly And Still Not Hold</h3>
+      <p>The contract, the policy, the terms on your website. They come back polished, properly structured, in the right voice. What you cannot see by reading them is whether a clause means what you think where you actually operate, or whether the thing you needed is missing entirely.</p>
+      <p>Which is the same failure as everywhere else in this note. You can spot a sentence that is wrong. You cannot spot the sentence that was never written.</p>
+    </li>
+    <li>
+      <h3>You Are Now The Only Person Who Understands It</h3>
+      <p>It works. Nobody else can change it. There are no tests, so nothing tells you when a change breaks something quietly. There is no record of why any of it was built that way, because the reasoning happened in a chat window that has long since been summarised away.</p>
+      <p>That is fine right up until you are away, or busy, or it goes wrong in front of a customer.</p>
+    </li>
+  </ol>
+
+  <p>None of this is an argument for going back to doing it by hand. It is an argument for knowing which half of the list you are on, because the second half comes with obligations the first half does not.</p>
+
+  <h2>What Separates A Demo From Something You Can Run On</h2>
+  <p>Plenty of what is being built right now is genuinely useful. Almost none of it is built to be wrong in public, which is the only interesting test. Your business does not need software that works when everything lines up. It needs software that behaves sensibly on the day an invoice is a photograph of a crumpled page, the customer&rsquo;s name is spelled three ways, and the person who knew the exception is on holiday.</p>
+  <p>Four things make the difference. They are not clever, and that is the point.</p>
 
   <ol class="fn-controls">
     {controls.map((c) => (
@@ -130,7 +198,7 @@ const questions = [
   <p>That is inconvenient. It is also the entire point. A gate that never blocks you is decoration, and by the time you find out which kind you have, the wrong thing has already gone out to a customer.</p>
 
   <h2>Five Questions To Ask Anyone Selling You AI</h2>
-  <p>Including us. You do not need to be technical to ask these, and the answers tell you nearly everything.</p>
+  <p>Including us. And if you built the thing yourself, ask them of your own work, which is harder and more useful. You do not need to be technical, and the answers tell you nearly everything.</p>
   <ol class="fn-questions">
     {questions.map(([q, why]) => <li><h3>{q}</h3><p>{why}</p></li>)}
   </ol>
@@ -141,13 +209,16 @@ const questions = [
   <p><strong><a href="/work#wander">Wander</a>.</strong> A production mobile app we built for a client from one codebase for iPhone and Android, live on the App Store, with AI-powered natural-language search.</p>
   <p><strong><a href="/#how-it-works">Hyphos</a>.</strong> Our own platform, and the deep end of this: the layer that gives AI the correct information from your business, with a way to show where every answer came from, and the discipline to admit what it does not know.</p>
 
-  <h2>If One Of These Is Your Thing</h2>
-  <p>Daniel will spend 45 minutes with you mapping where AI could realistically save your business time, and you get a one-page write-up at the end, whether or not we end up working together. If the honest answer is that you do not need us for it, we would rather tell you that.</p>
+  <h2>If You Have Already Built Something</h2>
+  <p>This is the conversation I find most useful, and the one almost nobody is offering. You connected the systems, or stood up the assistant, or had it write the agreement, and it works. The question is what you took on while you were doing it, and that is a much shorter conversation than people expect.</p>
+  <p>Forty five minutes. We go through what you have built, what it can do without asking you, where your customers&rsquo; information is going, and what happens on the day it is wrong. You get a one page write up at the end whether or not we work together, and if the honest answer is that you are fine, that is what it will say.</p>
+  <p>And if you have not built anything yet, the same session works in reverse: where AI would realistically save you time, and which of it is worth doing properly.</p>
   <p><a href="/contact">Ask about a 45-minute session</a> or <a href="/work">see the work</a>.</p>
 </FieldNote>
 
 <style is:global>
   .fn-ways { list-style: none; counter-reset: way; padding-left: 0 !important; }
+  .fn-ways--cont { counter-reset: way 5; }
   .fn-ways li { counter-increment: way; display: grid; grid-template-columns: 2.4rem 1fr; column-gap: 10px; padding: 14px 0 !important; margin: 0 !important; border-top: 1px solid #ffffff1f; }
   .fn-ways li::before { content: counter(way, decimal-leading-zero); color: #d6bb90; font-size: .95rem; font-variant-numeric: tabular-nums; padding-top: 3px; grid-row: span 2; }
   .fn-ways h3 { margin: 0 0 6px !important; }
@@ -160,6 +231,13 @@ const questions = [
   .fn-controls p { margin: 0 0 10px !important; }
   .fn-controls .c-ours { color: #a9abaf; font-size: .95em; margin: 0 !important; }
   .fn-controls .c-ours strong { color: #d6bb90; font-weight: 600; }
+
+  .fn-risks { list-style: none; counter-reset: risk; padding-left: 0 !important; margin: 24px 0 !important; display: grid; gap: 14px; }
+  .fn-risks li { counter-increment: risk; position: relative; border: 1px solid #ffffff1f; border-radius: 10px; padding: 20px 24px !important; margin: 0 !important; background: #ffffff08; }
+  .fn-risks li::before { content: counter(risk, decimal-leading-zero); color: #d6bb90; font-size: .85rem; font-variant-numeric: tabular-nums; letter-spacing: .1em; display: block; margin-bottom: 6px; }
+  .fn-risks h3 { margin: 0 0 10px !important; }
+  .fn-risks p { margin: 0 0 10px !important; }
+  .fn-risks p:last-child { margin: 0 !important; color: #a9abaf; }
 
   .fn-questions { list-style: none; counter-reset: q; padding-left: 0 !important; }
   .fn-questions li { counter-increment: q; display: grid; grid-template-columns: 2.4rem 1fr; column-gap: 10px; padding: 14px 0 !important; margin: 0 !important; border-top: 1px solid #ffffff1f; }

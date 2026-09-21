@@ -177,6 +177,40 @@ we are trusting more when that may not be appropriate.
 
 ---
 
+## 6c. What a small business takes on when it builds with AI
+
+For field note 03, "10 Ways Small Businesses Are Actually Using AI Right Now".
+
+**Liability for what your assistant says.** Moffatt v Air Canada, BC Civil
+Resolution Tribunal, 14 February 2024. The airline's chatbot told a customer he
+could claim a bereavement fare after travelling. Air Canada argued the chatbot
+was a separate legal entity responsible for its own actions; the tribunal
+rejected that and held the airline responsible for all information on its
+website, static page or chatbot. Damages $650.88, negligent misrepresentation.
+https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416
+
+**Security of AI-written code.** Veracode, Spring 2026 GenAI Code Security
+update, 24 March 2026. Over 150 models, 80 coding tasks, four languages, four
+vulnerability classes. Syntax correctness now above 95%. Security pass rate
+about 55%, "virtually identical to where they stood two years ago". Java 29%,
+JavaScript 57%, C# 58%, Python 62%. Their line: the models "have become
+excellent at writing code that compiles" and "failed at writing code that's
+safe".
+https://www.veracode.com/blog/spring-2026-genai-code-security/
+
+**Privacy accountability.** PIPEDA Principle 4.1.3: an organization is
+responsible for personal information in its possession or custody, including
+information transferred to a third party for processing, and must use
+contractual or other means to provide a comparable level of protection. The OPC
+published guidance on assessing third-party service providers in 2026.
+https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/
+
+**Care required.** State these as facts about what happened or what the law
+says. Do not give legal advice, do not tell a reader what their obligations are
+in their situation, and do not imply we assess compliance.
+
+---
+
 ## 7. Our own measurement
 
 Taken 21 September 2026 from the Claude Code session that wrote the homepage
