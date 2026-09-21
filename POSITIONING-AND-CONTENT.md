@@ -25,9 +25,10 @@ expensive, and it found what the first answer missed.
 
 Why it breaks at volume, in the order the homepage says it:
 
-1. **It answers from memory, not from the file.** This is hallucination, and the
-   word belongs on the page so readers connect it to what they have heard
-   elsewhere. It is not invention for its own sake: it holds a fragment of the
+1. **It answers from memory, not from your file. “Hallucination”** The quoted
+   word sits in this point's label, not in the section headline: readers
+   connect it to what they have heard elsewhere without the page lecturing
+   them. It is not invention for its own sake: it holds a fragment of the
    source, fills in the rest from that fragment, and believes the result,
    because it did not go back to the full document unless explicitly told to.
    Daniel's correction, 21 Sept: do not describe this as making things up.
