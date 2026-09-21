@@ -52,6 +52,19 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
+### Do not say the skimmed answer looks the same as the thorough one
+
+Daniel's correction, 21 Sept. On his own project the skimmed review was not a
+near miss: checking it turned up problem after problem. The honest claim is
+about **presentation, not content**. Both answers arrive with the same
+structure and the same confidence, and nothing in the delivery tells you which
+one you have. The content differs a great deal, and that only surfaces when
+somebody goes back through it.
+
+This matters because the weaker version undersells the product. If the two
+answers really were near identical, the checking would hardly be worth paying
+for.
+
 ### How to explain it without numbers
 
 **This lives in field note 06, not on the homepage.** Daniel's call, 21 Sept:
