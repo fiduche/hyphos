@@ -56,9 +56,15 @@ And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being
 asked about.
 
-The fix is structural, and it is what Hyphos is: answers tied to their source,
-checked against that source automatically, and a count of what has actually been
-read.
+**Do not say a better prompt cannot fix this.** Daniel's correction, 21 Sept: it
+can, he does it by hand, and claiming otherwise is both false and insulting to
+the reader who has managed it. The true claim is about effort and skill. Doing
+it well means knowing exactly what to ask for and asking every single time, and
+at volume that becomes the job itself.
+
+The fix that holds without a person driving it is structural, and it is what
+Hyphos is: answers tied to their source, checked against that source
+automatically, and a count of what has actually been read.
 
 ---
 
