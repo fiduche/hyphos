@@ -25,32 +25,6 @@ import '../styles/visual-home.css';
       <h2>Why Not Just Ask<br /><em>Claude Or ChatGPT?</em></h2>
       <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when the volume grows.</p>
     </div>
-    {/*
-      Every figure here traces to RESEARCH-CONTEXT-LIMITS.md in this repo.
-      Do not change one without changing that file, and do not restate any of
-      them from memory.
-
-      600,000 words: a 1M token window at Anthropic's own stated ~3.5 English
-        characters per token, ~5.7 characters per word. The common 0.75
-        words-per-token rule would give 750,000; we publish the lower figure.
-      20,000 words: NoLiMa (ICML 2025), "At 32K, for instance, 11 models drop
-        below 50% of their strong short-length baselines", on a needle set with
-        minimal lexical overlap between question and answer. 32k tokens is
-        ~20,000 words.
-      90,000 words: measured in the session that wrote this section, 21 Sept
-        2026: 145,974 tokens of messages, one hour after being compacted.
-        Overhead that session was 60,638 tokens (~37,000 words) before any of
-        our material, in a setup with tools and MCP servers connected.
-
-      Anthropic describe this as "a performance gradient rather than a hard
-      cliff". Never write that it breaks at a particular number.
-    */}
-    <div class="v-wall-scale">
-      <div><strong>600,000 words</strong><span>The ceiling people quote for the biggest models today. None of it is really yours: the same space holds the instructions, the tools, your question and every answer so far.</span></div>
-      <div><strong>20,000 words</strong><span>About forty pages. Independent testing found most models scoring below half their short-document accuracy at this length, when the answer does not repeat the words in the question.</span></div>
-      <div><strong>90,000 words</strong><span>What one working session of ours spent on itself, in the hour after it had been compacted. Everything before that was already summarised and dropped.</span></div>
-    </div>
-    <p class="v-wall-sources">Where these come from: <a href="https://arxiv.org/abs/2502.05167" rel="noopener">NoLiMa, ICML 2025</a>, <a href="https://www.trychroma.com/research/context-rot" rel="noopener">Chroma on context rot</a>, <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener">Anthropic on the attention budget</a>, and our own session.</p>
     <ul class="v-wall-list">
       <li><h3>It answers from memory, not from your file. <span class="v-wall-chip">“Hallucination”</span></h3><p>It keeps a piece of what it read, fills in the rest, and believes the result. Going back to the full document is not something it does on its own.</p></li>
       <li><h3>It can miss what you changed.</h3><p>You feed it the transcript and assume it caught the reversal. Unless you ask for it directly, the answer can come back with the decision you dropped.</p></li>
@@ -115,12 +89,6 @@ import '../styles/visual-home.css';
 .v-wall{background:#15171a;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;}
 .v-wall .v-chapter-heading{text-align:center;}
 .v-wall-lead{max-width:60ch;margin:0 auto;font-size:1.15rem;line-height:1.7;color:#c9cace;}
-.v-wall-scale{max-width:1000px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left;}
-.v-wall-scale>div{padding:18px 20px 20px;border:1px solid #ffffff1c;border-radius:12px;background:#ffffff08;}
-.v-wall-scale strong{display:block;font-size:1.55rem;font-weight:500;line-height:1.1;letter-spacing:-.02em;color:#e3cf9d;font-variant-numeric:tabular-nums;}
-.v-wall-scale span{display:block;margin-top:8px;font-size:.875rem;line-height:1.55;color:#b9babd;}
-.v-wall-sources{max-width:840px;margin:16px auto 0;font-size:.8125rem;line-height:1.6;color:#8d8e91;}
-.v-wall-sources a{color:#c0a878;text-underline-offset:3px;}
 .v-wall-list{list-style:none;padding:0;margin:40px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
 .v-wall-list li{position:relative;overflow:hidden;padding:24px 26px 26px;border:1px solid #ffffff24;border-radius:14px;background:linear-gradient(180deg,#2c2f34,#232528);box-shadow:0 22px 45px -32px #000;}
 .v-wall-list li::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,#b69259,#e3cf9d 42%,#b6925900);}
@@ -131,6 +99,6 @@ import '../styles/visual-home.css';
 .v-wall-close{max-width:70ch;margin:40px auto 0;text-align:center;font-size:1.05rem;line-height:1.75;color:#c9cace;}
 .v-wall-cta{margin-top:30px;text-align:center;}
 .v-wall-cta .button{font-size:1.05rem;padding:15px 30px;}
-@media(max-width:760px){.v-wall-scale{grid-template-columns:1fr;gap:12px;margin-top:26px;}.v-wall-scale>div{padding:15px 18px 17px;}.v-wall-scale strong{font-size:1.35rem;}.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
+@media(max-width:760px){.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
 </style>
 </BaseLayout>

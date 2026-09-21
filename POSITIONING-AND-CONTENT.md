@@ -84,8 +84,10 @@ Do not reach for "it has a limited memory" (implies a fixable size), "it lies"
 
 ### How much is "a lot"? See RESEARCH-CONTEXT-LIMITS.md
 
-The three figures on the homepage, and the evidence behind every claim in this
-section, live in `RESEARCH-CONTEXT-LIMITS.md`. That file is the single source
+**No figures on the homepage.** Daniel took the three-number strip off on 21
+Sept. The homepage names the five failures and nothing more. Numbers and
+citations belong in field note 06 and in the research file. The evidence
+behind every claim in this section lives in `RESEARCH-CONTEXT-LIMITS.md`. That file is the single source
 of truth: primary sources with quotes and dates, our own measured session, the
 tokens-to-words arithmetic, and an explicit "what we must not claim" list.
 
