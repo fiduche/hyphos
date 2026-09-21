@@ -89,7 +89,7 @@ const controls = [
   {
     n: '01',
     title: 'It Shows Where Every Answer Came From',
-    body: 'Not "the AI said so". A pointer to the invoice, the paragraph, the line of the transcript. If a number cannot be traced to something you could open and read yourself, it is a guess wearing a suit.',
+    body: 'Not "the AI said so". A pointer to the invoice, the paragraph, the line of the transcript. If a number cannot be traced to something you could open and read yourself, treat it as a guess wearing a suit.',
     ours: 'In Hyphos, every factual sentence either carries its source or is marked unsourced before you ever see it. In the funeral home software, a suggested form value is thrown away unless the exact words appear in the recorded conversation it claims to come from.',
   },
   {
@@ -101,7 +101,7 @@ const controls = [
   {
     n: '03',
     title: 'A Person Approves Anything That Leaves The Building',
-    body: 'Approval should be built into the data, not a habit somebody remembers. If it is a habit, it will be skipped on the busy day, which is the day it matters.',
+    body: 'Approval should be built into the data, not a habit somebody remembers. If it is a habit, it eventually gets skipped on the busy day, which is the day it matters.',
     ours: 'In the funeral home software, AI-written content is created in a pending state. It can only move through approved and scheduled to published by a named person with the right role, and every one of those moves is recorded. A change to the public website needs the owner, signed in with two-factor. Nothing publishes itself.',
   },
   {
@@ -137,13 +137,13 @@ const questions = [
   <h2>Why Most Of This Disappoints The First Time</h2>
   <p>Every business owner who has tried this has had the same experience. The demo is astonishing. You bring it into your actual business and it is confidently, fluently wrong, because it does not know your suppliers, your pricing, your customers, or the way you actually do things.</p>
   <div class="fn-callout"><span class="fn-label">The Real Problem</span><p>That is not a smartness problem. It is an information problem.</p></div>
-  <p>A model with no access to your business will guess, and it will guess in complete sentences, which is what makes it dangerous rather than merely useless.</p>
+  <p>A model with no access to your business tends to guess rather than say so, and it guesses in complete sentences, which is what makes it dangerous rather than merely useless.</p>
   <p>You cannot fix that by asking it to be more careful. It is already trying. The fix is structural: give it your real information, stored so it can be retrieved and checked, and build in the discipline to answer "I don't know" instead of filling the gap.</p>
   <p>That is most of the job. The interesting part was never the chatbot. It is the plumbing underneath it.</p>
 
   <h2>Half Of That List Is Software Development</h2>
   <p>Almost nobody sits down and decides to become a software company. You have a problem on a Tuesday, you describe it to an AI, and by Thursday something is running that your business depends on. There was no project, no budget, no decision. It just happened, and it happened because it finally could.</p>
-  <p>I am not warning you off it. I did exactly this. Hyphos Inc exists because I built it this way, and I had twenty years of putting systems into pipelines and construction projects before I started. That experience is the only reason I know what the list below costs, because I met most of it personally.</p>
+  <p>I am not warning you off it. I did exactly this. Hyphos Inc exists because I built it this way, and I had twenty years of putting systems into pipelines and construction projects before I started. That experience is why I know what the list below costs. I met most of it personally.</p>
   <div class="fn-callout"><span class="fn-label">The Thing Nobody Says Out Loud</span><p>The building got easy. Knowing what you just took on did not.</p></div>
   <p>So here is the part that usually goes missing. Five things you now own, whether or not anybody told you.</p>
 
@@ -178,7 +178,7 @@ const questions = [
   <p>None of this is an argument for going back to doing it by hand. It is an argument for knowing which half of the list you are on, because the second half comes with obligations the first half does not.</p>
 
   <h2>What Separates A Demo From Something You Can Run On</h2>
-  <p>Plenty of what is being built right now is genuinely useful. Almost none of it is built to be wrong in public, which is the only interesting test. Your business does not need software that works when everything lines up. It needs software that behaves sensibly on the day an invoice is a photograph of a crumpled page, the customer&rsquo;s name is spelled three ways, and the person who knew the exception is on holiday.</p>
+  <p>Plenty of what is being built right now is genuinely useful. Almost none of it is built to be wrong in public, which is the test that matters. Your business does not need software that works when everything lines up. It needs software that behaves sensibly on the day an invoice is a photograph of a crumpled page, the customer&rsquo;s name is spelled three ways, and the person who knew the exception is on holiday.</p>
   <p>Four things make the difference. They are not clever, and that is the point.</p>
 
   <ol class="fn-controls">
@@ -193,7 +193,7 @@ const questions = [
   </ol>
 
   <h2>The Part Nobody Puts In The Demo</h2>
-  <p>Our own platform is built by a system we wrote called Domas. AI plans each change, builds it in a copy where nothing live can break, tests it, and a second AI reviews the work. A person approves every plan before any of it starts.</p>
+  <p>Our own platform is built by a system we wrote called Domas. AI plans each change, builds it in a separate copy, away from anything live, tests it, and a second AI reviews the work. A person approves every plan before any of it starts.</p>
   <p>The morning this article was written, that system refused a change we tried to make to it, because the session had not yet proved it had read the records the change depended on. Not a warning. A refusal, twice, with the reason stated plainly.</p>
   <p>That is inconvenient. It is also the entire point. A gate that never blocks you is decoration, and by the time you find out which kind you have, the wrong thing has already gone out to a customer.</p>
 
