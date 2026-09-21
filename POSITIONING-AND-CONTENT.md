@@ -44,6 +44,13 @@ Why it breaks at volume, in the order the homepage says it:
    every answer.
 4. **It says it read everything.** Completion is a claim, not an event, and the
    skimmed summary looks like the thorough one.
+5. **It forgets the conversation as it gets longer. “Compaction”** A long
+   session is compressed into a summary so it can continue. Detail goes, and
+   the premise of the task can go with it. Nothing reports what was dropped, so
+   the first sign is an answer that contradicts something settled an hour
+   earlier. Added to the homepage 21 Sept at Daniel's request: almost nobody
+   outside the tooling knows this is happening. See "Compaction of
+   conversations" below for the long version.
 
 And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being
@@ -186,7 +193,9 @@ obtains clearance.
 ## Compaction of conversations
 
 **This is an unsolved, recurring problem for Daniel, and it costs real money and
-time.** Recording it here because it keeps being rediscovered.
+time.** Recording it here because it keeps being rediscovered. It is now also
+the fifth point on the homepage, because most people using these tools have no
+idea it is happening to them.
 
 **What happens.** A long working session fills its context, gets summarised, and
 the summary becomes the new working memory. What survives is what the summariser
