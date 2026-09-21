@@ -52,18 +52,20 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
-### Do not say the skimmed answer looks the same as the thorough one
+### The skim is incomplete, not wrong
 
-Daniel's correction, 21 Sept. On his own project the skimmed review was not a
-near miss: checking it turned up problem after problem. The honest claim is
-about **presentation, not content**. Both answers arrive with the same
-structure and the same confidence, and nothing in the delivery tells you which
-one you have. The content differs a great deal, and that only surfaces when
-somebody goes back through it.
+Daniel's correction, 21 Sept, after a first attempt overcorrected. What came
+back from the skim was **not full of errors. It was missing items.** Say it
+that way.
 
-This matters because the weaker version undersells the product. If the two
-answers really were near identical, the checking would hardly be worth paying
-for.
+The insight worth keeping: a wrong answer can be argued with, but an answer
+with things left out reads exactly like a complete one, because absence leaves
+no trace on the page. You cannot see a gap by reading an answer. That is why
+the fix is a count of what was read, not a better eye for mistakes.
+
+Avoid both failed versions: "the summaries look almost identical" (understates
+the gap, and undersells the product) and "it is full of problems" (overstates
+it, and was not what happened).
 
 ### How to explain it without numbers
 
