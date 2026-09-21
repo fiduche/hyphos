@@ -52,6 +52,34 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
+### How to explain it without numbers
+
+The framing that works, and the one on the homepage:
+
+> **It is a reader, not a filing cabinet.** A computer either has your file or
+> it does not. This is closer to a very fast, very well read person. Hand it
+> one document and it knows that document cold. Hand it a project's worth and
+> it holds the shape of the whole thing while the particulars go soft.
+>
+> The particulars are what you were asking about: the exception, the reversal,
+> the one line where the price changed. The answer still reads beautifully,
+> because the shape is the part it kept.
+
+Why this one and not the others:
+
+- **It matches the research.** Anthropic's "attention budget" is the same idea
+  in their words. Degradation is a gradient, not a switch, and "the particulars
+  go soft" is a gradient.
+- **It explains all five cards at once.** Soft particulars are why it fills
+  gaps, why it misses a reversal, why the summary reads well anyway.
+- **It kills the filing cabinet assumption**, which is the actual
+  misunderstanding. People think they uploaded the file and it now has it.
+- **It does not insult anyone.** No claim the tool is stupid or broken, which
+  matters because the reader uses it every day and likes it.
+
+Do not reach for "it has a limited memory" (implies a fixable size), "it lies"
+(wrong and rude about a tool they trust), or anything with a token count in it.
+
 ### How much is "a lot"? See RESEARCH-CONTEXT-LIMITS.md
 
 The three figures on the homepage, and the evidence behind every claim in this

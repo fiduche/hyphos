@@ -25,6 +25,11 @@ import '../styles/visual-home.css';
       <h2>Why Not Just Ask<br /><em>Claude Or ChatGPT?</em></h2>
       <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when the volume grows.</p>
     </div>
+    <div class="v-wall-plain">
+      <p class="v-wall-plain-lead">It is a reader, not a filing cabinet.</p>
+      <p>A computer either has your file or it does not. This is closer to a very fast, very well read person. Hand it one document and it knows that document cold. Hand it a project&rsquo;s worth and it holds the shape of the whole thing while the particulars go soft.</p>
+      <p>The particulars are what you were asking about: the exception, the reversal, the one line where the price changed. The answer still reads beautifully, because the shape is the part it kept.</p>
+    </div>
     {/*
       Every figure here traces to RESEARCH-CONTEXT-LIMITS.md in this repo.
       Do not change one without changing that file, and do not restate any of
@@ -115,6 +120,9 @@ import '../styles/visual-home.css';
 .v-wall{background:#15171a;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;}
 .v-wall .v-chapter-heading{text-align:center;}
 .v-wall-lead{max-width:60ch;margin:0 auto;font-size:1.15rem;line-height:1.7;color:#c9cace;}
+.v-wall-plain{max-width:63ch;margin:30px auto 0;}
+.v-wall-plain-lead{font-size:1.3rem;line-height:1.35;letter-spacing:-.01em;color:#e3cf9d;font-style:italic;}
+.v-wall-plain p+p{margin-top:14px;font-size:1.0625rem;line-height:1.7;color:#c9cace;}
 .v-wall-scale{max-width:1000px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left;}
 .v-wall-scale>div{padding:18px 20px 20px;border:1px solid #ffffff1c;border-radius:12px;background:#ffffff08;}
 .v-wall-scale strong{display:block;font-size:1.55rem;font-weight:500;line-height:1.1;letter-spacing:-.02em;color:#e3cf9d;font-variant-numeric:tabular-nums;}
@@ -131,6 +139,6 @@ import '../styles/visual-home.css';
 .v-wall-close{max-width:70ch;margin:40px auto 0;text-align:center;font-size:1.05rem;line-height:1.75;color:#c9cace;}
 .v-wall-cta{margin-top:30px;text-align:center;}
 .v-wall-cta .button{font-size:1.05rem;padding:15px 30px;}
-@media(max-width:760px){.v-wall-scale{grid-template-columns:1fr;gap:12px;margin-top:26px;}.v-wall-scale>div{padding:15px 18px 17px;}.v-wall-scale strong{font-size:1.35rem;}.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
+@media(max-width:760px){.v-wall-plain{margin-top:24px;}.v-wall-plain-lead{font-size:1.15rem;}.v-wall-plain p+p{font-size:1rem;}.v-wall-scale{grid-template-columns:1fr;gap:12px;margin-top:26px;}.v-wall-scale>div{padding:15px 18px 17px;}.v-wall-scale strong{font-size:1.35rem;}.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
 </style>
 </BaseLayout>
