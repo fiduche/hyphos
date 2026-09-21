@@ -37,8 +37,11 @@ Why it breaks at volume, in the order the homepage says it:
    reversal was captured. Retrieval finds what matches the question, and a
    reversal ("forget that, the client won't wear it") shares no words with it,
    so without an explicit instruction and a decision log it can be passed over.
-3. **It cannot check its own work.** A re-check re-reads with the same
-   assumptions that produced the error. Independence is what makes a check work.
+3. **It will not double check on its own.** Daniel's correction, 21 Sept: do
+   not say it cannot check its own work. Asked directly, it goes back and finds
+   real errors, routinely. What it does not do is start that itself, so at
+   volume the checking depends on a person remembering to ask every time, for
+   every answer.
 4. **It says it read everything.** Completion is a claim, not an event, and the
    skimmed summary looks like the thorough one.
 
