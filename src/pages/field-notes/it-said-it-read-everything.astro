@@ -25,6 +25,13 @@ const asks = [
   <div class="fn-callout"><span class="fn-label">The Uncomfortable Part</span><p>Reading twelve hours properly is slow and expensive. Skimming is fast and cheap. The summaries look almost identical.</p></div>
   <p>Nothing in the loop separates the two. There is no red flag, no shorter answer, no hedge. The honest version and the skimmed version arrive with the same formatting and the same confidence, and the difference only shows up later, usually in front of somebody whose opinion matters.</p>
 
+  <h2>A Reader, Not A Filing Cabinet</h2>
+  <p>The picture most of us have is wrong, and everything else follows from it. We think uploading a file means the tool now has it, the way a folder has it. It does not work like that.</p>
+  <p>A computer either has your file or it does not. This is closer to a very fast, very well read person. Hand it one document and it knows that document cold. Hand it a project&rsquo;s worth and it holds the shape of the whole thing while the particulars go soft.</p>
+  <p>The particulars are what you were asking about: the exception, the reversal, the one line where the price changed. The answer still reads beautifully, because the shape is the part it kept.</p>
+  <p>This is not a complaint about the tools, and it is not something a better model has fixed. Anthropic describe their own models as working from an <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener">attention budget</a>, and call the result a performance gradient rather than a hard cliff. Independent testing puts numbers on the gradient: in <a href="https://arxiv.org/abs/2502.05167" rel="noopener">one benchmark</a>, eleven of thirteen models scored below half their short-document accuracy on about forty pages of material, when the answer did not repeat the words in the question. <a href="https://www.trychroma.com/research/context-rot" rel="noopener">Another study</a>, across eighteen models from four companies, found every one of them declining as the input grew.</p>
+  <p>Which is why my twelve hours came back looking finished. It had the shape.</p>
+
   <h2>What Actually Worked</h2>
   <p>I stopped asking for the outcome and started specifying the method: every transcript gets its own pass, each pass reads the whole file rather than searching it, and each one comes back with its findings and the line each finding came from. Only then does anything get merged.</p>
   <p>It took far longer. It cost noticeably more. It found things the first answer had missed, including the decision I had been looking for.</p>

@@ -54,7 +54,9 @@ Why it breaks at volume, in the order the homepage says it:
 
 ### How to explain it without numbers
 
-The framing that works, and the one on the homepage:
+**This lives in field note 06, not on the homepage.** Daniel's call, 21 Sept:
+the homepage states the problem, the note explains it. Anyone who wants the
+explanation follows the button. The framing:
 
 > **It is a reader, not a filing cabinet.** A computer either has your file or
 > it does not. This is closer to a very fast, very well read person. Hand it
