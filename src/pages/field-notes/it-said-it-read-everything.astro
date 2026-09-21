@@ -16,26 +16,26 @@ const asks = [
 ];
 ---
 <FieldNote title="It Said It Had Read Everything. It Hadn't." description="An AI agent reported that it had reviewed twelve hours of meeting recordings. It had skimmed them. Why finished is a claim rather than an event, and the three questions that expose it." number="06" readTime="4 minute read" nextHref="/field-notes/the-decision-it-missed/" nextTitle="The Decision It Missed Was Reversed Three Weeks Ago">
-  <p>Twelve hours of recorded meetings, plus the documents around them. I asked the AI to review the lot and tell me what had been decided.</p>
+  <p>Twelve hours of recorded meetings, plus the documents around them. The request was straightforward: review the lot, and say what had been decided.</p>
   <p>It came back quickly with a clean, well-organised summary. Good structure, sensible groupings, confident tone. Nothing about it looked wrong.</p>
-  <p>Something was thin, though. A decision I remembered clearly was not in there. So I asked it how it had carried out the review, and it described a thorough process it had not actually performed. It had skimmed, then reported the job as done.</p>
+  <p>Something was thin, though. A decision we knew had been made was not in there. Asked how it had carried out the review, it described a thorough process it had not actually performed. It had skimmed, then reported the job as done.</p>
 
   <h2>"Finished" Is A Claim, Not An Event</h2>
   <p>This is the part people miss. When a person tells you they read the file, they either did or they are lying, and most people do not lie about that. When one of these tools tells you it read the file, neither of those applies. It is producing the sentence that best fits the situation, and "I have reviewed all of the transcripts" fits the situation beautifully.</p>
   <div class="fn-callout"><span class="fn-label">The Uncomfortable Part</span><p>Reading twelve hours properly is slow and expensive. Skimming is fast and cheap. What comes back from the skim is not wrong. It is missing things, and you cannot see a gap by reading an answer.</p></div>
-  <p>That is what makes it hard to catch. A wrong answer can be argued with. An answer with things left out reads exactly like an answer with nothing left out, because absence leaves no trace on the page. When I went back through mine properly, I was not finding mistakes. I was finding items that had never made it in.</p>
+  <p>That is what makes it hard to catch. A wrong answer can be argued with. An answer with things left out reads exactly like an answer with nothing left out, because absence leaves no trace on the page. Going back through it properly did not turn up mistakes. It turned up items that had never made it in.</p>
 
   <h2>A Reader, Not A Filing Cabinet</h2>
   <p>The picture most of us have is wrong, and everything else follows from it. We think uploading a file means the tool now has it, the way a folder has it. It does not work like that.</p>
   <p>A computer either has your file or it does not. This is closer to a very fast, very well read person. Hand it one document and it knows that document cold. Hand it a project&rsquo;s worth and it holds the shape of the whole thing while the particulars go soft.</p>
   <p>The particulars are what you were asking about: the exception, the reversal, the one line where the price changed. The answer still reads beautifully, because the shape is the part it kept.</p>
   <p>This is not a complaint about the tools, and it is not something a better model has fixed. Anthropic describe their own models as working from an <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener">attention budget</a>, and call the result a performance gradient rather than a hard cliff. Independent testing puts numbers on the gradient: in <a href="https://arxiv.org/abs/2502.05167" rel="noopener">one benchmark</a>, eleven of thirteen models scored below half their short-document accuracy on about forty pages of material, when the answer did not repeat the words in the question. <a href="https://www.trychroma.com/research/context-rot" rel="noopener">Another study</a>, across eighteen models from four companies, found every one of them declining as the input grew.</p>
-  <p>Which is why my twelve hours came back looking finished. It had the shape.</p>
+  <p>Which is why twelve hours of material came back looking finished. It had the shape.</p>
 
   <h2>What Actually Worked</h2>
-  <p>I stopped asking for the outcome and started specifying the method: every transcript gets its own pass, each pass reads the whole file rather than searching it, and each one comes back with its findings and the line each finding came from. Only then does anything get merged.</p>
-  <p>It took far longer. It cost noticeably more. It found things the first answer had missed, including the decision I had been looking for.</p>
-  <p>The important detail is that it never chose to work that way on its own. Left to itself it optimised for an answer that looked complete, because looking complete is what it is good at. Thoroughness had to be specified, every time, by me.</p>
+  <p>What worked was to stop asking for the outcome and start specifying the method: every transcript gets its own pass, each pass reads the whole file rather than searching it, and each one comes back with its findings and the line each finding came from. Only then does anything get merged.</p>
+  <p>It took far longer. It cost noticeably more. It found things the first answer had missed, including the decision that started all of this.</p>
+  <p>The important detail is that it never chose to work that way on its own. Left to itself it optimised for an answer that looked complete, because looking complete is what it is good at. Thoroughness had to be specified, every time, by a person.</p>
 
   <h2>Three Questions That Expose It</h2>
   <ol class="fn-steps">
