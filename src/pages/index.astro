@@ -26,24 +26,28 @@ import '../styles/visual-home.css';
       <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when the volume grows.</p>
     </div>
     {/*
-      Scale numbers, checked 21 Sept 2026. Arithmetic, not a benchmark:
-      - 1M token window (Claude Opus 5) x ~0.75 words per token = ~750,000 words.
-      - At ~500 words per page, ~1,500 pages.
-      - Speech runs ~150 words per minute, so ~9,000 words per hour of meeting,
-        giving ~80 hours. Speaker labels and timestamps push this down, so the
-        page says "about".
-      - Daniel's own incident: 12 hours of meetings is ~108,000 words, about
-        15% of 750,000. That is where we watched one skim.
-      Daniel's correction, 21 Sept: 750,000 words is a ceiling nobody reaches.
-      The window is shared with the question, the answer and every prior turn,
-      and source material is re-read in pieces rather than held word for word.
-      Never present the figure as usable working capacity.
-      Do not restate these without redoing the arithmetic.
+      Scale numbers. Measured 21 Sept 2026 in the Claude Code session that
+      wrote this page, reported by the session itself:
+        window 1,000,000 tokens; used 206,636 (21%)
+        system prompt 5,981 + system tools 23,689 + MCP tools 19,646
+          + skills 9,925 + agents 1,397 = 60,638 before any of our material
+        messages 145,974, and this session had already been compacted once
+      Tokens converted at ~0.75 words per token: 60,638 -> ~45,000 words,
+      145,974 -> ~110,000 words, 1,000,000 -> ~750,000 words.
+
+      Daniel's corrections, 21 Sept: 750,000 is a ceiling nobody reaches, so
+      never present it as usable capacity. The window is shared with the
+      question, the answer and every earlier turn, and source material is
+      re-read in pieces rather than held word for word.
+
+      The 45,000 figure is OUR setup, with tools and MCP servers connected. A
+      plain chat window starts much smaller. The caption says so. Do not
+      restate any of this without measuring again.
     */}
     <div class="v-wall-scale">
-      <div><strong>750,000 words</strong><span>The size people quote. You never get it. The same space holds your questions, its answers and everything said so far, and your files get re-read in pieces each time you ask.</span></div>
-      <div><strong>12 hours</strong><span>The pile of meetings we handed one. It came back and reported the review as done.</span></div>
-      <div><strong>15%</strong><span>How little of that quoted space those meetings were. Room was never the problem.</span></div>
+      <div><strong>750,000 words</strong><span>The ceiling people quote for the biggest models today. Nothing like all of it is ever yours.</span></div>
+      <div><strong>45,000 words</strong><span>Gone before you type anything, in a working setup with tools connected: the instructions the assistant needs to operate at all.</span></div>
+      <div><strong>110,000 words</strong><span>What one working session then spent on questions, answers and files opened. That is after it had already been trimmed back once.</span></div>
     </div>
     <ul class="v-wall-list">
       <li><h3>It answers from memory, not from your file. <span class="v-wall-chip">“Hallucination”</span></h3><p>It keeps a piece of what it read, fills in the rest, and believes the result. Going back to the full document is not something it does on its own.</p></li>

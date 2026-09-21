@@ -54,16 +54,29 @@ Why it breaks at volume, in the order the homepage says it:
 
 ### How much is "a lot"? The scale numbers on the homepage
 
-Arithmetic, not a benchmark, and stated as approximations on the page. Redo it
-before restating it anywhere.
+**Measured, not estimated.** Taken 21 Sept 2026 from the Claude Code session
+that wrote this page, as the session reported its own window:
 
-| Figure | Working |
-|---|---|
-| 750,000 words | A 1M token window (Claude Opus 5 today) at ~0.75 words per token. |
-| ~1,500 pages | 750,000 words at ~500 words a page. |
-| ~80 hours of meetings | Speech runs ~150 words a minute, so ~9,000 words an hour. Speaker labels and timestamps cut this, hence "about". |
-| 12 hours | Daniel's own incident, the one in field note 06. |
-| 15% | 12 hours is ~108,000 words, ~14.4% of 750,000. |
+| Category | Tokens | Words (x0.75) |
+|---|---|---|
+| Window | 1,000,000 | ~750,000 |
+| System prompt | 5,981 | |
+| System tools | 23,689 | |
+| MCP tools | 19,646 | |
+| Skills | 9,925 | |
+| Custom agents | 1,397 | |
+| **Overhead before any of our material** | **60,638** | **~45,000** |
+| Messages (the conversation itself) | 145,974 | ~110,000 |
+| **Total in use** | **206,636 (21%)** | |
+
+Two things make those numbers worth publishing. The overhead is spent before a
+single file is opened. And the 145,974 of conversation is **after this session
+had already been compacted once**, so it regrew to roughly the size of the
+twelve hours of meetings in field note 06, in one working day.
+
+Caveats the page states or must keep: the 45,000 is our setup, with tools and
+MCP servers connected, and a plain chat window starts far smaller. Do not
+restate any figure without measuring again.
 
 **750,000 words is a ceiling nobody reaches, and the page must say so.**
 Daniel's correction, 21 Sept: the window is not a library you load once. It is
@@ -71,12 +84,11 @@ shared with the question, the answer, the reasoning and every earlier turn, and
 it fills as the conversation runs. Source material is read in pieces and
 summarised; in his experience an agent has never carried full detail in the
 conversation, it goes back and re-reads. Do not present the figure as usable
-working capacity.
+working capacity, and do not compute percentages against it as though it were.
 
 The point the numbers make is the one people miss: **the window was never the
-constraint.** It failed at about a seventh of even the quoted ceiling, which is
-why "just wait for a bigger context window" is not an answer. Do not name a
-model version on the page; it dates. Say "the biggest models today".
+constraint.** Do not name a model version on the page; it dates. Say "the
+biggest models today".
 
 And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being
