@@ -65,10 +65,18 @@ before restating it anywhere.
 | 12 hours | Daniel's own incident, the one in field note 06. |
 | 15% | 12 hours is ~108,000 words, ~14.4% of 750,000. |
 
+**750,000 words is a ceiling nobody reaches, and the page must say so.**
+Daniel's correction, 21 Sept: the window is not a library you load once. It is
+shared with the question, the answer, the reasoning and every earlier turn, and
+it fills as the conversation runs. Source material is read in pieces and
+summarised; in his experience an agent has never carried full detail in the
+conversation, it goes back and re-reads. Do not present the figure as usable
+working capacity.
+
 The point the numbers make is the one people miss: **the window was never the
-constraint.** It failed at about a seventh of what it could hold, which is why
-"just wait for a bigger context window" is not an answer. Do not name a model
-version on the page; it dates. Say "the biggest models today".
+constraint.** It failed at about a seventh of even the quoted ceiling, which is
+why "just wait for a bigger context window" is not an answer. Do not name a
+model version on the page; it dates. Say "the biggest models today".
 
 And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being
