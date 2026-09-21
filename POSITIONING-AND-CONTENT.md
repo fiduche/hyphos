@@ -52,43 +52,29 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
-### How much is "a lot"? The scale numbers on the homepage
+### How much is "a lot"? See RESEARCH-CONTEXT-LIMITS.md
 
-**Measured, not estimated.** Taken 21 Sept 2026 from the Claude Code session
-that wrote this page, as the session reported its own window:
+The three figures on the homepage, and the evidence behind every claim in this
+section, live in `RESEARCH-CONTEXT-LIMITS.md`. That file is the single source
+of truth: primary sources with quotes and dates, our own measured session, the
+tokens-to-words arithmetic, and an explicit "what we must not claim" list.
 
-| Category | Tokens | Words (x0.75) |
-|---|---|---|
-| Window | 1,000,000 | ~750,000 |
-| System prompt | 5,981 | |
-| System tools | 23,689 | |
-| MCP tools | 19,646 | |
-| Skills | 9,925 | |
-| Custom agents | 1,397 | |
-| **Overhead before any of our material** | **60,638** | **~45,000** |
-| Messages (the conversation itself) | 145,974 | ~110,000 |
-| **Total in use** | **206,636 (21%)** | |
+Headlines from it:
 
-Two things make those numbers worth publishing. The overhead is spent before a
-single file is opened. And the 145,974 of conversation is **after this session
-had already been compacted once**, so it regrew to roughly the size of the
-twelve hours of meetings in field note 06, in one working day.
-
-Caveats the page states or must keep: the 45,000 is our setup, with tools and
-MCP servers connected, and a plain chat window starts far smaller. Do not
-restate any figure without measuring again.
-
-**750,000 words is a ceiling nobody reaches, and the page must say so.**
-Daniel's correction, 21 Sept: the window is not a library you load once. It is
-shared with the question, the answer, the reasoning and every earlier turn, and
-it fills as the conversation runs. Source material is read in pieces and
-summarised; in his experience an agent has never carried full detail in the
-conversation, it goes back and re-reads. Do not present the figure as usable
-working capacity, and do not compute percentages against it as though it were.
-
-The point the numbers make is the one people miss: **the window was never the
-constraint.** Do not name a model version on the page; it dates. Say "the
-biggest models today".
+- **Published evidence, not our opinion.** NoLiMa (ICML 2025): at 32k tokens,
+  11 of 13 models dropped below half their short-context accuracy, on questions
+  whose wording does not match the passage. Chroma (July 2025): all 18 models
+  tested degraded as input grew. Anthropic's own docs name the effect "context
+  rot" and describe an "attention budget".
+- **No threshold exists.** Anthropic call it "a performance gradient rather
+  than a hard cliff". Never write that it breaks at a particular number.
+- **The window is never usable capacity.** Anthropic's docs: everything counts
+  toward it, including the system prompt, tool definitions, tool results,
+  images and the model's own thinking.
+- **Hallucination has a documented cause.** Kalai et al., OpenAI, Sept 2025:
+  training and evaluation reward a confident guess over admitting uncertainty.
+  This supports Daniel's framing that it is not invention for its own sake.
+- **Do not restate a figure without reopening that file.**
 
 And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being

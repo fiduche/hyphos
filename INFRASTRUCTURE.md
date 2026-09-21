@@ -28,6 +28,13 @@ series plan, what is written but not deployed, the verified evidence behind
 every capability claim, and the publish / never-publish rule that keeps Domas's
 design off the site. Read it before writing marketing copy or a field note.
 
+`RESEARCH-CONTEXT-LIMITS.md` holds the evidence behind the homepage section
+"Why Not Just Ask Claude Or ChatGPT?": primary sources with quotes and dates
+(NoLiMa, Chroma, Anthropic's own docs, the OpenAI hallucination paper), the
+session we measured ourselves, the tokens-to-words arithmetic, and a
+"what we must not claim" list. Every figure on that section traces to it. Do
+not change a number on the site without changing that file first.
+
 ### Rules this site is held to
 
 - **Claims are checked against source before they go up.** The Work page, the
