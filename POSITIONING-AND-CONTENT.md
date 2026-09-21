@@ -52,6 +52,24 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
+### How much is "a lot"? The scale numbers on the homepage
+
+Arithmetic, not a benchmark, and stated as approximations on the page. Redo it
+before restating it anywhere.
+
+| Figure | Working |
+|---|---|
+| 750,000 words | A 1M token window (Claude Opus 5 today) at ~0.75 words per token. |
+| ~1,500 pages | 750,000 words at ~500 words a page. |
+| ~80 hours of meetings | Speech runs ~150 words a minute, so ~9,000 words an hour. Speaker labels and timestamps cut this, hence "about". |
+| 12 hours | Daniel's own incident, the one in field note 06. |
+| 15% | 12 hours is ~108,000 words, ~14.4% of 750,000. |
+
+The point the numbers make is the one people miss: **the window was never the
+constraint.** It failed at about a seventh of what it could hold, which is why
+"just wait for a bigger context window" is not an answer. Do not name a model
+version on the page; it dates. Say "the biggest models today".
+
 And the line worth keeping: **the errors are not evenly spread.** They land on
 the exception, the reversal, the job that went wrong: exactly what was being
 asked about.

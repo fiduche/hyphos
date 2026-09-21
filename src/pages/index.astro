@@ -25,6 +25,22 @@ import '../styles/visual-home.css';
       <h2>Why Not Just Ask<br /><em>Claude Or ChatGPT?</em></h2>
       <p class="v-wall-lead">For one meeting or one document, go ahead. We use them every day. The trouble starts when the volume grows.</p>
     </div>
+    {/*
+      Scale numbers, checked 21 Sept 2026. Arithmetic, not a benchmark:
+      - 1M token window (Claude Opus 5) x ~0.75 words per token = ~750,000 words.
+      - At ~500 words per page, ~1,500 pages.
+      - Speech runs ~150 words per minute, so ~9,000 words per hour of meeting,
+        giving ~80 hours. Speaker labels and timestamps push this down, so the
+        page says "about".
+      - Daniel's own incident: 12 hours of meetings is ~108,000 words, about
+        15% of 750,000. That is where we watched one skim.
+      Do not restate these without redoing the arithmetic.
+    */}
+    <div class="v-wall-scale">
+      <div><strong>750,000 words</strong><span>About what the biggest models can hold at once. Roughly 1,500 pages, or eighty hours of meetings.</span></div>
+      <div><strong>12 hours</strong><span>The pile of meetings we handed one. It came back and reported the review as done.</span></div>
+      <div><strong>15%</strong><span>How much of that space those meetings used. Holding it and reading it are not the same thing.</span></div>
+    </div>
     <ul class="v-wall-list">
       <li><h3>It answers from memory, not from your file. <span class="v-wall-chip">“Hallucination”</span></h3><p>It keeps a piece of what it read, fills in the rest, and believes the result. Going back to the full document is not something it does on its own.</p></li>
       <li><h3>It can miss what you changed.</h3><p>You feed it the transcript and assume it caught the reversal. Unless you ask for it directly, the answer can come back with the decision you dropped.</p></li>
@@ -89,6 +105,10 @@ import '../styles/visual-home.css';
 .v-wall{background:#15171a;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;}
 .v-wall .v-chapter-heading{text-align:center;}
 .v-wall-lead{max-width:60ch;margin:0 auto;font-size:1.15rem;line-height:1.7;color:#c9cace;}
+.v-wall-scale{max-width:1000px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left;}
+.v-wall-scale>div{padding:18px 20px 20px;border:1px solid #ffffff1c;border-radius:12px;background:#ffffff08;}
+.v-wall-scale strong{display:block;font-size:1.55rem;font-weight:500;line-height:1.1;letter-spacing:-.02em;color:#e3cf9d;font-variant-numeric:tabular-nums;}
+.v-wall-scale span{display:block;margin-top:8px;font-size:.875rem;line-height:1.55;color:#b9babd;}
 .v-wall-list{list-style:none;padding:0;margin:40px auto 0;max-width:1000px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
 .v-wall-list li{position:relative;overflow:hidden;padding:24px 26px 26px;border:1px solid #ffffff24;border-radius:14px;background:linear-gradient(180deg,#2c2f34,#232528);box-shadow:0 22px 45px -32px #000;}
 .v-wall-list li::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,#b69259,#e3cf9d 42%,#b6925900);}
@@ -99,6 +119,6 @@ import '../styles/visual-home.css';
 .v-wall-close{max-width:70ch;margin:40px auto 0;text-align:center;font-size:1.05rem;line-height:1.75;color:#c9cace;}
 .v-wall-cta{margin-top:30px;text-align:center;}
 .v-wall-cta .button{font-size:1.05rem;padding:15px 30px;}
-@media(max-width:760px){.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
+@media(max-width:760px){.v-wall-scale{grid-template-columns:1fr;gap:12px;margin-top:26px;}.v-wall-scale>div{padding:15px 18px 17px;}.v-wall-scale strong{font-size:1.35rem;}.v-wall-list{grid-template-columns:1fr;gap:14px;}.v-wall-list li{padding:20px 22px 24px;}.v-wall-list li:last-child{max-width:none;}.v-wall-lead{font-size:1.05rem;}}
 </style>
 </BaseLayout>
