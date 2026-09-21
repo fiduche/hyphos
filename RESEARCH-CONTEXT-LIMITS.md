@@ -144,6 +144,39 @@ exists so we can answer a sceptic, not to put on the page.
 
 ---
 
+## 6b. The human half: we review less as we trust more
+
+**Source:** Lee, Tankelevitch et al., "The Impact of Generative AI on Critical
+Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects
+From a Survey of Knowledge Workers", Microsoft Research and Carnegie Mellon,
+CHI 2025. https://dl.acm.org/doi/full/10.1145/3706598.3713778
+PDF: https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf
+
+- 319 knowledge workers who use AI tools at least weekly, 936 real use cases.
+- Higher confidence in the AI is associated with **less** critical thinking.
+  Higher confidence in one's own ability is associated with **more**.
+- Across knowledge, comprehension, application, analysis, synthesis and
+  evaluation, respondents reported generative AI reduced the effort they spent.
+
+**Source:** the automation bias literature, Skitka, Mosier, Burdick and
+Parasuraman, aviation studies from the 1990s onward. Two error classes are
+standard in that work: **omission errors**, failing to respond to something
+because the automation did not flag it, and **commission errors**, following an
+automated recommendation without verifying it. Accountability for the outcome
+reduced the bias in their experiments.
+
+**Why this matters to us more than anything else in this file.** The machine
+failure and the human failure are the same shape. The tool leaves items out
+silently; the person stops looking for what is missing. Neither announces
+itself, and they compound: every answer that turns out fine buys a little less
+checking next time.
+
+**Supports on the site:** the "We Are Checking Less, Not More" section of field
+note 06. Daniel's framing, 21 Sept: AI is making us less likely to review, and
+we are trusting more when that may not be appropriate.
+
+---
+
 ## 7. Our own measurement
 
 Taken 21 September 2026 from the Claude Code session that wrote the homepage
