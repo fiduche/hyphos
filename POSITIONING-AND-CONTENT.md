@@ -62,9 +62,10 @@ the reader who has managed it. The true claim is about effort and skill. Doing
 it well means knowing exactly what to ask for and asking every single time, and
 at volume that becomes the job itself.
 
-The fix that holds without a person driving it is structural, and it is what
-Hyphos is: answers tied to their source, checked against that source
-automatically, and a count of what has actually been read.
+The fix is that the checking happens on its own, which is what Hyphos is:
+answers tied to their source, checked against that source automatically, and a
+count of what has actually been read. Say it that way. "Structural" and "what
+holds without you" were both rejected on 21 Sept as jargon nobody parses.
 
 ---
 
