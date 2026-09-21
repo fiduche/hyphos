@@ -52,6 +52,27 @@ Why it breaks at volume, in the order the homepage says it:
    outside the tooling knows this is happening. See "Compaction of
    conversations" below for the long version.
 
+### Standing rule: no absolutes we cannot defend
+
+Daniel has caught the same fault six times on 21 September alone, across the
+homepage and both notes. The pattern is always the same: an absolute where the
+honest claim is a cost, a tendency or a default.
+
+| Written | Wrong because | Say instead |
+|---|---|---|
+| It makes things up | It works from a fragment and believes it | It answers from memory, not from your file |
+| It misses what you changed | Sometimes it catches it | It **can** miss what you changed |
+| It cannot check its own work | It can, and it finds real errors | It will not double check **on its own** |
+| A better prompt does not fix this | It does, at a cost in skill and effort | Better prompting works, and at volume it becomes the job |
+| The summaries look almost identical | The skim was missing items | It is not wrong, it is incomplete |
+| Systems that were never meant to talk | They publish APIs so they can be connected | What has changed is who is doing the connecting |
+
+Before publishing any sentence containing **never, always, cannot, nobody,
+everyone, nothing or every**, ask whether a reader with experience could
+produce one counterexample. If they could, the sentence is wrong and it will
+cost us the reader who knows most. Rewrite it as the cost, the tendency or the
+default rather than the limit.
+
 ### The skim is incomplete, not wrong
 
 Daniel's correction, 21 Sept, after a first attempt overcorrected. What came
