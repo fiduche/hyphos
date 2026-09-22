@@ -28,6 +28,7 @@ const examples = [
     resultLabel: 'A Gap The Team Can Act On',
     result: ['The Job Ran Over', 'The Invoice Does Not Show It Yet'],
     resultBody: 'See the quote, the hours and the bills side by side before the invoice goes out. Add the approved extras, or call the customer first, with the evidence in one place.',
+    contextNote: 'The part that is in nobody\u2019s system: the customer approved the tile change standing in the bathroom. Without that, six extra hours look like an overrun instead of work somebody agreed to pay for.',
     links: ['Estimate', 'Timesheets', 'Supplier Bill', 'Invoice'],
     caption: 'Illustrative small business job · All names, hours and amounts above are fictional.',
   },
@@ -43,6 +44,7 @@ const examples = [
     resultLabel: 'A Gap The Team Can Act On',
     result: ['The Recommendations Are Scoped', 'The Privacy Review Needs An Owner'],
     resultBody: 'Bring the contract commitment, regulatory source and draft scope into the same review. Confirm which requirement applies, assign the missing work and keep the evidence linked.',
+    contextNote: 'The part that is in nobody\u2019s system: on the kickoff call everyone assumed the client would handle the privacy review. It was never written down, so it is in no contract, no scope and no plan.',
     links: ['Contract Commitment', 'Regulatory Source', 'Scope Item', 'Owner & Review'],
     caption: 'Illustrative consulting engagement · All contract terms, regulatory requirements and scope details above are fictional.',
   },
@@ -59,7 +61,7 @@ const examples = [
         {ex.sources.map((s) => <div class="requirement-source"><Icon name={s.icon} /><span class="requirement-label">{s.label}</span><h3>{s.title}</h3><p>{s.body}</p><span class="requirement-reference">{s.ref}</span></div>)}
       </div>
       <div class="requirement-bridge"><span aria-hidden="true">↓</span><img src="/brand/hyphos-mark.svg" width="34" height="34" alt="" /><strong>{ex.bridge}</strong><span aria-hidden="true">↓</span></div>
-      <div class="requirement-result"><span class="requirement-label">{ex.resultLabel}</span><h3>{ex.result[0]}<br />{ex.result[1]}</h3><p>{ex.resultBody}</p><div class="requirement-links">{ex.links.map((l) => <span>{l}</span>)}</div></div>
+      <div class="requirement-result"><span class="requirement-label">{ex.resultLabel}</span><h3>{ex.result[0]}<br />{ex.result[1]}</h3><p>{ex.resultBody}</p><p class="requirement-context">{ex.contextNote}</p><div class="requirement-links">{ex.links.map((l) => <span>{l}</span>)}</div></div>
       <figcaption class="v-caption">{ex.caption}</figcaption>
     </figure>
   ))}
@@ -75,6 +77,7 @@ const examples = [
 .requirements-example[data-ready] .example-panel+.example-panel{margin-top:0;}
 .example-noscript-label{text-align:center;font-weight:600;color:#4a4a4c;margin:0 0 16px!important;}
 .requirements-example[data-ready] .example-noscript-label{display:none;}
+.requirement-context{margin-top:16px!important;padding:13px 15px;border-left:2px solid #b69259;border-radius:0 8px 8px 0;background:#b692591a;font-size:.9375rem;line-height:1.6;color:#ded9cc;}
 .requirement-sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
 .requirement-source{background:#2d3035;border:1px solid #575a60;border-radius:10px;padding:24px;display:flex;flex-direction:column;min-width:0;}
 .requirement-source>svg{width:27px;height:27px;color:#d2b582;margin-bottom:20px;}
